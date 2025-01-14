@@ -1,0 +1,106 @@
+.MuiDialog-root {
+  position: fixed;
+  z-index: 9999;
+  overflow: visible !important;
+}
+
+.MuiDialog-container {
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.MuiDialog-paper {
+  max-width: 50% !important;
+  max-height: fit-content !important;
+  height: auto;
+  background: linear-gradient(135deg, #eccdcd, #f3e0e0) !important;
+  color: #470d1d !important;
+  overflow: visible !important;
+}
+
+.modal-picture {
+  width: 70%;
+  height: auto;
+  margin: auto;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  border-radius: 10px;
+}
+
+.modal-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 0.7px;
+  line-height: 120%;
+  margin: 0% 5% 1% 5%;
+}
+
+.modal-undertitle {
+  text-align: center;
+  line-height: 120%;
+  font-size: 18px !important;
+}
+
+.upper-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.4vw;
+  font-size: 17px;
+  gap: 20%;
+}
+
+.lower-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.7vw;
+  font-size: 20px;
+  gap: 20%;
+}
+
+.green {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.small-green {
+  font-size: 22px;
+}
+
+.description {
+  font-size: 17px;
+  text-indent: 6%;
+  background-color: #f6e9e9;
+  border-radius: 20px;
+  padding: 1% 2.5% 1.5% 2.5%;
+}
+
+.MuiChip-root {
+  background-color: #f6e9e9 !important;
+  border: solid 1.6px #470d1d !important;
+  font-weight: bold;
+  color: #470d1d !important;
+  letter-spacing: 0.6px !important;
+  padding: 2.5% 2% !important;
+  font-size: 18px !important;
+}
+
+.custom-close-icon {
+  font-size: 35px !important;
+}
+
+.custom-close-icon:hover {
+  color: #177f62;
+}
+
+.close-button {
+  position: absolute !important;
+  right: 8px !important;
+  top: 8px !important;
+  color: #470d1d;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+}

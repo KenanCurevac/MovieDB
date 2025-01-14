@@ -1,0 +1,71 @@
+.search {
+  min-width: 200px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #eed6d6;
+  border-radius: 20px;
+  margin-left: 15%;
+  margin-right: 2%;
+}
+
+.MuiAutocomplete-paper {
+  background-color: #470d1d !important;
+}
+
+.MuiAutocomplete-popper {
+  margin-top: 0.2% !important ;
+  border-radius: 8px;
+  border: solid 3px #eed6d6;
+  max-width: 100%;
+  width: inherit;
+}
+
+.MuiAutocomplete-listbox {
+  padding: 0px !important;
+  max-height: 75vh !important;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.MuiAutocomplete-option {
+  border-bottom: solid 1px #eed6d6;
+}
+
+.MuiAutocomplete-option:hover {
+  background-color: #882541 !important;
+}
+
+.search-picture {
+  margin-right: 0px;
+  width: 70px;
+  height: auto;
+  box-shadow: none;
+}
+
+.search-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 4%;
+  color: #eed6d6;
+  font-size: 17.5px;
+}
+
+.MuiOutlinedInput-root {
+  height: 45px;
+  font-size: 18px !important;
+  letter-spacing: 0.6px !important;
+  color: #470d1d !important;
+}
+
+.MuiOutlinedInput-root fieldset {
+  border: none !important;
+}
+
+.MuiOutlinedInput-root.Mui-focused fieldset {
+  border: solid 3px #177f62 !important;
+  border-radius: 20px;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root {
+  color: #177f62;
+}
