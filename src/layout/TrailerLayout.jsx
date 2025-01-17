@@ -1,21 +1,26 @@
-import styles from "./TrailerLayout.module.css";
+import "./TrailerLayout.css";
 import { useState, useEffect } from "react";
-import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import transparent from "../assets/clearimage.png";
 
 export default function TrailerLayout({ data, title, link }) {
   const [slides, setSlides] = useState(0);
   const [trailer, setTrailer] = useState(null);
 
-  const movieIndex = slides + 1;
-  const movieToShow = data[movieIndex].id;
+  const movieIndex = slides;
+  const movieToShow = data[movieIndex]?.id || null;
 
-  const initialDate = data[movieIndex].release_date;
-  const [year, month, day] = initialDate.split("-");
-  const releaseDate = `${day}.${month}.${year}`;
+  const initialDate = data[movieIndex]?.release_date || null;
+  const [year, month, day] = initialDate ? initialDate.split("-") : [];
+  const releaseDate = year ? `${day}.${month}.${year}` : null;
 
   useEffect(() => {
+    if (!movieToShow) {
+      return;
+    }
+
     async function fetchTrailer() {
       try {
         const fetchedTrailer = await fetchTrailers(movieToShow);
@@ -35,88 +40,85 @@ export default function TrailerLayout({ data, title, link }) {
   }
 
   return (
-    <div className={styles.sectionContainer}>
-      <div className={styles.slideContainer}>
+    <div className="section-container">
+      <div className="slide-container">
         <Link
           to={link}
-          className={styles.titleContainer}
+          className="title-container"
           style={{ textDecoration: "none" }}
         >
-          <div className={styles.line} />
-          <div className={styles.title}>{title}</div>
-          <i className={styles.arrowRight}></i>
+          <div className="line" />
+          <div className="title">{title}</div>
+          <i className="rotating-arrow"></i>
         </Link>
-        <div className={styles.slideGroup}>
+        <div className="slide-group">
           <button
             onClick={() => handleSlide("previous")}
-            className={styles.arrows}
+            className={`arrows ${slides === 0 ? "disabled-button" : ""}`}
+            disabled={slides === 0}
           >
-            <DoubleArrowIcon
-              sx={{
-                transform: "rotate(180deg)",
-                fontSize: 70,
-                "& path": {
-                  fill: "#470d1d",
-                },
-                "&:hover path": {
-                  fill: "#177f62",
-                },
-              }}
-            />
+            <ArrowForwardIosIcon className="arrow-left" />
           </button>
-          <div className={styles.posterSlide}>
-            {data.map((elem, index) => {
+          <div className="poster-slide">
+            {[
+              { id: "1", border: "none" },
+              ...data,
+              { id: "2", border: "none" },
+              { id: "3", border: "none" },
+            ].map((elem, index) => {
               let className = "";
 
               if (-1 + slides === index) {
-                className = "previousPicture";
+                className = "previous-picture";
               } else if (0 + slides === index) {
-                className = "onTheLeft";
+                className = "on-the-left";
               } else if (1 + slides === index) {
-                className = "middlePicture";
+                className = "middle-picture";
               } else if (2 + slides === index) {
-                className = "onTheRight";
+                className = "on-the-right";
               } else if (3 + slides === index) {
-                className = "nextPicture";
+                className = "next-picture";
               } else return null;
 
               return (
                 <div
                   key={elem.id}
-                  className={`${styles.pictureContainer} ${
-                    className === "onTheLeft" || className === "onTheRight"
-                      ? styles.perspective
+                  className={`picture-container ${
+                    className === "on-the-left" || className === "on-the-right"
+                      ? "perspective"
                       : ""
                   } `}
                 >
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${
-                      elem.poster_path || elem.profile_path
-                    }`}
-                    alt={elem.title || elem.name}
-                    className={`${styles[className]} ${styles.image}`}
+                    src={
+                      elem.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                        : elem.profile_path
+                        ? `https://image.tmdb.org/t/p/w500${elem.profile_path}`
+                        : transparent
+                    }
+                    alt={elem.title || elem.name || "placeholder image"}
+                    className={`${className} trailer-carousel-image`}
+                    style={{
+                      boxShadow:
+                        elem.border === "none" ? "none" : "5px 12px 5px",
+                    }}
                   />
                 </div>
               );
             })}
           </div>
-          <button onClick={() => handleSlide("next")} className={styles.arrows}>
-            <DoubleArrowIcon
-              sx={{
-                fontSize: 70,
-                "& path": {
-                  fill: "#470d1d",
-                },
-                "&:hover path": {
-                  fill: "#177f62",
-                },
-              }}
-            />
+          <button
+            onClick={() => handleSlide("next")}
+            className={`arrows ${slides === 19 ? "disabled-button" : ""}`}
+            disabled={slides === 19}
+          >
+            <ArrowForwardIosIcon className="arrow-right" />
           </button>
         </div>
       </div>
-      <div className={styles.trailerContainer}>
-        <div className={styles.watchTrailer}>WATCH TRAILER</div>
+      <div className="trailer-container">
+        <div className="watch-trailer">WATCH TRAILER</div>
         {trailer && (
           <iframe
             src={`https://www.youtube.com/embed/${trailer}`}
@@ -124,10 +126,10 @@ export default function TrailerLayout({ data, title, link }) {
             frameBorder="0"
           ></iframe>
         )}
-        <div className={styles.trailerInfo}>
-          <div className={styles.trailerTitle}>{data[movieIndex].title}</div>
-          <div className={styles.date}>Release Date:</div>
-          <div className={styles.date}>{releaseDate}</div>
+        <div className="trailer-info">
+          <div className="trailer-title">{data[movieIndex]?.title || ""}</div>
+          <div className="date">Release Date:</div>
+          <div className="date">{releaseDate}</div>
         </div>
       </div>
     </div>

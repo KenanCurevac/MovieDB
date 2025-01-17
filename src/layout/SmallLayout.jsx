@@ -1,102 +1,71 @@
-import styles from "./SmallLayout.module.css";
+import "./SmallLayout.css";
 import { useState } from "react";
-import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import { Link } from "react-router-dom";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function SmallLayout({ data, title, link }) {
   const [slides, setSlides] = useState(0);
-  const [transitionNext, setTransitionNext] = useState(false);
-  const [transitionPrevious, setTransitionPrevious] = useState(false);
 
   function handleSlide(action) {
-    if (transitionNext || transitionPrevious) return;
-    if (action === "next") {
-      setTransitionNext(true);
-    } else {
-      setTransitionPrevious(true);
-    }
-
-    setTimeout(() => {
-      setSlides((prevSlide) =>
-        action === "next" ? prevSlide + 1 : prevSlide - 1
-      );
-      setTransitionNext(false);
-      setTransitionPrevious(false);
-    }, 1000);
+    setSlides((prevSlide) =>
+      action === "next" ? prevSlide + 1 : prevSlide - 1
+    );
   }
 
   return (
-    <div className={styles.slideContainer}>
+    <div className="slide-container">
       <Link
         to={link}
-        className={styles.titleContainer}
+        className="title-container"
         style={{ textDecoration: "none" }}
       >
-        <div className={styles.line} />
-        <div className={styles.title}>{title}</div>
-        <i className={styles.arrowRight}></i>
+        <div className="line" />
+        <div className="title">{title}</div>
+        <i className="rotating-arrow"></i>
       </Link>
-      <div className={styles.slideGroup}>
+      <div className="slide-group">
         <button
           onClick={() => handleSlide("previous")}
-          className={styles.arrows}
+          className={`arrows ${slides === 0 ? "disabled-button" : ""}`}
+          disabled={slides === 0}
         >
-          <DoubleArrowIcon
-            sx={{
-              transform: "rotate(180deg)",
-              fontSize: 70,
-              "& path": {
-                fill: "#470d1d",
-              },
-              "&:hover path": {
-                fill: "#177f62",
-              },
-            }}
-          />
+          <ArrowForwardIosIcon className="arrow-left" />
         </button>
-        <div className={styles.slide}>
+        <div className="slide">
           {data.map((elem, index) => {
             let className = "";
 
             if (index === 0 + slides) {
-              className = "firstPicture";
+              className = "first-picture";
             } else if (index === 1 + slides) {
-              className = "secondPicture";
+              className = "second-picture";
             } else if (index === 2 + slides) {
-              className = "thirdPicture";
+              className = "third-picture";
             } else if (index === 3 + slides) {
-              className = "fourthPicture";
+              className = "fourth-picture";
             } else if (index === slides - 1) {
-              className = "nullPicture";
+              className = "null-picture";
             } else return null;
 
             return (
-              <div key={elem.id} className={styles.pictureContainer}>
+              <div key={elem.id} className="picture-container">
                 <img
                   src={`https://image.tmdb.org/t/p/w500${
                     elem.poster_path || elem.profile_path
                   }`}
                   alt={elem.title || elem.name}
-                  className={`${styles[className]} ${
-                    transitionNext ? styles.transitionNext : ""
-                  } ${transitionPrevious ? styles.transitionPrevious : ""}`}
+                  className={`${className} small-carousel-picture`}
                 />
               </div>
             );
           })}
         </div>
-        <button onClick={() => handleSlide("next")} className={styles.arrows}>
-          <DoubleArrowIcon
-            sx={{
-              fontSize: 70,
-              "& path": {
-                fill: "#470d1d",
-              },
-              "&:hover path": {
-                fill: "#177f62",
-              },
-            }}
-          />
+        <button
+          onClick={() => handleSlide("next")}
+          className={`arrows ${slides === 17 ? "disabled-button" : ""}`}
+          disabled={slides === 17}
+        >
+          <ArrowForwardIosIcon className="arrow-right" />
         </button>
       </div>
     </div>
