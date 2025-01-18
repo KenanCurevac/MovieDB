@@ -1,0 +1,52 @@
+.MuiDialog-root {
+  position: fixed;
+  z-index: 9999;
+  overflow: visible !important;
+}
+
+.MuiDialog-container {
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.trailer-modal .MuiDialogContent-root {
+  padding: 0px !important;
+  scrollbar-width: none;
+}
+
+.trailer-modal .MuiDialog-paper {
+  max-width: fit-content !important;
+  height: fit-content;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+.playing-trailer {
+  width: 900px;
+  aspect-ratio: 16/9;
+}
+
+.MuiBackdrop-root {
+  opacity: 1 !important;
+}
+
+.trailer-close-icon {
+  font-size: 40px !important;
+  color: #f6cbcb;
+  border: solid 1px #f6cbcb;
+  border-radius: 6px;
+  opacity: 0.7;
+}
+
+.trailer-close-icon:hover {
+  color: #177f62;
+  border-color: #177f62;
+  opacity: 1;
+}
+
+.trailer-close-button {
+  position: absolute !important;
+  right: 0px !important;
+  top: -55px !important;
+  color: #470d1d;
+}

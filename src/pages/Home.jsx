@@ -3,23 +3,42 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import SmallLayout from "../layout/SmallLayout";
 import TrailerLayout from "../layout/TrailerLayout";
+import TrailerModal from "../UI/TrailerModal";
+import { useState } from "react";
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
+  const [trailer, setTrailer] = useState("");
+
   const { upcomingMovies, popularPeople } = useLoaderData();
 
+  const handlePlayTrailer = (trailer) => {
+    setOpen(true);
+    setTrailer(trailer);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div className="top-layer">
-      <TrailerLayout
-        data={upcomingMovies}
-        title="Upcoming Movies"
-        link="upcoming"
-      />
-      <SmallLayout
-        data={popularPeople}
-        title="Popular People"
-        link="popular_people"
-      />
-    </div>
+    <>
+      <TrailerModal open={open} onClose={handleClose} trailer={trailer} />
+
+      <div className="top-layer">
+        <TrailerLayout
+          data={upcomingMovies}
+          title="Upcoming Movies"
+          link="upcoming"
+          onPlayTrailer={handlePlayTrailer}
+        />
+        <SmallLayout
+          data={popularPeople}
+          title="Popular People"
+          link="popular_people"
+        />
+      </div>
+    </>
   );
 }
 

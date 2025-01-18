@@ -13,16 +13,19 @@ export default function Series() {
         data={showsAiringToday}
         title="TV Shows Airing Todays"
         link="shows_airing_today"
+        media="tv"
       />
       <SmallLayout
         data={popularShows}
         title="Most Popular TV Shows"
         link="popular_shows"
+        media="tv"
       />
       <BigLayout
         data={topRatedShows}
         title="Top Rated TV Shows"
         link="top_rated_shows"
+        media="tv"
       />
     </div>
   );

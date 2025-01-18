@@ -29,6 +29,7 @@
 
 .MuiAutocomplete-option {
   border-bottom: solid 1px #eed6d6;
+  padding: 10px !important;
 }
 
 .MuiAutocomplete-option:hover {
@@ -38,7 +39,7 @@
 .search-picture {
   margin-right: 0px;
   width: 70px;
-  height: auto;
+  max-height: auto;
   box-shadow: none;
 }
 

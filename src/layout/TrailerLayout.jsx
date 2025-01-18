@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import transparent from "../assets/clearimage.png";
+import Modal from "../UI/Modal";
 
-export default function TrailerLayout({ data, title, link }) {
+export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
   const [slides, setSlides] = useState(0);
   const [trailer, setTrailer] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [modalId, setModalId] = useState(null);
 
   const movieIndex = slides;
   const movieToShow = data[movieIndex]?.id || null;
@@ -39,100 +42,130 @@ export default function TrailerLayout({ data, title, link }) {
     );
   }
 
+  function handleOpenModal(id) {
+    setOpenModal(true);
+    setModalId(id);
+  }
+
+  function handleCloseModal() {
+    setOpenModal(false);
+  }
+
   return (
-    <div className="section-container">
-      <div className="slide-container">
-        <Link
-          to={link}
-          className="title-container"
-          style={{ textDecoration: "none" }}
-        >
-          <div className="line" />
-          <div className="title">{title}</div>
-          <i className="rotating-arrow"></i>
-        </Link>
-        <div className="slide-group">
-          <button
-            onClick={() => handleSlide("previous")}
-            className={`arrows ${slides === 0 ? "disabled-button" : ""}`}
-            disabled={slides === 0}
+    <>
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        media="movie"
+        id={modalId}
+      />
+
+      <div className="section-container">
+        <div className="slide-container">
+          <Link
+            to={link}
+            className="title-container"
+            style={{ textDecoration: "none" }}
           >
-            <ArrowForwardIosIcon className="arrow-left" />
-          </button>
-          <div className="poster-slide">
-            {[
-              { id: "1", border: "none" },
-              ...data,
-              { id: "2", border: "none" },
-              { id: "3", border: "none" },
-            ].map((elem, index) => {
-              let className = "";
+            <div className="line" />
+            <div className="title">{title}</div>
+            <i className="rotating-arrow"></i>
+          </Link>
+          <div className="slide-group">
+            <button
+              onClick={() => handleSlide("previous")}
+              className={`arrows ${slides === 0 ? "disabled-button" : ""}`}
+              disabled={slides === 0}
+            >
+              <ArrowForwardIosIcon className="arrow-left" />
+            </button>
+            <div className="poster-slide">
+              {[
+                { id: "1", border: "none" },
+                ...data,
+                { id: "2", border: "none" },
+                { id: "3", border: "none" },
+              ].map((elem, index) => {
+                let className = "";
 
-              if (-1 + slides === index) {
-                className = "previous-picture";
-              } else if (0 + slides === index) {
-                className = "on-the-left";
-              } else if (1 + slides === index) {
-                className = "middle-picture";
-              } else if (2 + slides === index) {
-                className = "on-the-right";
-              } else if (3 + slides === index) {
-                className = "next-picture";
-              } else return null;
+                if (-1 + slides === index) {
+                  className = "previous-picture";
+                } else if (0 + slides === index) {
+                  className = "on-the-left";
+                } else if (1 + slides === index) {
+                  className = "middle-picture";
+                } else if (2 + slides === index) {
+                  className = "on-the-right";
+                } else if (3 + slides === index) {
+                  className = "next-picture";
+                } else return null;
 
-              return (
-                <div
-                  key={elem.id}
-                  className={`picture-container ${
-                    className === "on-the-left" || className === "on-the-right"
-                      ? "perspective"
-                      : ""
-                  } `}
-                >
-                  <img
-                    src={
-                      elem.poster_path
-                        ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
-                        : elem.profile_path
-                        ? `https://image.tmdb.org/t/p/w500${elem.profile_path}`
-                        : transparent
+                return (
+                  <div
+                    key={elem.id}
+                    className={`picture-container-trailer ${
+                      className === "on-the-left" ||
+                      className === "on-the-right"
+                        ? "perspective"
+                        : ""
+                    } `}
+                    onClick={
+                      className === "middle-picture"
+                        ? () => handleOpenModal(elem.id)
+                        : null
                     }
-                    alt={elem.title || elem.name || "placeholder image"}
-                    className={`${className} trailer-carousel-image`}
-                    style={{
-                      boxShadow:
-                        elem.border === "none" ? "none" : "5px 12px 5px",
-                    }}
-                  />
-                </div>
-              );
-            })}
+                  >
+                    <img
+                      src={
+                        elem.poster_path
+                          ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                          : elem.profile_path
+                          ? `https://image.tmdb.org/t/p/w500${elem.profile_path}`
+                          : transparent
+                      }
+                      alt={elem.title || elem.name || "placeholder image"}
+                      className={`${className} trailer-carousel-image`}
+                      style={{
+                        boxShadow:
+                          elem.border === "none" ? "none" : "5px 12px 5px",
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            <button
+              onClick={() => handleSlide("next")}
+              className={`arrows ${slides === 19 ? "disabled-button" : ""}`}
+              disabled={slides === 19}
+            >
+              <ArrowForwardIosIcon className="arrow-right" />
+            </button>
           </div>
-          <button
-            onClick={() => handleSlide("next")}
-            className={`arrows ${slides === 19 ? "disabled-button" : ""}`}
-            disabled={slides === 19}
-          >
-            <ArrowForwardIosIcon className="arrow-right" />
-          </button>
+        </div>
+        <div className="trailer-container">
+          <div className="watch-trailer">WATCH TRAILER</div>
+          {trailer && (
+            <div
+              onClick={() => onPlayTrailer(trailer)}
+              style={{ position: "relative", cursor: "pointer" }}
+            >
+              <iframe
+                src={`https://www.youtube.com/embed/${trailer}`}
+                title="YouTube video player"
+                frameBorder="0"
+                className="thumbnail"
+              ></iframe>
+            </div>
+          )}
+          <div className="trailer-info">
+            <div className="trailer-title">{data[movieIndex]?.title || ""}</div>
+            <div className="date">Release Date:</div>
+            <div className="date">{releaseDate}</div>
+          </div>
         </div>
       </div>
-      <div className="trailer-container">
-        <div className="watch-trailer">WATCH TRAILER</div>
-        {trailer && (
-          <iframe
-            src={`https://www.youtube.com/embed/${trailer}`}
-            title="YouTube video player"
-            frameBorder="0"
-          ></iframe>
-        )}
-        <div className="trailer-info">
-          <div className="trailer-title">{data[movieIndex]?.title || ""}</div>
-          <div className="date">Release Date:</div>
-          <div className="date">{releaseDate}</div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 

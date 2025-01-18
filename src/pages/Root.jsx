@@ -23,7 +23,9 @@ export default function RootLayout() {
           sx={{ height: "auto", backgroundColor: "#e6b5bb" }}
         >
           <Toolbar>
-            <img className="film-atlas" src={logo} alt="Film Atlas" />
+            <Link to="/">
+              <img className="film-atlas" src={logo} alt="Film Atlas" />
+            </Link>
             <Search />
             <Typography
               variant="h6"

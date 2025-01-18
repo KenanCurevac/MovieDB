@@ -51,7 +51,7 @@
   font-size: 30px;
 }
 
-iframe {
+.thumbnail {
   width: 100%;
   max-width: 500px;
   aspect-ratio: 16 / 9;
@@ -59,6 +59,7 @@ iframe {
   display: block;
   border-radius: 15px;
   border: solid 6px #f6cbcb;
+  pointer-events: none;
 }
 
 .slide-group {
@@ -80,7 +81,7 @@ iframe {
   box-shadow: 5px 6px 35px inset #470d1d;
 }
 
-.picture-container {
+.picture-container-trailer {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -139,6 +140,7 @@ iframe {
   width: auto;
   height: 390px;
   transition: transform 1s ease;
+  cursor: pointer;
 }
 
 .on-the-left {

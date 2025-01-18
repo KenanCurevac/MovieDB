@@ -30,7 +30,13 @@ export default function SimpleCard({ data, onClick }) {
           sx={{ color: "#470d1d" }}
         >
           {data.title || data.name || "name"}
-          <div>({releaseDate})</div>
+          <div
+            style={{ fontSize: data.known_for_department ? "18px" : "inherit" }}
+          >
+            {data.known_for_department ? "" : "("}
+            {releaseDate}
+            {data.known_for_department ? "" : ")"}
+          </div>
         </Typography>
       </CardContent>
     </Card>

@@ -6,7 +6,6 @@ import useFetch from "../hooks/useFetch";
 import { fetchDetails } from "../http";
 import { useCallback } from "react";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -19,7 +18,6 @@ export default function Modal({ open, onClose, media, id }) {
   }, [id]);
 
   const { fetchedData, isFetching, error } = useFetch(details);
-  console.log(fetchedData, "detalji");
 
   const releaseYear = fetchedData?.release_date
     ? fetchedData.release_date.split("-")[0]
@@ -56,26 +54,31 @@ export default function Modal({ open, onClose, media, id }) {
         alt="image"
       />
       <DialogContent className="dialog-content">
-        <div className="upper-row">
-          <div>
-            Runtime: <span className="small-green">{runtime}</span>
+        <div className="movie-modal-data">
+          <div className="left-element">
+            <span style={{ fontSize: "17px" }}>Runtime: </span>
+            <span style={{ fontSize: "22px" }}>{runtime}</span>
           </div>
-          <Stack direction="row" spacing={1}>
+
+          <div className="right-element chips">
             {genres.map((genre) => (
               <Chip key={genre} label={genre} variant="outlined" />
             ))}
-          </Stack>
-        </div>
-        <div className="lower-row">
-          <div>
-            Rating:{" "}
-            <span className="green">{fetchedData.vote_average.toFixed(1)}</span>
           </div>
-          <div>
-            Number of Votes:{" "}
-            <span className="green">{fetchedData.vote_count}</span>
+
+          <div className="left-element">
+            <span className="lower-row-data">Rating: </span>
+            <span className="big-numbers">
+              {fetchedData.vote_average.toFixed(1)}
+            </span>
+          </div>
+
+          <div className="right-element">
+            <span className="lower-row-data">Number of Votes: </span>
+            <span className="big-numbers">{fetchedData.vote_count}</span>
           </div>
         </div>
+
         <div className="description">{fetchedData.overview}</div>
       </DialogContent>
     </Dialog>

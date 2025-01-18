@@ -35,7 +35,7 @@
   box-shadow: 5px 6px 35px inset #470d1d;
 }
 
-.picture-container {
+.picture-container-small-layout {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -89,6 +89,7 @@
 .first-picture {
   width: 220px;
   height: 330px;
+  cursor: pointer;
 }
 
 .second-picture {
