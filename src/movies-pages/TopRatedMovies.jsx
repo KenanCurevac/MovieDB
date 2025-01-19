@@ -18,14 +18,14 @@ export default function TopRatedMovies() {
     setPage(value);
   }
 
-  const handleClickOpen = (movie) => {
+  function handleClickOpen(id) {
     setOpen(true);
-    setModalMovieId(movie.id);
-  };
+    setModalMovieId(id);
+  }
 
-  const handleClose = (value) => {
+  function handleClose() {
     setOpen(false);
-  };
+  }
 
   if (isFetching) {
     return <div className="loading-message">Loading questions...</div>;
@@ -56,7 +56,7 @@ export default function TopRatedMovies() {
           <SimpleCard
             key={movie.id}
             data={movie}
-            onClick={() => handleClickOpen(movie)}
+            onClick={() => handleClickOpen(movie.id)}
           />
         ))}
       </div>

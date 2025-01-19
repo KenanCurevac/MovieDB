@@ -61,7 +61,7 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
       />
 
       <div className="section-container">
-        <div className="slide-container">
+        <div className="slide-trailer-container">
           <Link
             to={link}
             className="title-container"

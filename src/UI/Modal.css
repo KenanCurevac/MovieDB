@@ -1,12 +1,14 @@
 .MuiDialog-root {
   position: fixed;
   z-index: 9999;
-  overflow: visible !important;
 }
 
-.MuiDialog-container {
+.standard-modal .MuiDialog-container {
   overflow: auto;
   scrollbar-width: none;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
 }
 
 .MuiDialog-paper {
@@ -65,6 +67,10 @@
 .right-element {
   width: 65%;
   padding: 0.1% 0;
+}
+
+.first-element {
+  margin: auto;
 }
 
 .chips {

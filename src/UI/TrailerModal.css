@@ -7,6 +7,9 @@
 .MuiDialog-container {
   overflow: auto;
   scrollbar-width: none;
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
 }
 
 .trailer-modal .MuiDialogContent-root {

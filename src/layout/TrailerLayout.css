@@ -13,7 +13,7 @@
   box-shadow: 0 0 10px 2px #470d1dcf;
 }
 
-.slide-container {
+.slide-trailer-container {
   display: flex;
   flex-direction: column;
   padding: 15px 2px 30px 5px;
@@ -139,7 +139,7 @@
 .middle-picture {
   width: auto;
   height: 390px;
-  transition: transform 1s ease;
+  transition: transform 0.8s ease;
   cursor: pointer;
 }
 

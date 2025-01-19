@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Modal from "../UI/Modal";
+import PeopleModal from "../UI/PeopleModal";
 
 export default function SmallLayout({ data, title, link, media }) {
   const [slides, setSlides] = useState(0);
@@ -26,12 +27,21 @@ export default function SmallLayout({ data, title, link, media }) {
 
   return (
     <>
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        media={media}
-        id={modalId}
-      />
+      {media !== "person" ? (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          media={media}
+          id={modalId}
+        />
+      ) : (
+        <PeopleModal
+          open={openModal}
+          onClose={handleCloseModal}
+          media={media}
+          id={modalId}
+        />
+      )}
 
       <div className="slide-container">
         <Link

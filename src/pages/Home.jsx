@@ -36,6 +36,7 @@ export default function Home() {
           data={popularPeople}
           title="Popular People"
           link="popular_people"
+          media="person"
         />
       </div>
     </>

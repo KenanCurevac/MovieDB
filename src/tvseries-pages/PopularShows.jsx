@@ -17,14 +17,14 @@ export default function PopularShows() {
     setPage(value);
   }
 
-  const handleClickOpen = (show) => {
+  function handleClickOpen(id) {
     setOpen(true);
-    setModalShowId(show.id);
-  };
+    setModalShowId(id);
+  }
 
-  const handleClose = (value) => {
+  function handleClose() {
     setOpen(false);
-  };
+  }
 
   if (isFetching) {
     return <div className="loading-message">Loading questions...</div>;
@@ -50,7 +50,7 @@ export default function PopularShows() {
           <SimpleCard
             key={show.id}
             data={show}
-            onClick={() => handleClickOpen(show)}
+            onClick={() => handleClickOpen(show.id)}
           />
         ))}
       </div>

@@ -2,7 +2,7 @@
   border-radius: 8px;
   object-fit: cover;
   object-position: center;
-  transition: width 1s ease;
+  transition: width 0.7s ease;
   margin: 8px 10px;
   box-shadow: 5px 12px 5px;
 }

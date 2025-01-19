@@ -8,6 +8,7 @@ import "./Search.css";
 import { fetchSearch } from "../http";
 import noPicture from "../assets/placeholder.jpg";
 import Modal from "./Modal";
+import PeopleModal from "./PeopleModal";
 
 export default function Search() {
   const [open, setOpen] = useState(false);
@@ -22,6 +23,7 @@ export default function Search() {
     const response = await fetchSearch(query);
     setLoading(false);
 
+    console.log(response, "odgovor");
     setOptions([...response]);
   };
 
@@ -49,12 +51,21 @@ export default function Search() {
 
   return (
     <>
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        media={media}
-        id={modalId}
-      />
+      {media !== "person" ? (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          media={media}
+          id={modalId}
+        />
+      ) : (
+        <PeopleModal
+          open={openModal}
+          onClose={handleCloseModal}
+          media="person"
+          id={modalId}
+        />
+      )}
 
       <Autocomplete
         className="search"

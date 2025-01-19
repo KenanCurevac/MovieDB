@@ -21,6 +21,12 @@ export default function Modal({ open, onClose, media, id }) {
 
   const releaseYear = fetchedData?.release_date
     ? fetchedData.release_date.split("-")[0]
+    : fetchedData?.first_air_date
+    ? fetchedData.first_air_date.split("-")[0]
+    : null;
+
+  const endYear = fetchedData?.last_air_date
+    ? fetchedData.last_air_date.split("-")[0]
     : null;
 
   const hours = `${Math.trunc(fetchedData?.runtime / 60)}h`;
@@ -34,11 +40,23 @@ export default function Modal({ open, onClose, media, id }) {
   }
 
   return (
-    <Dialog onClose={onClose} open={open} disableRestoreFocus>
+    <Dialog
+      onClose={onClose}
+      open={open}
+      disableRestoreFocus
+      className="standard-modal"
+    >
       <DialogTitle>
         <div className="modal-title">
-          {fetchedData.title || fetchedData.original_title || "title"} (
-          {releaseYear})
+          {fetchedData.title ||
+            fetchedData.original_title ||
+            fetchedData.name ||
+            fetchedData.original_name ||
+            "title"}{" "}
+          <span>
+            ({releaseYear}
+            {endYear && releaseYear !== endYear ? ` - ${endYear}` : ""})
+          </span>
         </div>
         <div className="modal-undertitle">{fetchedData.tagline}</div>
       </DialogTitle>
@@ -55,9 +73,29 @@ export default function Modal({ open, onClose, media, id }) {
       />
       <DialogContent className="dialog-content">
         <div className="movie-modal-data">
-          <div className="left-element">
-            <span style={{ fontSize: "17px" }}>Runtime: </span>
-            <span style={{ fontSize: "22px" }}>{runtime}</span>
+          <div className="left-element first-element">
+            {fetchedData.runtime && (
+              <div>
+                <span style={{ fontSize: "17px" }}>Runtime: </span>
+                <span style={{ fontSize: "22px" }}>{runtime}</span>
+              </div>
+            )}
+            {fetchedData.number_of_seasons && (
+              <div>
+                <span style={{ fontSize: "17px" }}>Seasons: </span>
+                <span style={{ fontSize: "22px" }}>
+                  {fetchedData.number_of_seasons}
+                </span>
+              </div>
+            )}
+            {fetchedData.number_of_episodes && (
+              <div>
+                <span style={{ fontSize: "17px" }}>Episodes: </span>
+                <span style={{ fontSize: "22px" }}>
+                  {fetchedData.number_of_episodes}
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="right-element chips">
