@@ -8,6 +8,8 @@ import { useCallback } from "react";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import DataStatus from "../tvseries-pages/DataStatus";
+import noPicture from "../assets/no-image-available.jpg";
 
 export default function Modal({ open, onClose, media, id }) {
   const details = useCallback(() => {
@@ -35,8 +37,21 @@ export default function Modal({ open, onClose, media, id }) {
 
   const genres = fetchedData?.genres.map((genre) => genre.name);
 
-  if (!fetchedData) {
+  if (!open) {
     return null;
+  }
+
+  const statusMessage = (
+    <DataStatus
+      fetchedData={fetchedData}
+      isFetching={isFetching}
+      error={error}
+      subject={media === "movie" ? "Movies" : "Shows"}
+    />
+  );
+
+  if (isFetching || error || !fetchedData || fetchedData.length === 0) {
+    return statusMessage;
   }
 
   return (
@@ -66,9 +81,13 @@ export default function Modal({ open, onClose, media, id }) {
       <img
         className="modal-picture"
         loading="lazy"
-        src={`https://image.tmdb.org/t/p/w500${
+        src={
           fetchedData.backdrop_path || fetchedData.poster_path
-        }`}
+            ? `https://image.tmdb.org/t/p/w500${
+                fetchedData.backdrop_path || fetchedData.poster_path
+              }`
+            : noPicture
+        }
         alt="image"
       />
       <DialogContent className="dialog-content">
@@ -77,14 +96,14 @@ export default function Modal({ open, onClose, media, id }) {
             {fetchedData.runtime && (
               <div>
                 <span style={{ fontSize: "17px" }}>Runtime: </span>
-                <span style={{ fontSize: "22px" }}>{runtime}</span>
+                <span style={{ fontSize: "22px" }}>{runtime || "No Data"}</span>
               </div>
             )}
             {fetchedData.number_of_seasons && (
               <div>
                 <span style={{ fontSize: "17px" }}>Seasons: </span>
                 <span style={{ fontSize: "22px" }}>
-                  {fetchedData.number_of_seasons}
+                  {fetchedData.number_of_seasons || "No Data"}
                 </span>
               </div>
             )}
@@ -92,7 +111,7 @@ export default function Modal({ open, onClose, media, id }) {
               <div>
                 <span style={{ fontSize: "17px" }}>Episodes: </span>
                 <span style={{ fontSize: "22px" }}>
-                  {fetchedData.number_of_episodes}
+                  {fetchedData.number_of_episodes || "No Data"}
                 </span>
               </div>
             )}
@@ -107,17 +126,19 @@ export default function Modal({ open, onClose, media, id }) {
           <div className="left-element">
             <span className="lower-row-data">Rating: </span>
             <span className="big-numbers">
-              {fetchedData.vote_average.toFixed(1)}
+              {fetchedData.vote_average.toFixed(1) || "No Data"}
             </span>
           </div>
 
           <div className="right-element">
             <span className="lower-row-data">Number of Votes: </span>
-            <span className="big-numbers">{fetchedData.vote_count}</span>
+            <span className="big-numbers">
+              {fetchedData.vote_count || "No Data"}
+            </span>
           </div>
         </div>
 
-        <div className="description">{fetchedData.overview}</div>
+        <div className="description">{fetchedData.overview || "No Data"}</div>
       </DialogContent>
     </Dialog>
   );

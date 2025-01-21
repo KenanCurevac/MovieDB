@@ -5,6 +5,7 @@ import SimpleCard from "../UI/SimpleCard";
 import Pagination from "@mui/material/Pagination";
 import "./movies.css";
 import Modal from "../UI/Modal";
+import DataStatus from "../tvseries-pages/DataStatus";
 
 export default function PopularMovies() {
   const [page, setPage] = useState(1);
@@ -27,16 +28,17 @@ export default function PopularMovies() {
     setOpen(false);
   }
 
-  if (isFetching) {
-    return <div className="loading-message">Loading questions...</div>;
-  }
+  const statusMessage = (
+    <DataStatus
+      fetchedData={fetchedData}
+      isFetching={isFetching}
+      error={error}
+      subject="Movies"
+    />
+  );
 
-  if (error) {
-    return <div className="error-message">Error: {error.message}</div>;
-  }
-
-  if (!fetchedData || fetchedData.length === 0) {
-    return <div className="no-questions-message">No questions available.</div>;
+  if (isFetching || error || !fetchedData || fetchedData.length === 0) {
+    return statusMessage;
   }
 
   return (

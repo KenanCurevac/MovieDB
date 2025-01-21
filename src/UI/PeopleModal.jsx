@@ -7,6 +7,8 @@ import { fetchDetails } from "../http";
 import { useCallback } from "react";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import DataStatus from "../tvseries-pages/DataStatus";
+import noPicture from "../assets/placeholder.jpg";
 
 export default function PeopleModal({ open, onClose, media, id }) {
   const details = useCallback(() => {
@@ -32,8 +34,21 @@ export default function PeopleModal({ open, onClose, media, id }) {
     ? `${dayOfDeath}.${monthOfDeath}.${yearOfDeath}`
     : null;
 
-  if (!fetchedData) {
+  if (!open) {
     return null;
+  }
+
+  const statusMessage = (
+    <DataStatus
+      fetchedData={fetchedData}
+      isFetching={isFetching}
+      error={error}
+      subject="Popular People"
+    />
+  );
+
+  if (isFetching || error || !fetchedData || fetchedData.length === 0) {
+    return statusMessage;
   }
 
   return (
@@ -54,7 +69,11 @@ export default function PeopleModal({ open, onClose, media, id }) {
           <img
             className="people-picture"
             loading="lazy"
-            src={`https://image.tmdb.org/t/p/w500${fetchedData.profile_path}`}
+            src={
+              fetchedData.profile_path
+                ? `https://image.tmdb.org/t/p/w500${fetchedData.profile_path}`
+                : noPicture
+            }
             alt="image"
           />
           <div className="people-data-display">
@@ -62,7 +81,8 @@ export default function PeopleModal({ open, onClose, media, id }) {
               {fetchedData.known_for_department}
             </div>
             <div>
-              Date of Birth: <span className="people-data">{dateOfBirth}</span>
+              Date of Birth:{" "}
+              <span className="people-data">{dateOfBirth || "No Data"}</span>
             </div>
             {dateOfDeath && (
               <div>
@@ -72,11 +92,15 @@ export default function PeopleModal({ open, onClose, media, id }) {
             )}
             <div>
               Place of Birth:{" "}
-              <span className="people-data">{fetchedData.place_of_birth}</span>
+              <span className="people-data">
+                {fetchedData.place_of_birth || "No Data"}
+              </span>
             </div>
           </div>
         </div>
-        <div className="people-description">{fetchedData.biography}</div>
+        <div className="people-description">
+          {fetchedData.biography || "No Data"}
+        </div>
       </DialogContent>
     </Dialog>
   );

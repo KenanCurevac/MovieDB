@@ -1,0 +1,18 @@
+.error-message {
+  color: #177f62;
+  font-size: 50px;
+  letter-spacing: 0.8px;
+}
+
+.loading-spinner {
+  position: fixed;
+  top: 30%;
+  left: 35%;
+  z-index: 1000;
+}
+
+.MuiCircularProgress-root {
+  width: 20vw !important;
+  height: 20vw !important;
+  color: #177f62 !important;
+}

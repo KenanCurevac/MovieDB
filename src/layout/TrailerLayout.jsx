@@ -12,10 +12,9 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalId, setModalId] = useState(null);
 
-  const movieIndex = slides;
-  const movieToShow = data[movieIndex]?.id || null;
+  const movieToShow = data[slides]?.id || null;
 
-  const initialDate = data[movieIndex]?.release_date || null;
+  const initialDate = data[slides]?.release_date || null;
   const [year, month, day] = initialDate ? initialDate.split("-") : [];
   const releaseDate = year ? `${day}.${month}.${year}` : null;
 
@@ -159,7 +158,7 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
             </div>
           )}
           <div className="trailer-info">
-            <div className="trailer-title">{data[movieIndex]?.title || ""}</div>
+            <div className="trailer-title">{data[slides]?.title || ""}</div>
             <div className="date">Release Date:</div>
             <div className="date">{releaseDate}</div>
           </div>
@@ -170,20 +169,14 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
 }
 
 async function fetchTrailers(movieId) {
-  try {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODA2ZGE1MmE5OGRmMWZiYjE3ZDI2MzQ3YWFmY2M3MSIsIm5iZiI6MTczNDgwNjM1Mi41NCwic3ViIjoiNjc2NzBiNTBmOTI2YmUwM2NjNzRkYWM1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.YApZl3xZbfxp2iuTGtkGV0d2kV6X85FxC8JWlmyi0rQ",
-        },
-      }
-    );
-    return response.data.results;
-  } catch (error) {
-    throw new Response("Failed to fetch upcoming movies trailer", {
-      status: error.response?.status || 500,
-    });
-  }
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+    {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODA2ZGE1MmE5OGRmMWZiYjE3ZDI2MzQ3YWFmY2M3MSIsIm5iZiI6MTczNDgwNjM1Mi41NCwic3ViIjoiNjc2NzBiNTBmOTI2YmUwM2NjNzRkYWM1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.YApZl3xZbfxp2iuTGtkGV0d2kV6X85FxC8JWlmyi0rQ",
+      },
+    }
+  );
+  return response.data.results;
 }

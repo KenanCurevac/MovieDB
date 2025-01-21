@@ -4,6 +4,7 @@ import { fetchTopRatedShows } from "../http";
 import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Modal from "../UI/Modal";
+import DataStatus from "./DataStatus";
 
 export default function TopRatedShows() {
   const [page, setPage] = useState(1);
@@ -26,16 +27,17 @@ export default function TopRatedShows() {
     setOpen(false);
   }
 
-  if (isFetching) {
-    return <div className="loading-message">Loading questions...</div>;
-  }
+  const statusMessage = (
+    <DataStatus
+      fetchedData={fetchedData}
+      isFetching={isFetching}
+      error={error}
+      subject="TV Shows"
+    />
+  );
 
-  if (error) {
-    return <div className="error-message">Error: {error.message}</div>;
-  }
-
-  if (!fetchedData || fetchedData.length === 0) {
-    return <div className="no-questions-message">No questions available.</div>;
+  if (isFetching || error || !fetchedData || fetchedData.length === 0) {
+    return statusMessage;
   }
 
   return (

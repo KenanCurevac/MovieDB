@@ -8,9 +8,9 @@ export default function SimpleCard({ data, onClick }) {
   const releaseDate =
     data.release_date || data.first_air_date
       ? (data.release_date || data.first_air_date).split("-")[0]
-      : data.known_for_department
-      ? data.known_for_department
-      : "";
+      : null;
+
+  const job = data.known_for_department ? data.known_for_department : null;
 
   return (
     <Card className="simple-card" onClick={onClick}>
@@ -34,7 +34,7 @@ export default function SimpleCard({ data, onClick }) {
             style={{ fontSize: data.known_for_department ? "18px" : "inherit" }}
           >
             {data.known_for_department ? "" : "("}
-            {releaseDate}
+            {releaseDate || job}
             {data.known_for_department ? "" : ")"}
           </div>
         </Typography>

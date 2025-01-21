@@ -19,11 +19,13 @@ import TopRatedMovies from "./movies-pages/TopRatedMovies";
 import PopularShows from "./tvseries-pages/PopularShows";
 import TopRatedShows from "./tvseries-pages/TopRatedShows";
 import ShowsAiringToday from "./tvseries-pages/ShowsAiringToday";
+import ErrorPage from "./UI/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -33,7 +35,6 @@ const router = createBrowserRouter([
           const popularPeople = await popularPeopleLoader();
           return { upcomingMovies, popularPeople };
         },
-        errorElement: <div>Error loading homepage.</div>,
       },
       {
         path: "upcoming",
@@ -52,7 +53,6 @@ const router = createBrowserRouter([
           const topRatedMovies = await topRatedMoviesLoader();
           return { topRatedMovies, moviesPlayingNow, popularMovies };
         },
-        errorElement: <div>Error loading movies.</div>,
       },
       {
         path: "movies/movies_playing_now",
@@ -75,7 +75,6 @@ const router = createBrowserRouter([
           const topRatedShows = await topRatedShowsLoader();
           return { showsAiringToday, popularShows, topRatedShows };
         },
-        errorElement: <div>Error loading tv shows.</div>,
       },
       {
         path: "tvshows/popular_shows",
