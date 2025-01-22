@@ -134,6 +134,7 @@
   width: 0px;
   height: 300px;
   margin: 8px 0px;
+  filter: brightness(50%);
 }
 
 .middle-picture {
@@ -161,6 +162,7 @@
   width: 0px;
   height: 300px;
   margin: 8px 0px;
+  filter: brightness(50%);
 }
 
 .title-container {

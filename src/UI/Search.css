@@ -70,3 +70,8 @@
 .MuiOutlinedInput-root.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root {
   color: #177f62;
 }
+
+.MuiAutocomplete-loading {
+  color: #eed6d6 !important;
+  font-size: 20px !important;
+}

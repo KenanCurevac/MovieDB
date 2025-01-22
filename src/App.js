@@ -1,6 +1,10 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Root";
-import Home, { upcomingMoviesLoader, popularPeopleLoader } from "./pages/Home";
+import Home, {
+  upcomingMoviesLoader,
+  popularPeopleLoader,
+  upcomingShowsLoader,
+} from "./pages/Home";
 import Movies, {
   moviesPlayingNowLoader,
   popularMoviesLoader,
@@ -20,12 +24,13 @@ import PopularShows from "./tvseries-pages/PopularShows";
 import TopRatedShows from "./tvseries-pages/TopRatedShows";
 import ShowsAiringToday from "./tvseries-pages/ShowsAiringToday";
 import ErrorPage from "./UI/ErrorPage";
+import UpcomingShows from "./home-pages/UpcomingShows";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -33,12 +38,17 @@ const router = createBrowserRouter([
         loader: async () => {
           const upcomingMovies = await upcomingMoviesLoader();
           const popularPeople = await popularPeopleLoader();
-          return { upcomingMovies, popularPeople };
+          const upcomingShows = await upcomingShowsLoader();
+          return { upcomingMovies, popularPeople, upcomingShows };
         },
       },
       {
-        path: "upcoming",
+        path: "upcoming_movies",
         element: <UpcomingMovies />,
+      },
+      {
+        path: "upcoming_shows",
+        element: <UpcomingShows />,
       },
       {
         path: "popular_people",

@@ -4,6 +4,8 @@
   background: #eed6d6 !important;
   border-radius: 12px !important;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-media {
@@ -11,4 +13,43 @@
   margin: 3% auto !important;
   border-radius: 15px;
   box-shadow: none;
+}
+
+.card-text {
+  color: #470d1d;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bottom-stats {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+}
+
+.rank {
+  font-size: 27px;
+  text-align: left;
+  margin-top: auto;
+  width: 50%;
+}
+
+.rating-box {
+  display: flex;
+  justify-content: end;
+  width: 50%;
+}
+
+.rating {
+  font-weight: bold;
+  text-align: right;
+  color: #eed6d6;
+  border-radius: 40px;
+  padding: 7%;
+}
+
+.rating-media {
+  background-color: #470d1d;
 }

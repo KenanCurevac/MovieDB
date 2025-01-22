@@ -5,17 +5,23 @@ import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Modal from "../UI/Modal";
 import DataStatus from "./DataStatus";
+import { useSearchParams } from "react-router-dom";
 
 export default function TopRatedShows() {
-  const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
   const [modalShowId, setModalShowId] = useState(null);
 
-  const fetchShows = useCallback(() => fetchTopRatedShows(1), []);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+
+  const fetchShows = useCallback(
+    () => fetchTopRatedShows(currentPage),
+    [currentPage]
+  );
   const { fetchedData, isFetching, error } = useFetch(fetchShows);
 
   function handleChange(event, value) {
-    setPage(value);
+    setSearchParams({ page: value });
   }
 
   function handleClickOpen(id) {
@@ -48,17 +54,22 @@ export default function TopRatedShows() {
         <h1 className="list-title">Top Rated TV Shows</h1>
       </div>
       <div className="movie-list">
-        {fetchedData.map((show) => (
-          <SimpleCard
-            key={show.id}
-            data={show}
-            onClick={() => handleClickOpen(show.id)}
-          />
-        ))}
+        {fetchedData.map((show, index) => {
+          const rank = 20 * (currentPage - 1) + index + 1;
+
+          return (
+            <SimpleCard
+              key={show.id}
+              data={show}
+              onClick={() => handleClickOpen(show.id)}
+              rank={rank}
+            />
+          );
+        })}
       </div>
       <Pagination
         count={10}
-        page={page}
+        page={currentPage}
         onChange={handleChange}
         sx={{
           display: "flex",

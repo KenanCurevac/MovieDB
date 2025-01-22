@@ -1,13 +1,13 @@
-import { useCallback, useState } from "react";
 import SimpleCard from "../UI/SimpleCard";
-import { fetchShowsAiringToday } from "../http";
+import { useCallback, useState } from "react";
+import { fetchUpcomingShows } from "../http";
 import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Modal from "../UI/Modal";
-import DataStatus from "./DataStatus";
+import DataStatus from "../tvseries-pages/DataStatus";
 import { useSearchParams } from "react-router-dom";
 
-export default function ShowsAiringToday() {
+export default function UpcomingShows() {
   const [open, setOpen] = useState(false);
   const [modalShowId, setModalShowId] = useState(null);
 
@@ -15,7 +15,7 @@ export default function ShowsAiringToday() {
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const fetchShows = useCallback(
-    () => fetchShowsAiringToday(currentPage),
+    () => fetchUpcomingShows(currentPage),
     [currentPage]
   );
   const { fetchedData, isFetching, error } = useFetch(fetchShows);
@@ -51,7 +51,7 @@ export default function ShowsAiringToday() {
       <Modal open={open} onClose={handleClose} media="tv" id={modalShowId} />
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1 className="list-title">TV Shows Airing Today</h1>
+        <h1 className="list-title">Upcoming TV Shows</h1>
       </div>
       <div className="movie-list">
         {fetchedData.map((show, index) => {
