@@ -33,12 +33,8 @@ export default function BigLayout({ data, title, link, media }) {
         id={modalId}
       />
 
-      <div className="slide-container">
-        <Link
-          to={link}
-          className="title-container"
-          style={{ textDecoration: "none" }}
-        >
+      <div className="big-slide-container">
+        <Link to={link} className="title-container">
           <div className="line" />
           <div className="title">{title}</div>
           <i className="rotating-arrow"></i>

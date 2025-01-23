@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import SimpleCard from "../UI/SimpleCard";
 import { fetchPopularPeople } from "../http";
 import useFetch from "../hooks/useFetch";
@@ -33,6 +33,10 @@ export default function PopularPeople() {
     setOpen(false);
   }
 
+  useEffect(() => {
+    setOpen(false);
+  }, [currentPage]);
+
   const statusMessage = (
     <DataStatus
       fetchedData={fetchedData}
@@ -55,9 +59,7 @@ export default function PopularPeople() {
         id={modalPersonId}
       />
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1 className="list-title">Popular People</h1>
-      </div>
+      <h1 className="list-title">Popular People</h1>
       <div className="movie-list">
         {fetchedData.map((person, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
@@ -76,10 +78,7 @@ export default function PopularPeople() {
         count={10}
         page={currentPage}
         onChange={handleChange}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
+        className="pagination"
       />
     </>
   );

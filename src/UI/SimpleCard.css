@@ -8,6 +8,11 @@
   flex-direction: column;
 }
 
+.simple-card-content {
+  height: 100%;
+  padding-bottom: 17px !important ;
+}
+
 .card-media {
   width: 94% !important;
   margin: 3% auto !important;

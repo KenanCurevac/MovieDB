@@ -2,7 +2,7 @@ import SimpleCard from "../UI/SimpleCard";
 import "./movies.css";
 import useFetch from "../hooks/useFetch";
 import { fetchTopRatedMovies } from "../http";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import Modal from "../UI/Modal";
 import DataStatus from "../tvseries-pages/DataStatus";
@@ -34,6 +34,10 @@ export default function TopRatedMovies() {
     setOpen(false);
   }
 
+  useEffect(() => {
+    setOpen(false);
+  }, [currentPage]);
+
   const statusMessage = (
     <DataStatus
       fetchedData={fetchedData}
@@ -56,9 +60,7 @@ export default function TopRatedMovies() {
         id={modalMovieId}
       />
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1 className="list-title">Top Rated Movies</h1>
-      </div>
+      <h1 className="list-title">Top Rated Movies</h1>
       <div className="movie-list">
         {fetchedData.map((movie, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
@@ -77,10 +79,7 @@ export default function TopRatedMovies() {
         count={10}
         page={currentPage}
         onChange={handleChange}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
+        className="pagination"
       />
     </>
   );

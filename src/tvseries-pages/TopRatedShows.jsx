@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import SimpleCard from "../UI/SimpleCard";
 import { fetchTopRatedShows } from "../http";
 import useFetch from "../hooks/useFetch";
@@ -33,6 +33,10 @@ export default function TopRatedShows() {
     setOpen(false);
   }
 
+  useEffect(() => {
+    setOpen(false);
+  }, [currentPage]);
+
   const statusMessage = (
     <DataStatus
       fetchedData={fetchedData}
@@ -50,9 +54,7 @@ export default function TopRatedShows() {
     <>
       <Modal open={open} onClose={handleClose} media="tv" id={modalShowId} />
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1 className="list-title">Top Rated TV Shows</h1>
-      </div>
+      <h1 className="list-title">Top Rated TV Shows</h1>
       <div className="movie-list">
         {fetchedData.map((show, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
@@ -71,10 +73,7 @@ export default function TopRatedShows() {
         count={10}
         page={currentPage}
         onChange={handleChange}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
+        className="pagination"
       />
     </>
   );

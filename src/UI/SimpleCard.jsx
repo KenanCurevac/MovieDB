@@ -27,7 +27,7 @@ export default function SimpleCard({ data, onClick, rank }) {
         alt={data.title || data.name || "picture"}
         className="card-media"
       />
-      <CardContent sx={{ height: "100%", paddingBottom: "17px !important" }}>
+      <CardContent className="simple-card-content">
         <Typography
           gutterBottom
           variant="h5"

@@ -7,14 +7,15 @@
   box-shadow: 5px 12px 5px;
 }
 
-.slide-container {
+.big-slide-container {
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 100%;
   padding: 15px 5px 30px 5px;
   height: auto;
   background: #f6cbcb;
-  border-radius: 25px;
+  border-radius: 15px;
+  box-shadow: 8px 8px 10px 4px #470d1dcf;
 }
 
 .slide-group {
@@ -85,6 +86,7 @@
   width: 0px;
   height: 330px;
   margin: 8px 0px;
+  filter: brightness(60%);
 }
 
 .main-picture {
@@ -96,10 +98,11 @@
   width: 0px;
   height: 330px;
   margin: 8px 0px;
+  filter: brightness(60%);
 }
 
 .title-container {
-  margin: 0px 10px 10px 10px;
+  margin: 0px 10px 20px 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -109,6 +112,8 @@
   background-color: #f6e9e9;
   border-radius: 40px;
   padding: 8px 15px;
+  box-shadow: 4px 4px 10px #470d1dcf;
+  text-decoration: none;
 }
 
 .title {

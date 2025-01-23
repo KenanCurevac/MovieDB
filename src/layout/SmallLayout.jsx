@@ -26,7 +26,7 @@ export default function SmallLayout({ data, title, link, media }) {
   }
 
   return (
-    <>
+    <div className="small-layout-container">
       {media !== "person" ? (
         <Modal
           open={openModal}
@@ -44,14 +44,10 @@ export default function SmallLayout({ data, title, link, media }) {
       )}
 
       <div className="slide-container">
-        <Link
-          to={link}
-          className="title-container"
-          style={{ textDecoration: "none" }}
-        >
-          <div className="line" />
-          <div className="title">{title}</div>
-          <i className="rotating-arrow"></i>
+        <Link to={link} className="title-small-container">
+          <div className="line-small" />
+          <div className="title-small">{title}</div>
+          <i className="rotating-arrow-small"></i>
         </Link>
         <div className="slide-group">
           <button
@@ -61,7 +57,7 @@ export default function SmallLayout({ data, title, link, media }) {
           >
             <ArrowForwardIosIcon className="arrow-left" />
           </button>
-          <div className="slide">
+          <div className="small-slide">
             {data.map((elem, index) => {
               let className = "";
 
@@ -107,6 +103,6 @@ export default function SmallLayout({ data, title, link, media }) {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import SimpleCard from "../UI/SimpleCard";
 import { fetchMoviesPlayingNow } from "../http";
 import useFetch from "../hooks/useFetch";
@@ -34,6 +34,10 @@ export default function MoviesPlayingNow() {
     setOpen(false);
   }
 
+  useEffect(() => {
+    setOpen(false);
+  }, [currentPage]);
+
   const statusMessage = (
     <DataStatus
       fetchedData={fetchedData}
@@ -56,9 +60,7 @@ export default function MoviesPlayingNow() {
         id={modalMovieId}
       />
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1 className="list-title">Movies Playing Now</h1>
-      </div>
+      <h1 className="list-title">Movies Playing Now</h1>
       <div className="movie-list">
         {fetchedData.map((movie, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
@@ -77,10 +79,7 @@ export default function MoviesPlayingNow() {
         count={10}
         page={currentPage}
         onChange={handleChange}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
+        className="pagination"
       />
     </>
   );

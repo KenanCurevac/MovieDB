@@ -61,11 +61,7 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
 
       <div className="section-container">
         <div className="slide-trailer-container">
-          <Link
-            to={link}
-            className="title-container"
-            style={{ textDecoration: "none" }}
-          >
+          <Link to={link} className="title-container">
             <div className="line" />
             <div className="title">{title}</div>
             <i className="rotating-arrow"></i>
@@ -147,7 +143,7 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
           {trailer && (
             <div
               onClick={() => onPlayTrailer(trailer)}
-              style={{ position: "relative", cursor: "pointer" }}
+              className="thumbnail-container"
             >
               <iframe
                 src={`https://www.youtube.com/embed/${trailer}`}

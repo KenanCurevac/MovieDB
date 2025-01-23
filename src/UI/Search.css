@@ -2,7 +2,7 @@
   min-width: 200px;
   max-width: 500px;
   width: 100%;
-  background-color: #eed6d6;
+  background-color: #f6e9e9;
   border-radius: 20px;
   margin-left: 15%;
   margin-right: 2%;
@@ -63,7 +63,7 @@
 }
 
 .MuiOutlinedInput-root.Mui-focused fieldset {
-  border: solid 3px #177f62 !important;
+  border: solid 3.5px #177f62 !important;
   border-radius: 20px;
 }
 

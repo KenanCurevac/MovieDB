@@ -1,3 +1,9 @@
+.small-layout-container {
+  display: flex;
+  gap: 4%;
+  max-width: 660px;
+}
+
 .small-carousel-picture {
   border-radius: 8px;
   object-fit: cover;
@@ -10,11 +16,12 @@
 .slide-container {
   display: flex;
   flex-direction: column;
-  width: 48%;
+  width: 100%;
   padding: 15px 5px 30px 5px;
   height: auto;
-  background: #e6b5bb;
-  border-radius: 25px;
+  background: #f6cbcb;
+  border-radius: 15px;
+  box-shadow: 8px 8px 10px 4px #470d1dcf;
 }
 
 .slide-group {
@@ -24,7 +31,7 @@
   gap: 2px;
 }
 
-.slide {
+.small-slide {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -33,6 +40,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 5px 6px 35px inset #470d1d;
+  min-width: 520px;
 }
 
 .picture-container-small-layout {
@@ -84,6 +92,7 @@
   width: 0px;
   height: 330px;
   margin: 8px 0px;
+  filter: brightness(60%);
 }
 
 .first-picture {
@@ -108,29 +117,32 @@
   width: 0px;
   height: 330px;
   margin: 8px 0px;
+  filter: brightness(60%);
 }
 
-.title-container {
-  margin: 0px 10px 10px 10px;
+.title-small-container {
+  margin: 0px 10px 20px 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: start;
   cursor: pointer;
   width: fit-content;
-  background-color: #eed6d6;
+  background-color: #f6e9e9;
   border-radius: 40px;
   padding: 8px 15px;
+  box-shadow: 4px 4px 10px #470d1dcf;
+  text-decoration: none;
 }
 
-.title {
+.title-small {
   font-weight: bold;
   font-size: 35px;
   color: #470d1d;
   transition: font-size 0.3s ease;
 }
 
-.line {
+.line-small {
   height: 55px;
   width: 12px;
   background-color: #177f62;
@@ -138,7 +150,7 @@
   margin-right: 4px;
 }
 
-.rotating-arrow {
+.rotating-arrow-small {
   height: 36px;
   width: 36px;
   border: solid #177f62;
@@ -151,11 +163,92 @@
   transition: margin-left 0.5s ease, transform 0.1s ease;
 }
 
-.title-container:hover .rotating-arrow {
+.title-small-container:hover .rotating-arrow-small {
   margin-left: 90px;
   transform: rotate(135deg);
 }
 
-.title-container:hover .title {
+.title-small-container:hover .title-small {
   font-size: 40px;
+}
+
+@media (max-width: 750px) {
+  .third-picture {
+    width: 0px;
+    margin: 0px;
+  }
+
+  .title-small {
+    font-size: 32px;
+  }
+
+  .small-layout-container {
+    margin-right: 120px;
+  }
+
+  .title-small-container {
+    padding: 4px 8px;
+  }
+
+  .line-small {
+    height: 42px;
+  }
+
+  .rotating-arrow-small {
+    height: 28px;
+    width: 28px;
+  }
+
+  .small-slide {
+    min-width: 420px;
+  }
+
+  .title-small-container:hover .rotating-arrow-small {
+    margin-left: 70px;
+  }
+
+  .title-small-container:hover .title-small {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 650px) {
+  .second-picture {
+    width: 60px;
+    margin: 0px;
+  }
+
+  .title-small-container {
+    margin: 0px auto 15px auto;
+  }
+
+  .title-small {
+    font-size: 28px;
+  }
+
+  .small-slide {
+    min-width: 360px;
+  }
+
+  .title-small-container:hover .rotating-arrow-small {
+    margin-left: 55px;
+  }
+
+  .title-small-container:hover .title-small {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .second-picture {
+    width: 0px;
+  }
+
+  .small-slide {
+    min-width: 300px;
+  }
+
+  .title-small-container:hover .rotating-arrow-small {
+    margin-left: 40px;
+  }
 }

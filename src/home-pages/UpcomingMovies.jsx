@@ -1,5 +1,5 @@
 import SimpleCard from "../UI/SimpleCard";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { fetchUpcomingMovies } from "../http";
 import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
@@ -33,6 +33,10 @@ export default function UpcomingMovies() {
     setOpen(false);
   }
 
+  useEffect(() => {
+    setOpen(false);
+  }, [currentPage]);
+
   const statusMessage = (
     <DataStatus
       fetchedData={fetchedData}
@@ -55,9 +59,7 @@ export default function UpcomingMovies() {
         id={modalMovieId}
       />
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1 className="list-title">Upcoming Movies</h1>
-      </div>
+      <h1 className="list-title">Upcoming Movies</h1>
       <div className="movie-list">
         {fetchedData.map((movie, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
@@ -76,10 +78,7 @@ export default function UpcomingMovies() {
         count={10}
         page={currentPage}
         onChange={handleChange}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
+        className="pagination"
       />
     </>
   );
