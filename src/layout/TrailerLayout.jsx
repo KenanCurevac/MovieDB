@@ -1,14 +1,13 @@
 import "./TrailerLayout.css";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import transparent from "../assets/clearimage.png";
 import Modal from "../UI/Modal";
+import LayoutTitle from "./LayoutTitle";
+import TrailerPart from "./TrailerPart";
 
-export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
+export default function TrailerLayout({ data, title, link }) {
   const [slides, setSlides] = useState(0);
-  const [trailer, setTrailer] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [modalId, setModalId] = useState(null);
 
@@ -17,23 +16,6 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
   const initialDate = data[slides]?.release_date || null;
   const [year, month, day] = initialDate ? initialDate.split("-") : [];
   const releaseDate = year ? `${day}.${month}.${year}` : null;
-
-  useEffect(() => {
-    if (!movieToShow) {
-      return;
-    }
-
-    async function fetchTrailer() {
-      try {
-        const fetchedTrailer = await fetchTrailers(movieToShow);
-        setTrailer(fetchedTrailer[0].key);
-      } catch (error) {
-        console.error("Error fetching trailers:", error);
-      }
-    }
-
-    fetchTrailer();
-  }, [movieToShow]);
 
   function handleSlide(action) {
     setSlides((prevSlide) =>
@@ -61,11 +43,7 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
 
       <div className="section-container">
         <div className="slide-trailer-container">
-          <Link to={link} className="title-container">
-            <div className="line" />
-            <div className="title">{title}</div>
-            <i className="rotating-arrow"></i>
-          </Link>
+          <LayoutTitle title={title} link={link} />
           <div className="slide-group">
             <button
               onClick={() => handleSlide("previous")}
@@ -138,41 +116,12 @@ export default function TrailerLayout({ data, title, link, onPlayTrailer }) {
             </button>
           </div>
         </div>
-        <div className="trailer-container">
-          <div className="watch-trailer">WATCH TRAILER</div>
-          {trailer && (
-            <div
-              onClick={() => onPlayTrailer(trailer)}
-              className="thumbnail-container"
-            >
-              <iframe
-                src={`https://www.youtube.com/embed/${trailer}`}
-                title="YouTube video player"
-                frameBorder="0"
-                className="thumbnail"
-              ></iframe>
-            </div>
-          )}
-          <div className="trailer-info">
-            <div className="trailer-title">{data[slides]?.title || ""}</div>
-            <div className="date">Release Date:</div>
-            <div className="date">{releaseDate}</div>
-          </div>
-        </div>
+        <TrailerPart
+          title={data[slides]?.title || ""}
+          releaseDate={releaseDate}
+          movieToShow={movieToShow}
+        />
       </div>
     </>
   );
-}
-
-async function fetchTrailers(movieId) {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
-    {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODA2ZGE1MmE5OGRmMWZiYjE3ZDI2MzQ3YWFmY2M3MSIsIm5iZiI6MTczNDgwNjM1Mi41NCwic3ViIjoiNjc2NzBiNTBmOTI2YmUwM2NjNzRkYWM1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.YApZl3xZbfxp2iuTGtkGV0d2kV6X85FxC8JWlmyi0rQ",
-      },
-    }
-  );
-  return response.data.results;
 }

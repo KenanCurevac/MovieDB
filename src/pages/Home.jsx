@@ -3,51 +3,30 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import SmallLayout from "../layout/SmallLayout";
 import TrailerLayout from "../layout/TrailerLayout";
-import TrailerModal from "../UI/TrailerModal";
-import { useState } from "react";
 
 export default function Home() {
-  const [open, setOpen] = useState(false);
-  const [trailer, setTrailer] = useState("");
-
   const { upcomingMovies, popularPeople, upcomingShows } = useLoaderData();
 
-  console.log(upcomingShows, "serije");
-
-  const handlePlayTrailer = (trailer) => {
-    setOpen(true);
-    setTrailer(trailer);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <>
-      <TrailerModal open={open} onClose={handleClose} trailer={trailer} />
-
-      <div className="top-layer">
-        <TrailerLayout
-          data={upcomingMovies}
-          title="Upcoming Movies"
-          link="upcoming_movies"
-          onPlayTrailer={handlePlayTrailer}
-        />
-        <SmallLayout
-          data={upcomingShows}
-          title="Upcoming TV Shows"
-          link="upcoming_shows"
-          media="tv"
-        />
-        <SmallLayout
-          data={popularPeople}
-          title="Popular People"
-          link="popular_people"
-          media="person"
-        />
-      </div>
-    </>
+    <div className="top-layer">
+      <TrailerLayout
+        data={upcomingMovies}
+        title="Upcoming Movies"
+        link="upcoming_movies"
+      />
+      <SmallLayout
+        data={upcomingShows}
+        title="Upcoming TV Shows"
+        link="upcoming_shows"
+        media="tv"
+      />
+      <SmallLayout
+        data={popularPeople}
+        title="Popular People"
+        link="popular_people"
+        media="person"
+      />
+    </div>
   );
 }
 

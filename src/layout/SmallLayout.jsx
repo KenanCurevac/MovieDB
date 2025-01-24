@@ -1,9 +1,9 @@
 import "./SmallLayout.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Modal from "../UI/Modal";
 import PeopleModal from "../UI/PeopleModal";
+import LayoutTitle from "./LayoutTitle";
 
 export default function SmallLayout({ data, title, link, media }) {
   const [slides, setSlides] = useState(0);
@@ -44,11 +44,7 @@ export default function SmallLayout({ data, title, link, media }) {
       )}
 
       <div className="slide-container">
-        <Link to={link} className="title-small-container">
-          <div className="line-small" />
-          <div className="title-small">{title}</div>
-          <i className="rotating-arrow-small"></i>
-        </Link>
+        <LayoutTitle title={title} link={link} />
         <div className="slide-group">
           <button
             onClick={() => handleSlide("previous")}

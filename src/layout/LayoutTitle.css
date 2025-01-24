@@ -1,0 +1,99 @@
+.title-small-container {
+  margin: 0px 10px 20px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+  width: fit-content;
+  background-color: #f6e9e9;
+  border-radius: 40px;
+  padding: 8px 15px;
+  box-shadow: 4px 4px 10px #470d1dcf;
+  text-decoration: none;
+}
+
+.title-small {
+  font-weight: bold;
+  font-size: 35px;
+  color: #470d1d;
+  transition: font-size 0.3s ease;
+}
+
+.line-small {
+  height: 55px;
+  width: 12px;
+  background-color: #177f62;
+  border-radius: 10px;
+  margin-right: 4px;
+}
+
+.rotating-arrow-small {
+  height: 36px;
+  width: 36px;
+  border: solid #177f62;
+  border-width: 0 12px 12px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  border-radius: 10px;
+  margin-left: 0px;
+  transition: margin-left 0.5s ease, transform 0.1s ease;
+}
+
+.title-small-container:hover .rotating-arrow-small {
+  margin-left: 90px;
+  transform: rotate(135deg);
+}
+
+.title-small-container:hover .title-small {
+  font-size: 40px;
+}
+
+@media (max-width: 750px) {
+  .title-small-container {
+    padding: 4px 8px;
+  }
+
+  .line-small {
+    height: 42px;
+    font-size: 32px;
+  }
+
+  .rotating-arrow-small {
+    height: 28px;
+    width: 28px;
+  }
+
+  .title-small-container:hover .rotating-arrow-small {
+    margin-left: 70px;
+  }
+
+  .title-small-container:hover .title-small {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 650px) {
+  .title-small-container {
+    margin: 0px auto 15px auto;
+  }
+
+  .title-small {
+    font-size: 28px;
+  }
+
+  .title-small-container:hover .rotating-arrow-small {
+    margin-left: 55px;
+  }
+
+  .title-small-container:hover .title-small {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .title-small-container:hover .rotating-arrow-small {
+    margin-left: 40px;
+  }
+}

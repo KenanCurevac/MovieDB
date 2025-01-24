@@ -1,0 +1,46 @@
+.trailer-container {
+  background: #470d1d;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  color: #f6cbcb;
+  flex-grow: 1;
+  padding: 2%;
+}
+
+.watch-trailer {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 4%;
+  text-align: center;
+}
+
+.trailer-info {
+  margin-top: 4%;
+}
+
+.trailer-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 30px;
+}
+
+.thumbnail-container {
+  position: relative;
+  cursor: pointer;
+  max-width: 500px;
+  margin: auto;
+}
+
+.thumbnail {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 16 / 9;
+  margin: 0px auto;
+  display: block;
+  border-radius: 15px;
+  border: solid 6px #f6cbcb;
+  pointer-events: none;
+}

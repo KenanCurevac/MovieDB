@@ -1,8 +1,8 @@
 import "./BigLayout.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Modal from "../UI/Modal";
+import LayoutTitle from "./LayoutTitle";
 
 export default function BigLayout({ data, title, link, media }) {
   const [slides, setSlides] = useState(0);
@@ -34,11 +34,7 @@ export default function BigLayout({ data, title, link, media }) {
       />
 
       <div className="big-slide-container">
-        <Link to={link} className="title-container">
-          <div className="line" />
-          <div className="title">{title}</div>
-          <i className="rotating-arrow"></i>
-        </Link>
+        <LayoutTitle title={title} link={link} />
         <div className="slide-group">
           <button
             onClick={() => handleSlide("previous")}
