@@ -1,7 +1,7 @@
 .small-layout-container {
   display: flex;
   gap: 4%;
-  max-width: 660px;
+  width: fit-content;
 }
 
 .small-carousel-picture {
@@ -13,11 +13,11 @@
   box-shadow: 5px 12px 5px;
 }
 
-.slide-container {
+.small-slide-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 15px 5px 30px 5px;
+  padding: 15px 1px 30px 1px;
   height: auto;
   background: #f6cbcb;
   border-radius: 15px;
@@ -40,7 +40,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 5px 6px 35px inset #470d1d;
-  min-width: 520px;
+  width: 520px;
 }
 
 .picture-container-small-layout {
@@ -120,7 +120,13 @@
   filter: brightness(60%);
 }
 
-@media (max-width: 750px) {
+@media (max-width: 1600px) {
+  .small-layout-container {
+    margin: auto;
+  }
+}
+
+@media (max-width: 775px) {
   .third-picture {
     width: 0px;
     margin: 0px;
@@ -130,28 +136,26 @@
     margin-right: 120px;
   }
 
-  .small-slide {
-    min-width: 420px;
+  .small-carousel-picture {
+    transition: width 0.2s ease;
   }
 }
 
-@media (max-width: 650px) {
-  .second-picture {
-    width: 60px;
-    margin: 0px;
-  }
-
+@media (max-width: 750px) {
   .small-slide {
-    min-width: 350px;
+    width: 420px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 665px) {
   .second-picture {
     width: 0px;
+    margin: 0px;
   }
+}
 
+@media (max-width: 645px) {
   .small-slide {
-    min-width: 280px;
+    width: 280px;
   }
 }

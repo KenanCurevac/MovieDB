@@ -43,7 +43,7 @@ export default function SmallLayout({ data, title, link, media }) {
         />
       )}
 
-      <div className="slide-container">
+      <div className="small-slide-container">
         <LayoutTitle title={title} link={link} />
         <div className="slide-group">
           <button

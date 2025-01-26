@@ -1,3 +1,7 @@
+.big-layout-container {
+  width: fit-content;
+}
+
 .big-carousel-picture {
   border-radius: 8px;
   object-fit: cover;
@@ -11,7 +15,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 15px 5px 30px 5px;
+  padding: 15px 1px 30px 1px;
   height: auto;
   background: #f6cbcb;
   border-radius: 15px;
@@ -31,9 +35,10 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(155deg, #9f163d, #f6cbcb);
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 5px 6px 35px inset #470d1d;
+  width: 1240px;
 }
 
 .picture-container-big-layout {
@@ -99,4 +104,73 @@
   height: 330px;
   margin: 8px 0px;
   filter: brightness(60%);
+}
+
+@media (max-width: 1525px) {
+  .fifth-big-layout {
+    width: 0px;
+    margin: 0px;
+  }
+
+  .big-layout-container {
+    margin-right: 120px;
+  }
+
+  .big-layout-container {
+    margin: auto;
+  }
+
+  .big-carousel-picture {
+    transition: width 0.3s ease;
+  }
+}
+
+@media (max-width: 1500px) {
+  .slide {
+    width: 1020px;
+  }
+}
+
+@media (max-width: 1290px) {
+  .fourth-big-layout {
+    width: 0px;
+    margin: 0px;
+  }
+}
+
+@media (max-width: 1265px) {
+  .slide {
+    width: 760px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1025px) {
+  .third-big-layout {
+    width: 0px;
+    margin: 0px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .slide {
+    width: 520px;
+  }
+}
+
+@media (max-width: 760px) {
+  .second-big-layout {
+    width: 0px;
+    margin: 0px;
+  }
+
+  .big-layout-container {
+    margin-right: 120px;
+  }
+}
+
+@media (max-width: 735px) {
+  .slide {
+    width: 280px;
+  }
 }

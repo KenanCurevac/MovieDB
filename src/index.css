@@ -14,7 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(150deg, #770f2d 15%, #9a173c);
-  padding: 2vh 5vw 3vh 5vw;
+  padding: 2.5vh 4vw 3vh 4vw;
 }
 
 code {

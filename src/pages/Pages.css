@@ -1,17 +1,7 @@
-.first-layer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.slider-container {
-  max-width: 600px;
-}
-
 .top-layer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 1.5%;
   row-gap: 5vh;
 }
@@ -37,11 +27,6 @@
 
 .link:active {
   color: #074634;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
 }
 
 .navbar {

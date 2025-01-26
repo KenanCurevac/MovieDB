@@ -1,4 +1,4 @@
-.MuiDialog-root {
+.trailer-modal .MuiDialog-root {
   position: fixed;
   z-index: 9999;
   overflow: visible !important;
@@ -52,4 +52,10 @@
   right: 0px !important;
   top: -55px !important;
   color: #470d1d;
+}
+
+@media (max-width: 990px) {
+  .playing-trailer {
+    width: 80vw !important;
+  }
 }

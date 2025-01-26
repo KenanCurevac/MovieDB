@@ -1,8 +1,7 @@
 .movie-list {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .MuiPaginationItem-icon {
@@ -37,11 +36,32 @@
   margin: 3.5% auto 1.5% auto;
   background-color: #eed6d6;
   padding: 1% 2.5%;
-  border-radius: 40px;
   font-weight: bold;
   font-size: 45px;
   color: #470d1d;
   border-radius: 40px;
   letter-spacing: 1px;
   border: solid 7px #177f62;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .movie-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .list-title {
+    font-size: 38px;
+    margin-left: 0vw;
+  }
+
+  .pagination {
+    justify-content: start;
+  }
 }

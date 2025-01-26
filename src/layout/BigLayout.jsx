@@ -25,7 +25,7 @@ export default function BigLayout({ data, title, link, media }) {
   }
 
   return (
-    <>
+    <div className="big-layout-container">
       <Modal
         open={openModal}
         onClose={handleCloseModal}
@@ -48,7 +48,19 @@ export default function BigLayout({ data, title, link, media }) {
               let className = "";
 
               if (-1 + slides < index && index < 5 + slides) {
-                className = "main-picture";
+                className = `main-picture ${
+                  0 + slides === index
+                    ? "first-big-layout"
+                    : 1 + slides === index
+                    ? "second-big-layout"
+                    : 2 + slides === index
+                    ? "third-big-layout"
+                    : 3 + slides === index
+                    ? "fourth-big-layout"
+                    : 4 + slides === index
+                    ? "fifth-big-layout"
+                    : ""
+                }`;
               } else if (-1 + slides === index) {
                 className = "previous-picture";
               } else if (5 + slides === index) {
@@ -81,6 +93,6 @@ export default function BigLayout({ data, title, link, media }) {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

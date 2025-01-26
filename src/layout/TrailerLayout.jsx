@@ -33,7 +33,7 @@ export default function TrailerLayout({ data, title, link }) {
   }
 
   return (
-    <>
+    <div className="upcoming-movies-trailer-container">
       <Modal
         open={openModal}
         onClose={handleCloseModal}
@@ -122,6 +122,6 @@ export default function TrailerLayout({ data, title, link }) {
           movieToShow={movieToShow}
         />
       </div>
-    </>
+    </div>
   );
 }

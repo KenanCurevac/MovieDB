@@ -119,3 +119,15 @@
   flex-direction: column;
   scrollbar-width: none;
 }
+
+@media (max-width: 660px) {
+  .movie-modal-data {
+    display: flex;
+    flex-direction: column;
+    gap: 7px !important;
+  }
+
+  .first-element {
+    margin-left: 0px !important;
+  }
+}

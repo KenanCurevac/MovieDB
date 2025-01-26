@@ -26,6 +26,7 @@
 
 .people-picture {
   width: 18%;
+  min-width: 98px;
   height: auto;
   margin: 0px 2%;
   box-shadow: none;
@@ -86,4 +87,10 @@
 
 .people-data {
   font-size: 22px;
+}
+
+@media (max-width: 760px) {
+  .people-modal-top {
+    flex-direction: column;
+  }
 }

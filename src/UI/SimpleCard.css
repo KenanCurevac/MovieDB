@@ -1,5 +1,5 @@
 .simple-card {
-  width: 250px !important;
+  max-width: 250px !important;
   margin: 2% 1% !important;
   background: #eed6d6 !important;
   border-radius: 12px !important;
@@ -15,7 +15,7 @@
 
 .card-media {
   width: 94% !important;
-  margin: 3% auto !important;
+  margin: 3% auto 0% auto !important;
   border-radius: 15px;
   box-shadow: none;
 }
@@ -57,4 +57,11 @@
 
 .rating-media {
   background-color: #470d1d;
+}
+
+@media (max-width: 600px) {
+  .simple-card {
+    margin-top: 2.5% !important;
+    margin-right: 150px !important;
+  }
 }
