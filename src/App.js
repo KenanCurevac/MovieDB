@@ -15,16 +15,16 @@ import Series, {
   popularShowsLoader,
   topRatedShowsLoader,
 } from "./pages/Shows";
-import UpcomingMovies from "./home-pages/UpcomingMovies";
-import PopularPeople from "./home-pages/PopularPeople";
-import MoviesPlayingNow from "./movies-pages/MoviesPlayingNow";
-import PopularMovies from "./movies-pages/PopularMovies";
-import TopRatedMovies from "./movies-pages/TopRatedMovies";
-import PopularShows from "./tvseries-pages/PopularShows";
-import TopRatedShows from "./tvseries-pages/TopRatedShows";
-import ShowsAiringToday from "./tvseries-pages/ShowsAiringToday";
+import UpcomingMovies from "./subpages/UpcomingMovies";
+import PopularPeople from "./subpages/PopularPeople";
+import MoviesPlayingNow from "./subpages/MoviesPlayingNow";
+import PopularMovies from "./subpages/PopularMovies";
+import TopRatedMovies from "./subpages/TopRatedMovies";
+import PopularShows from "./subpages/PopularShows";
+import TopRatedShows from "./subpages/TopRatedShows";
+import ShowsAiringToday from "./subpages/ShowsAiringToday";
 import ErrorPage from "./UI/ErrorPage";
-import UpcomingShows from "./home-pages/UpcomingShows";
+import UpcomingShows from "./subpages/UpcomingShows";
 
 const router = createBrowserRouter([
   {

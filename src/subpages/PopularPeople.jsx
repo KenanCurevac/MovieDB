@@ -1,10 +1,11 @@
+import "./Subpage.css";
 import { useCallback, useEffect, useState } from "react";
 import SimpleCard from "../UI/SimpleCard";
 import { fetchPopularPeople } from "../http";
 import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import PeopleModal from "../UI/PeopleModal";
-import DataStatus from "../tvseries-pages/DataStatus";
+import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
 
 export default function PopularPeople() {

@@ -6,11 +6,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-}
-
-.simple-card-content {
-  height: 100%;
-  padding-bottom: 17px !important ;
+  box-shadow: 10px 10px 8px #470d1d !important;
 }
 
 .simple-card-picture {
@@ -18,6 +14,11 @@
   margin: 3% auto 0% auto !important;
   border-radius: 15px;
   box-shadow: none;
+}
+
+.simple-card-content {
+  height: 100%;
+  padding-bottom: 17px !important ;
 }
 
 .card-text {

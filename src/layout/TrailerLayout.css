@@ -5,14 +5,6 @@
   box-shadow: 4px 4px 4px 5px #470d1dcf;
 }
 
-.trailer-carousel-picture {
-  border-radius: 8px;
-  object-fit: cover;
-  object-position: center;
-  margin: 8px -10px;
-  transition: width 1s ease;
-}
-
 .upcoming-movies-side-container {
   display: flex;
   flex-direction: column;
@@ -27,24 +19,6 @@
   justify-content: center;
   align-items: center;
   gap: 2px;
-}
-
-.trailer-carousel {
-  width: 650px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(155deg, #9f163d, #f6cbcb);
-  padding: 16px 20px 24px 20px;
-  border-radius: 10px;
-  box-shadow: 5px 6px 35px inset #470d1d;
-}
-
-.trailer-carousel-picture-container {
-  display: flex;
-  justify-content: start;
-  align-items: center;
 }
 
 .arrows {
@@ -86,8 +60,16 @@
   color: #177f62;
 }
 
-.perspective {
-  perspective: 1000px;
+.trailer-carousel {
+  width: 650px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(155deg, #9f163d, #f6cbcb);
+  padding: 16px 20px 24px 20px;
+  border-radius: 10px;
+  box-shadow: 5px 6px 35px inset #470d1d;
 }
 
 .previous-picture {
@@ -97,18 +79,18 @@
   filter: brightness(50%);
 }
 
-.middle-picture {
-  width: auto;
-  height: 390px;
-  transition: transform 0.8s ease;
-  cursor: pointer;
-}
-
 .on-the-left {
   width: 200px;
   height: 300px;
   transform: rotateY(-60deg);
   filter: brightness(50%);
+}
+
+.middle-picture {
+  width: auto;
+  height: 390px;
+  transition: transform 0.8s ease;
+  cursor: pointer;
 }
 
 .on-the-right {
@@ -123,6 +105,24 @@
   height: 300px;
   margin: 8px 0px;
   filter: brightness(50%);
+}
+
+.trailer-carousel-picture-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.trailer-carousel-picture {
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  margin: 8px -10px;
+  transition: width 1s ease;
+}
+
+.perspective {
+  perspective: 1000px;
 }
 
 @media (max-width: 1210px) {

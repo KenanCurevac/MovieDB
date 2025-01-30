@@ -10,38 +10,11 @@
   box-shadow: 8px 8px 10px 4px #470d1dcf;
 }
 
-.small-carousel-picture {
-  border-radius: 8px;
-  object-fit: cover;
-  object-position: center;
-  transition: width 0.7s ease;
-  margin: 8px 10px;
-  box-shadow: 5px 12px 5px;
-}
-
 .small-carousel-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2px;
-}
-
-.small-carousel {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #983442, #e6b5bb);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 5px 6px 35px inset #470d1d;
-  width: 520px;
-}
-
-.small-carousel-picture-container {
-  display: flex;
-  justify-content: start;
-  align-items: center;
 }
 
 .arrows {
@@ -83,6 +56,18 @@
   color: #177f62;
 }
 
+.small-carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #983442, #e6b5bb);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 6px 35px inset #470d1d;
+  width: 520px;
+}
+
 .null-picture {
   width: 0px;
   height: 330px;
@@ -115,6 +100,21 @@
   filter: brightness(60%);
 }
 
+.small-carousel-picture-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.small-carousel-picture {
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  transition: width 0.7s ease;
+  margin: 8px 10px;
+  box-shadow: 5px 12px 5px;
+}
+
 @media (max-width: 1600px) {
   .small-layout-container {
     margin: auto;
@@ -124,6 +124,14 @@
 @media (max-width: 775px) {
   .third-picture {
     width: 0px;
+    margin: 0px;
+  }
+
+  .null-picture {
+    margin: 0px;
+  }
+
+  .fourth-picture {
     margin: 0px;
   }
 

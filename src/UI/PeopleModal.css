@@ -24,16 +24,6 @@
   padding: 18px 24px 0px 24px !important;
 }
 
-.people-picture {
-  width: 18%;
-  min-width: 98px;
-  height: auto;
-  margin: 0px 2%;
-  box-shadow: none;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
-  border-radius: 10px;
-}
-
 .people-modal-title {
   text-align: center;
   font-weight: bold;
@@ -41,6 +31,13 @@
   letter-spacing: 0.7px;
   line-height: 120%;
   margin: 0% 5% 1% 5%;
+}
+
+.people-modal-close-button {
+  position: absolute !important;
+  right: 8px !important;
+  top: 8px !important;
+  color: #470d1d;
 }
 
 .people-modal-close-icon {
@@ -51,31 +48,25 @@
   color: #177f62;
 }
 
-.people-modal-close-button {
-  position: absolute !important;
-  right: 8px !important;
-  top: 8px !important;
-  color: #470d1d;
-}
-
 .people-modal-content {
   display: flex;
   flex-direction: column;
   scrollbar-width: none;
 }
 
-.people-description {
-  font-size: 17px;
-  text-indent: 10%;
-  background-color: #f6e9e9;
-  border-radius: 20px;
-  padding: 1% 2.5% 1.5% 2.5%;
-  margin-top: 3%;
-}
-
 .people-modal-top {
   display: flex;
   flex-direction: row;
+}
+
+.people-picture {
+  width: 18%;
+  min-width: 98px;
+  height: auto;
+  margin: 0px 2%;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  border-radius: 10px;
 }
 
 .people-data-display {
@@ -87,6 +78,15 @@
 
 .people-data {
   font-size: 22px;
+}
+
+.people-description {
+  font-size: 17px;
+  text-indent: 10%;
+  background-color: #f6e9e9;
+  border-radius: 20px;
+  padding: 1% 2.5% 1.5% 2.5%;
+  margin-top: 3%;
 }
 
 @media (max-width: 760px) {

@@ -11,19 +11,19 @@ export default function Series() {
     <div className="top-layer">
       <SmallLayout
         data={showsAiringToday}
-        title="TV Shows Airing Todays"
+        title="TV Series Airing Todays"
         link="shows_airing_today"
         media="tv"
       />
       <SmallLayout
         data={popularShows}
-        title="Most Popular TV Shows"
+        title="Most Popular TV Series"
         link="popular_shows"
         media="tv"
       />
       <BigLayout
         data={topRatedShows}
-        title="Top Rated TV Shows"
+        title="Top Rated TV Series"
         link="top_rated_shows"
         media="tv"
       />

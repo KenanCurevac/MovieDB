@@ -7,7 +7,7 @@ import useFetch from "../hooks/useFetch";
 import { fetchDetails } from "../http";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import DataStatus from "../tvseries-pages/DataStatus";
+import DataStatus from "../subpages/DataStatus";
 import noPicture from "../assets/placeholder.jpg";
 
 export default function PeopleModal({ open, onClose, media, id }) {

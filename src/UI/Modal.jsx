@@ -8,7 +8,7 @@ import { fetchDetails } from "../http";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import DataStatus from "../tvseries-pages/DataStatus";
+import DataStatus from "../subpages/DataStatus";
 import noPicture from "../assets/no-image-available.jpg";
 
 export default function Modal({ open, onClose, media, id }) {

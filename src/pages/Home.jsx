@@ -16,7 +16,7 @@ export default function Home() {
       />
       <SmallLayout
         data={upcomingShows}
-        title="Upcoming TV Shows"
+        title="Upcoming TV Series"
         link="upcoming_shows"
         media="tv"
       />

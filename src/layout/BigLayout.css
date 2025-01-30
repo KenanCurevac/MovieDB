@@ -9,39 +9,11 @@
   box-shadow: 8px 8px 10px 4px #470d1dcf;
 }
 
-.big-carousel-picture {
-  border-radius: 8px;
-  object-fit: cover;
-  object-position: center;
-  transition: width 0.7s ease;
-  margin: 8px 10px;
-  box-shadow: 5px 12px 5px;
-}
-
 .big-carousel-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2px;
-}
-
-.big-carousel {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(155deg, #9f163d, #f6cbcb);
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 5px 6px 35px inset #470d1d;
-  width: 1240px;
-}
-
-.big-carousel-picture-container {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  cursor: pointer;
 }
 
 .arrows {
@@ -83,10 +55,16 @@
   color: #177f62;
 }
 
-.front-picture {
-  width: 0px;
-  height: 330px;
-  margin: 8px 0px;
+.big-carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(155deg, #9f163d, #f6cbcb);
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 5px 6px 35px inset #470d1d;
+  width: 1240px;
 }
 
 .main-picture {
@@ -94,10 +72,32 @@
   height: 330px;
 }
 
+.front-picture {
+  width: 0px;
+  height: 330px;
+  margin: 8px 0px;
+}
+
 .back-picture {
   width: 0px;
   height: 330px;
   margin: 8px 0px;
+}
+
+.big-carousel-picture-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.big-carousel-picture {
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  transition: width 0.7s ease;
+  margin: 8px 10px;
+  box-shadow: 5px 12px 5px;
 }
 
 @media (max-width: 1525px) {
@@ -107,16 +107,20 @@
   }
 
   .big-layout-container {
-    margin-right: 120px;
-    width: fit-content;
-  }
-
-  .big-layout-container {
     margin: auto;
+    width: fit-content;
   }
 
   .big-carousel-picture {
     transition: width 0.3s ease;
+  }
+
+  .front-picture {
+    margin: 0px;
+  }
+
+  .back-picture {
+    margin: 0px;
   }
 }
 
@@ -157,10 +161,6 @@
   .second-big-carousel-picture {
     width: 0px;
     margin: 0px;
-  }
-
-  .big-layout-container {
-    margin: auto;
   }
 }
 

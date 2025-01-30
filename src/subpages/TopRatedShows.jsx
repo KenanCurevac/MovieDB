@@ -1,13 +1,14 @@
-import SimpleCard from "../UI/SimpleCard";
+import "./Subpage.css";
 import { useCallback, useEffect, useState } from "react";
-import { fetchPopularShows } from "../http";
+import SimpleCard from "../UI/SimpleCard";
+import { fetchTopRatedShows } from "../http";
 import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Modal from "../UI/Modal";
 import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
 
-export default function PopularShows() {
+export default function TopRatedShows() {
   const [openModal, setOpenModal] = useState(false);
   const [showId, setShowId] = useState(null);
 
@@ -15,7 +16,7 @@ export default function PopularShows() {
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const fetchShows = useCallback(
-    () => fetchPopularShows(currentPage),
+    () => fetchTopRatedShows(currentPage),
     [currentPage]
   );
   const { fetchedData, isFetching, error } = useFetch(fetchShows);
@@ -59,7 +60,7 @@ export default function PopularShows() {
         id={showId}
       />
 
-      <h1 className="list-title">Most Popular TV Shows</h1>
+      <h1 className="list-title">Top Rated TV Series</h1>
       <div className="content-list">
         {fetchedData.map((show, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;

@@ -1,25 +1,25 @@
-import SimpleCard from "../UI/SimpleCard";
-import "./movies.css";
-import useFetch from "../hooks/useFetch";
-import { fetchTopRatedMovies } from "../http";
+import "./Subpage.css";
 import { useCallback, useEffect, useState } from "react";
+import SimpleCard from "../UI/SimpleCard";
+import { fetchShowsAiringToday } from "../http";
+import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Modal from "../UI/Modal";
-import DataStatus from "../tvseries-pages/DataStatus";
+import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
 
-export default function TopRatedMovies() {
+export default function ShowsAiringToday() {
   const [openModal, setOpenModal] = useState(false);
-  const [movieId, setMovieId] = useState(null);
+  const [showId, setShowId] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
-  const fetchMovies = useCallback(
-    () => fetchTopRatedMovies(currentPage),
+  const fetchShows = useCallback(
+    () => fetchShowsAiringToday(currentPage),
     [currentPage]
   );
-  const { fetchedData, isFetching, error } = useFetch(fetchMovies);
+  const { fetchedData, isFetching, error } = useFetch(fetchShows);
 
   function handleChangePage(event, value) {
     setSearchParams({ page: value });
@@ -27,7 +27,7 @@ export default function TopRatedMovies() {
 
   function handleOpenModal(id) {
     setOpenModal(true);
-    setMovieId(id);
+    setShowId(id);
   }
 
   function handleCloseModal() {
@@ -43,7 +43,7 @@ export default function TopRatedMovies() {
       fetchedData={fetchedData}
       isFetching={isFetching}
       error={error}
-      subject="Movies"
+      subject="TV Shows"
     />
   );
 
@@ -56,20 +56,20 @@ export default function TopRatedMovies() {
       <Modal
         open={openModal}
         onClose={handleCloseModal}
-        media="movie"
-        id={movieId}
+        media="tv"
+        id={showId}
       />
 
-      <h1 className="list-title">Top Rated Movies</h1>
+      <h1 className="list-title">TV Series Airing Today</h1>
       <div className="content-list">
-        {fetchedData.map((movie, index) => {
+        {fetchedData.map((show, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
 
           return (
             <SimpleCard
-              key={movie.id}
-              data={movie}
-              onClick={() => handleOpenModal(movie.id)}
+              key={show.id}
+              data={show}
+              onClick={() => handleOpenModal(show.id)}
               rank={rank}
             />
           );
