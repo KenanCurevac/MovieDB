@@ -4,7 +4,7 @@
   overflow: visible !important;
 }
 
-.MuiDialog-container {
+.MuiDialog-content {
   overflow: auto;
   scrollbar-width: none;
   display: flex !important;
