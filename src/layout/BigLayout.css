@@ -1,5 +1,12 @@
 .big-layout-container {
-  width: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 1px 30px 1px;
+  height: auto;
+  background: #f6cbcb;
+  border-radius: 15px;
+  box-shadow: 8px 8px 10px 4px #470d1dcf;
 }
 
 .big-carousel-picture {
@@ -11,25 +18,14 @@
   box-shadow: 5px 12px 5px;
 }
 
-.big-slide-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 15px 1px 30px 1px;
-  height: auto;
-  background: #f6cbcb;
-  border-radius: 15px;
-  box-shadow: 8px 8px 10px 4px #470d1dcf;
-}
-
-.slide-group {
+.big-carousel-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2px;
 }
 
-.slide {
+.big-carousel {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -41,7 +37,7 @@
   width: 1240px;
 }
 
-.picture-container-big-layout {
+.big-carousel-picture-container {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -87,11 +83,10 @@
   color: #177f62;
 }
 
-.previous-picture {
+.front-picture {
   width: 0px;
   height: 330px;
   margin: 8px 0px;
-  filter: brightness(60%);
 }
 
 .main-picture {
@@ -99,21 +94,21 @@
   height: 330px;
 }
 
-.next-picture {
+.back-picture {
   width: 0px;
   height: 330px;
   margin: 8px 0px;
-  filter: brightness(60%);
 }
 
 @media (max-width: 1525px) {
-  .fifth-big-layout {
+  .fifth-big-carousel-picture {
     width: 0px;
     margin: 0px;
   }
 
   .big-layout-container {
     margin-right: 120px;
+    width: fit-content;
   }
 
   .big-layout-container {
@@ -126,51 +121,57 @@
 }
 
 @media (max-width: 1500px) {
-  .slide {
+  .big-carousel {
     width: 1020px;
   }
 }
 
 @media (max-width: 1290px) {
-  .fourth-big-layout {
+  .fourth-big-carousel-picture {
     width: 0px;
     margin: 0px;
   }
 }
 
 @media (max-width: 1265px) {
-  .slide {
+  .big-carousel {
     width: 760px;
     padding: 20px;
   }
 }
 
 @media (max-width: 1025px) {
-  .third-big-layout {
+  .third-big-carousel-picture {
     width: 0px;
     margin: 0px;
   }
 }
 
 @media (max-width: 1000px) {
-  .slide {
+  .big-carousel {
     width: 520px;
   }
 }
 
 @media (max-width: 760px) {
-  .second-big-layout {
+  .second-big-carousel-picture {
     width: 0px;
     margin: 0px;
   }
 
   .big-layout-container {
-    margin-right: 120px;
+    margin: auto;
   }
 }
 
 @media (max-width: 735px) {
-  .slide {
+  .big-carousel {
+    width: 350px;
+  }
+}
+
+@media (max-width: 650px) {
+  .big-carousel {
     width: 280px;
   }
 }

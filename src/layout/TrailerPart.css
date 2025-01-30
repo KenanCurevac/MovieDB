@@ -1,4 +1,4 @@
-.trailer-container {
+.trailer-side-container {
   background: #470d1d;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -23,11 +23,11 @@
   font-weight: bold;
 }
 
-.date {
+.trailer-release-date {
   font-size: 30px;
 }
 
-.thumbnail-container {
+.trailer-thumbnail-container {
   position: relative;
   cursor: pointer;
   max-width: 500px;
@@ -36,7 +36,7 @@
   margin: auto;
 }
 
-.thumbnail {
+.trailer-thumbnail {
   width: 100%;
   max-width: 500px;
   aspect-ratio: 16 / 9;
@@ -48,7 +48,7 @@
 }
 
 @media (max-width: 1210px) {
-  .trailer-container {
+  .trailer-side-container {
     border-top-right-radius: 0px;
     border-bottom-left-radius: 15px;
     padding: 4%;

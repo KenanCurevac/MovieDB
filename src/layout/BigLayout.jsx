@@ -5,19 +5,19 @@ import Modal from "../UI/Modal";
 import LayoutTitle from "./LayoutTitle";
 
 export default function BigLayout({ data, title, link, media }) {
-  const [slides, setSlides] = useState(0);
+  const [offset, setOffset] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-  const [modalId, setModalId] = useState(null);
+  const [movieId, setMovieId] = useState(null);
 
   function handleSlide(action) {
-    setSlides((prevSlide) =>
-      action === "next" ? prevSlide + 1 : prevSlide - 1
+    setOffset((prevOffset) =>
+      action === "next" ? prevOffset + 1 : prevOffset - 1
     );
   }
 
   function handleOpenModal(id) {
     setOpenModal(true);
-    setModalId(id);
+    setMovieId(id);
   }
 
   function handleCloseModal() {
@@ -30,68 +30,64 @@ export default function BigLayout({ data, title, link, media }) {
         open={openModal}
         onClose={handleCloseModal}
         media={media}
-        id={modalId}
+        id={movieId}
       />
 
-      <div className="big-slide-container">
-        <LayoutTitle title={title} link={link} />
-        <div className="slide-group">
-          <button
-            onClick={() => handleSlide("previous")}
-            className={`arrows ${slides === 0 ? "disabled-button" : ""}`}
-            disabled={slides === 0}
-          >
-            <ArrowForwardIosIcon className="arrow-left" />
-          </button>
-          <div className="slide">
-            {data.map((elem, index) => {
-              let className = "";
+      <LayoutTitle title={title} link={link} />
+      <div className="big-carousel-container">
+        <button
+          onClick={() => handleSlide("previous")}
+          className={`arrows ${offset === 0 ? "disabled-button" : ""}`}
+          disabled={offset === 0}
+        >
+          <ArrowForwardIosIcon className="arrow-left" />
+        </button>
+        <div className="big-carousel">
+          {data.map((elem, index) => {
+            let className = "";
 
-              if (-1 + slides < index && index < 5 + slides) {
-                className = `main-picture ${
-                  0 + slides === index
-                    ? "first-big-layout"
-                    : 1 + slides === index
-                    ? "second-big-layout"
-                    : 2 + slides === index
-                    ? "third-big-layout"
-                    : 3 + slides === index
-                    ? "fourth-big-layout"
-                    : 4 + slides === index
-                    ? "fifth-big-layout"
-                    : ""
-                }`;
-              } else if (-1 + slides === index) {
-                className = "previous-picture";
-              } else if (5 + slides === index) {
-                className = "next-picture";
-              } else return null;
+            if (-1 + offset < index && index < 5 + offset) {
+              className = `main-picture ${
+                0 + offset === index
+                  ? "first-big-carousel-picture"
+                  : 1 + offset === index
+                  ? "second-big-carousel-picture"
+                  : 2 + offset === index
+                  ? "third-big-carousel-picture"
+                  : 3 + offset === index
+                  ? "fourth-big-carousel-picture"
+                  : 4 + offset === index
+                  ? "fifth-big-carousel-picture"
+                  : ""
+              }`;
+            } else if (-1 + offset === index) {
+              className = "front-picture";
+            } else if (5 + offset === index) {
+              className = "back-picture";
+            } else return null;
 
-              return (
-                <div
-                  key={elem.id}
-                  className="picture-container-big-layout"
-                  onClick={() => handleOpenModal(elem.id)}
-                >
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${
-                      elem.poster_path || elem.profile_path
-                    }`}
-                    alt={elem.title || elem.name}
-                    className={`${className} big-carousel-picture`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <button
-            onClick={() => handleSlide("next")}
-            className={`arrows ${slides === 15 ? "disabled-button" : ""}`}
-            disabled={slides === 15}
-          >
-            <ArrowForwardIosIcon className="arrow-right" />
-          </button>
+            return (
+              <div
+                key={elem.id}
+                className="big-carousel-picture-container"
+                onClick={() => handleOpenModal(elem.id)}
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${elem.poster_path}`}
+                  alt={elem.title}
+                  className={`${className} big-carousel-picture`}
+                />
+              </div>
+            );
+          })}
         </div>
+        <button
+          onClick={() => handleSlide("next")}
+          className={`arrows ${offset === 15 ? "disabled-button" : ""}`}
+          disabled={offset === 15}
+        >
+          <ArrowForwardIosIcon className="arrow-right" />
+        </button>
       </div>
     </div>
   );

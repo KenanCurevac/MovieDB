@@ -1,8 +1,8 @@
+import "./SimpleCard.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import "./SimpleCard.css";
 import noPicture from "../assets/placeholder.jpg";
 
 export default function SimpleCard({ data, onClick, rank }) {
@@ -25,7 +25,7 @@ export default function SimpleCard({ data, onClick, rank }) {
             : noPicture
         }
         alt={data.title || data.name || "picture"}
-        className="card-media"
+        className="simple-card-picture"
       />
       <CardContent className="simple-card-content">
         <Typography
@@ -42,11 +42,12 @@ export default function SimpleCard({ data, onClick, rank }) {
             {releaseDate || job}
             {data.known_for_department ? "" : ")"}
           </div>
-          <div className="bottom-stats">
+          <div className="simple-card-data">
             <div className="rank">#{rank} </div>
-            <div className="rating-box">
+            <div className="rating-container">
               <div
-                className={`rating ${data.vote_average ? "rating-media" : ""}`}
+                className="rating"
+                style={{ padding: data.vote_average ? "7%" : "" }}
               >
                 {data.vote_average ? data.vote_average.toFixed(1) : null}
               </div>

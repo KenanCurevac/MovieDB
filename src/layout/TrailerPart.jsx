@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
-import TrailerModal from "../UI/TrailerModal";
 import "./TrailerPart.css";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import TrailerModal from "../UI/TrailerModal";
 
 export default function TrailerPart({ title, releaseDate, movieToShow }) {
-  const [open, setOpen] = useState(false);
-  const [trailer, setTrailer] = useState("");
+  const [openingTrailer, setOpeningTrailer] = useState(false);
+  const [trailerKey, setTrailerKey] = useState(null);
 
-  function handleOpen() {
-    setOpen(true);
+  function handleOpenTrailer() {
+    setOpeningTrailer(true);
   }
 
-  function handleClose() {
-    setOpen(false);
+  function handleCloseTrailer() {
+    setOpeningTrailer(false);
   }
 
   useEffect(() => {
@@ -22,31 +22,38 @@ export default function TrailerPart({ title, releaseDate, movieToShow }) {
 
     async function fetchTrailer() {
       const fetchedTrailer = await fetchTrailers(movieToShow);
-      setTrailer(fetchedTrailer[0].key);
+      setTrailerKey(fetchedTrailer[0].key);
     }
 
     fetchTrailer();
   }, [movieToShow]);
 
   return (
-    <div className="trailer-container">
-      <TrailerModal open={open} onClose={handleClose} trailer={trailer} />
+    <div className="trailer-side-container">
+      <TrailerModal
+        open={openingTrailer}
+        onClose={handleCloseTrailer}
+        trailer={trailerKey}
+      />
 
       <div className="watch-trailer">WATCH TRAILER</div>
-      {trailer && (
-        <div onClick={handleOpen} className="thumbnail-container">
+      {trailerKey && (
+        <div
+          onClick={handleOpenTrailer}
+          className="trailer-thumbnail-container"
+        >
           <iframe
-            src={`https://www.youtube.com/embed/${trailer}`}
+            src={`https://www.youtube.com/embed/${trailerKey}`}
             title="YouTube video player"
             frameBorder="0"
-            className="thumbnail"
+            className="trailer-thumbnail"
           ></iframe>
         </div>
       )}
       <div className="trailer-info">
         <div className="trailer-title">{title}</div>
-        <div className="date">Release Date:</div>
-        <div className="date">{releaseDate}</div>
+        <div className="trailer-release-date">Release Date:</div>
+        <div className="trailer-release-date">{releaseDate}</div>
       </div>
     </div>
   );

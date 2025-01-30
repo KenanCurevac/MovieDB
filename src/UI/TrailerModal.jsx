@@ -14,7 +14,7 @@ export default function TrailerModal({ open, onClose, trailer }) {
       >
         <CloseIcon className="trailer-close-icon" />
       </IconButton>
-      <DialogContent className="trailer-modal-container">
+      <DialogContent className="trailer-modal-content">
         <iframe
           src={`https://www.youtube.com/embed/${trailer}?autoplay=1`}
           title="YouTube video player"

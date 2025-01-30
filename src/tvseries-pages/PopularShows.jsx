@@ -8,8 +8,8 @@ import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
 
 export default function PopularShows() {
-  const [open, setOpen] = useState(false);
-  const [modalShowId, setModalShowId] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [showId, setShowId] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
@@ -20,21 +20,21 @@ export default function PopularShows() {
   );
   const { fetchedData, isFetching, error } = useFetch(fetchShows);
 
-  function handleChange(event, value) {
+  function handleChangePage(event, value) {
     setSearchParams({ page: value });
   }
 
-  function handleClickOpen(id) {
-    setOpen(true);
-    setModalShowId(id);
+  function handleOpenModal(id) {
+    setOpenModal(true);
+    setShowId(id);
   }
 
-  function handleClose() {
-    setOpen(false);
+  function handleCloseModal() {
+    setOpenModal(false);
   }
 
   useEffect(() => {
-    setOpen(false);
+    setOpenModal(false);
   }, [currentPage]);
 
   const statusMessage = (
@@ -52,10 +52,15 @@ export default function PopularShows() {
 
   return (
     <>
-      <Modal open={open} onClose={handleClose} media="tv" id={modalShowId} />
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        media="tv"
+        id={showId}
+      />
 
       <h1 className="list-title">Most Popular TV Shows</h1>
-      <div className="movie-list">
+      <div className="content-list">
         {fetchedData.map((show, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
 
@@ -63,7 +68,7 @@ export default function PopularShows() {
             <SimpleCard
               key={show.id}
               data={show}
-              onClick={() => handleClickOpen(show.id)}
+              onClick={() => handleOpenModal(show.id)}
               rank={rank}
             />
           );
@@ -72,7 +77,7 @@ export default function PopularShows() {
       <Pagination
         count={10}
         page={currentPage}
-        onChange={handleChange}
+        onChange={handleChangePage}
         className="pagination"
       />
     </>

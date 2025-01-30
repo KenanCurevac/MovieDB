@@ -6,19 +6,19 @@ import PeopleModal from "../UI/PeopleModal";
 import LayoutTitle from "./LayoutTitle";
 
 export default function SmallLayout({ data, title, link, media }) {
-  const [slides, setSlides] = useState(0);
+  const [offset, setOffset] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-  const [modalId, setModalId] = useState(null);
+  const [movieId, setMovieId] = useState(null);
 
-  function handleSlide(action) {
-    setSlides((prevSlide) =>
-      action === "next" ? prevSlide + 1 : prevSlide - 1
+  function handleOffset(action) {
+    setOffset((prevOffset) =>
+      action === "next" ? prevOffset + 1 : prevOffset - 1
     );
   }
 
   function handleOpenModal(id) {
     setOpenModal(true);
-    setModalId(id);
+    setMovieId(id);
   }
 
   function handleCloseModal() {
@@ -32,72 +32,70 @@ export default function SmallLayout({ data, title, link, media }) {
           open={openModal}
           onClose={handleCloseModal}
           media={media}
-          id={modalId}
+          id={movieId}
         />
       ) : (
         <PeopleModal
           open={openModal}
           onClose={handleCloseModal}
           media={media}
-          id={modalId}
+          id={movieId}
         />
       )}
 
-      <div className="small-slide-container">
-        <LayoutTitle title={title} link={link} />
-        <div className="slide-group">
-          <button
-            onClick={() => handleSlide("previous")}
-            className={`arrows ${slides === 0 ? "disabled-button" : ""}`}
-            disabled={slides === 0}
-          >
-            <ArrowForwardIosIcon className="arrow-left" />
-          </button>
-          <div className="small-slide">
-            {data.map((elem, index) => {
-              let className = "";
+      <LayoutTitle title={title} link={link} />
+      <div className="small-carousel-container">
+        <button
+          onClick={() => handleOffset("previous")}
+          className={`arrows ${offset === 0 ? "disabled-button" : ""}`}
+          disabled={offset === 0}
+        >
+          <ArrowForwardIosIcon className="arrow-left" />
+        </button>
+        <div className="small-carousel">
+          {data.map((elem, index) => {
+            let className = "";
 
-              if (index === 0 + slides) {
-                className = "first-picture";
-              } else if (index === 1 + slides) {
-                className = "second-picture";
-              } else if (index === 2 + slides) {
-                className = "third-picture";
-              } else if (index === 3 + slides) {
-                className = "fourth-picture";
-              } else if (index === slides - 1) {
-                className = "null-picture";
-              } else return null;
+            if (index === offset - 1) {
+              className = "null-picture";
+            } else if (index === 0 + offset) {
+              className = "first-picture";
+            } else if (index === 1 + offset) {
+              className = "second-picture";
+            } else if (index === 2 + offset) {
+              className = "third-picture";
+            } else if (index === 3 + offset) {
+              className = "fourth-picture";
+            } else return null;
 
-              return (
-                <div
-                  key={elem.id}
-                  className="picture-container-small-layout"
-                  onClick={
-                    className === "first-picture"
-                      ? () => handleOpenModal(elem.id)
-                      : null
-                  }
-                >
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${
-                      elem.poster_path || elem.profile_path
-                    }`}
-                    alt={elem.title || elem.name}
-                    className={`${className} small-carousel-picture`}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <button
-            onClick={() => handleSlide("next")}
-            className={`arrows ${slides === 17 ? "disabled-button" : ""}`}
-            disabled={slides === 17}
-          >
-            <ArrowForwardIosIcon className="arrow-right" />
-          </button>
+            return (
+              <div
+                key={elem.id}
+                className="small-carousel-picture-container"
+                onClick={
+                  className === "first-picture"
+                    ? () => handleOpenModal(elem.id)
+                    : null
+                }
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${
+                    elem.poster_path || elem.profile_path
+                  }`}
+                  alt={elem.title || elem.name}
+                  className={`${className} small-carousel-picture`}
+                />
+              </div>
+            );
+          })}
         </div>
+        <button
+          onClick={() => handleOffset("next")}
+          className={`arrows ${offset === 17 ? "disabled-button" : ""}`}
+          disabled={offset === 17}
+        >
+          <ArrowForwardIosIcon className="arrow-right" />
+        </button>
       </div>
     </div>
   );

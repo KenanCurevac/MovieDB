@@ -13,7 +13,7 @@
   padding-bottom: 17px !important ;
 }
 
-.card-media {
+.simple-card-picture {
   width: 94% !important;
   margin: 3% auto 0% auto !important;
   border-radius: 15px;
@@ -28,7 +28,7 @@
   height: 100%;
 }
 
-.bottom-stats {
+.simple-card-data {
   display: flex;
   flex-direction: row;
   margin-top: auto;
@@ -41,7 +41,7 @@
   width: 50%;
 }
 
-.rating-box {
+.rating-container {
   display: flex;
   justify-content: end;
   width: 50%;
@@ -52,16 +52,11 @@
   text-align: right;
   color: #eed6d6;
   border-radius: 40px;
-  padding: 7%;
-}
-
-.rating-media {
   background-color: #470d1d;
 }
 
 @media (max-width: 600px) {
   .simple-card {
-    margin-top: 2.5% !important;
-    margin-right: 150px !important;
+    margin: auto;
   }
 }

@@ -1,10 +1,10 @@
+import "./PeopleModal.css";
+import { useCallback } from "react";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import "./PeopleModal.css";
 import useFetch from "../hooks/useFetch";
 import { fetchDetails } from "../http";
-import { useCallback } from "react";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import DataStatus from "../tvseries-pages/DataStatus";
@@ -20,17 +20,17 @@ export default function PeopleModal({ open, onClose, media, id }) {
 
   const { fetchedData, isFetching, error } = useFetch(details);
 
-  const dateOfBirthString = fetchedData?.birthday || null;
-  const [year, month, day] = dateOfBirthString
-    ? dateOfBirthString.split("-")
+  const defaultDateOfBirth = fetchedData?.birthday || null;
+  const [year, month, day] = defaultDateOfBirth
+    ? defaultDateOfBirth.split("-")
     : [];
-  const dateOfBirth = year ? `${day}.${month}.${year}` : null;
+  const formattedDateOfBirth = year ? `${day}.${month}.${year}` : null;
 
-  const dateOfDeathString = fetchedData?.deathday || null;
-  const [yearOfDeath, monthOfDeath, dayOfDeath] = dateOfDeathString
-    ? dateOfDeathString.split("-")
+  const defaultDateOfDeath = fetchedData?.deathday || null;
+  const [yearOfDeath, monthOfDeath, dayOfDeath] = defaultDateOfDeath
+    ? defaultDateOfDeath.split("-")
     : [];
-  const dateOfDeath = yearOfDeath
+  const formattedDateOfDeath = yearOfDeath
     ? `${dayOfDeath}.${monthOfDeath}.${yearOfDeath}`
     : null;
 
@@ -58,13 +58,17 @@ export default function PeopleModal({ open, onClose, media, id }) {
       disableRestoreFocus
       className="people-modal"
     >
-      <DialogTitle className="people-dialog-title">
-        <div className="modal-title-people">{fetchedData.name}</div>
+      <DialogTitle className="people-modal-title-wrapper">
+        <div className="people-modal-title">{fetchedData.name}</div>
       </DialogTitle>
-      <IconButton aria-label="close" onClick={onClose} className="close-button">
-        <CloseIcon className="custom-close-icon" />
+      <IconButton
+        aria-label="close"
+        onClick={onClose}
+        className="people-modal-close-button"
+      >
+        <CloseIcon className="people-modal-close-icon" />
       </IconButton>
-      <DialogContent className="dialog-content-people">
+      <DialogContent className="people-modal-content">
         <div className="people-modal-top">
           <img
             className="people-picture"
@@ -82,12 +86,14 @@ export default function PeopleModal({ open, onClose, media, id }) {
             </div>
             <div>
               Date of Birth:{" "}
-              <span className="people-data">{dateOfBirth || "No Data"}</span>
+              <span className="people-data">
+                {formattedDateOfBirth || "No Data"}
+              </span>
             </div>
-            {dateOfDeath && (
+            {formattedDateOfDeath && (
               <div>
                 Date of Death:{" "}
-                <span className="people-data">{dateOfDeath}</span>
+                <span className="people-data">{formattedDateOfDeath}</span>
               </div>
             )}
             <div>

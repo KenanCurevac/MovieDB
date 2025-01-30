@@ -8,8 +8,8 @@ import DataStatus from "../tvseries-pages/DataStatus";
 import { useSearchParams } from "react-router-dom";
 
 export default function UpcomingMovies() {
-  const [open, setOpen] = useState(false);
-  const [modalMovieId, setModalMovieId] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [movieId, setMovieId] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
@@ -20,21 +20,21 @@ export default function UpcomingMovies() {
   );
   const { fetchedData, isFetching, error } = useFetch(fetchMovies);
 
-  function handleChange(event, value) {
+  function handleChangePage(event, value) {
     setSearchParams({ page: value });
   }
 
-  function handleClickOpen(id) {
-    setOpen(true);
-    setModalMovieId(id);
+  function handleOpenModal(id) {
+    setOpenModal(true);
+    setMovieId(id);
   }
 
-  function handleClose() {
-    setOpen(false);
+  function handleCloseModal() {
+    setOpenModal(false);
   }
 
   useEffect(() => {
-    setOpen(false);
+    setOpenModal(false);
   }, [currentPage]);
 
   const statusMessage = (
@@ -53,14 +53,14 @@ export default function UpcomingMovies() {
   return (
     <>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openModal}
+        onClose={handleCloseModal}
         media="movie"
-        id={modalMovieId}
+        id={movieId}
       />
 
       <h1 className="list-title">Upcoming Movies</h1>
-      <div className="movie-list">
+      <div className="content-list">
         {fetchedData.map((movie, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
 
@@ -68,7 +68,7 @@ export default function UpcomingMovies() {
             <SimpleCard
               key={movie.id}
               data={movie}
-              onClick={() => handleClickOpen(movie.id)}
+              onClick={() => handleOpenModal(movie.id)}
               rank={rank}
             />
           );
@@ -77,7 +77,7 @@ export default function UpcomingMovies() {
       <Pagination
         count={10}
         page={currentPage}
-        onChange={handleChange}
+        onChange={handleChangePage}
         className="pagination"
       />
     </>

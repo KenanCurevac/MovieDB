@@ -20,7 +20,7 @@
   overflow: visible !important;
 }
 
-.MuiDialogTitle-root.people-dialog-title {
+.MuiDialogTitle-root.people-modal-title-wrapper {
   padding: 18px 24px 0px 24px !important;
 }
 
@@ -34,7 +34,7 @@
   border-radius: 10px;
 }
 
-.modal-title-people {
+.people-modal-title {
   text-align: center;
   font-weight: bold;
   font-size: 30px;
@@ -43,22 +43,22 @@
   margin: 0% 5% 1% 5%;
 }
 
-.custom-close-icon {
+.people-modal-close-icon {
   font-size: 35px !important;
 }
 
-.custom-close-icon:hover {
+.people-modal-close-icon:hover {
   color: #177f62;
 }
 
-.close-button {
+.people-modal-close-button {
   position: absolute !important;
   right: 8px !important;
   top: 8px !important;
   color: #470d1d;
 }
 
-.dialog-content-people {
+.people-modal-content {
   display: flex;
   flex-direction: column;
   scrollbar-width: none;

@@ -8,8 +8,8 @@ import DataStatus from "../tvseries-pages/DataStatus";
 import { useSearchParams } from "react-router-dom";
 
 export default function PopularPeople() {
-  const [open, setOpen] = useState(false);
-  const [modalPersonId, setModalPersonId] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [personId, setPersonId] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
@@ -20,21 +20,21 @@ export default function PopularPeople() {
   );
   const { fetchedData, isFetching, error } = useFetch(fetchMovies);
 
-  function handleChange(event, value) {
+  function handleChangePage(event, value) {
     setSearchParams({ page: value });
   }
 
-  function handleClickOpen(id) {
-    setOpen(true);
-    setModalPersonId(id);
+  function handleOpenModal(id) {
+    setOpenModal(true);
+    setPersonId(id);
   }
 
-  function handleClose() {
-    setOpen(false);
+  function handleCloseModal() {
+    setOpenModal(false);
   }
 
   useEffect(() => {
-    setOpen(false);
+    setOpenModal(false);
   }, [currentPage]);
 
   const statusMessage = (
@@ -53,14 +53,14 @@ export default function PopularPeople() {
   return (
     <>
       <PeopleModal
-        open={open}
-        onClose={handleClose}
+        open={openModal}
+        onClose={handleCloseModal}
         media="person"
-        id={modalPersonId}
+        id={personId}
       />
 
       <h1 className="list-title">Popular People</h1>
-      <div className="movie-list">
+      <div className="content-list">
         {fetchedData.map((person, index) => {
           const rank = 20 * (currentPage - 1) + index + 1;
 
@@ -68,7 +68,7 @@ export default function PopularPeople() {
             <SimpleCard
               key={person.id}
               data={person}
-              onClick={() => handleClickOpen(person.id)}
+              onClick={() => handleOpenModal(person.id)}
               rank={rank}
             />
           );
@@ -77,7 +77,7 @@ export default function PopularPeople() {
       <Pagination
         count={10}
         page={currentPage}
-        onChange={handleChange}
+        onChange={handleChangePage}
         className="pagination"
       />
     </>

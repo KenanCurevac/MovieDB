@@ -38,13 +38,13 @@
   margin: 0% 5% 1% 5%;
 }
 
-.modal-undertitle {
+.modal-tagline {
   text-align: center;
   line-height: 120%;
   font-size: 18px !important;
 }
 
-.description {
+.modal-description {
   font-size: 17px;
   text-indent: 6%;
   background-color: #f6e9e9;
@@ -53,39 +53,26 @@
   margin-top: 2%;
 }
 
-.movie-modal-data {
+.modal-data {
   display: flex;
   flex-wrap: wrap;
   gap: 10%;
 }
 
-.left-element {
+.modal-data-left-side {
   width: 25%;
   padding: 0.1% 0;
 }
 
-.right-element {
+.modal-data-right-side {
   width: 65%;
   padding: 0.1% 0;
-}
-
-.first-element {
-  margin: auto;
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5%;
-}
-
-.lower-row-data {
-  font-size: 20px;
-}
-
-.big-numbers {
-  font-size: 30px;
-  font-weight: bold;
 }
 
 .MuiChip-root {
@@ -99,35 +86,31 @@
   margin-bottom: 1%;
 }
 
-.custom-close-icon {
+.modal-close-icon {
   font-size: 35px !important;
 }
 
-.custom-close-icon:hover {
+.modal-close-icon:hover {
   color: #177f62;
 }
 
-.close-button {
+.modal-close-button {
   position: absolute !important;
   right: 8px !important;
   top: 8px !important;
   color: #470d1d;
 }
 
-.dialog-content {
+.modal-content {
   display: flex;
   flex-direction: column;
   scrollbar-width: none;
 }
 
 @media (max-width: 660px) {
-  .movie-modal-data {
+  .modal-data {
     display: flex;
     flex-direction: column;
     gap: 7px !important;
-  }
-
-  .first-element {
-    margin-left: 0px !important;
   }
 }

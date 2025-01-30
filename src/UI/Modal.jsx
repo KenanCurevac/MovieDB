@@ -1,10 +1,10 @@
+import "./Modal.css";
+import { useCallback } from "react";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import "./Modal.css";
 import useFetch from "../hooks/useFetch";
 import { fetchDetails } from "../http";
-import { useCallback } from "react";
 import Chip from "@mui/material/Chip";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -63,36 +63,34 @@ export default function Modal({ open, onClose, media, id }) {
     >
       <DialogTitle>
         <div className="modal-title">
-          {fetchedData.title ||
-            fetchedData.original_title ||
-            fetchedData.name ||
-            fetchedData.original_name ||
-            "title"}{" "}
+          {fetchedData.title || "No Title"}{" "}
           <span>
             ({releaseYear}
             {endYear && releaseYear !== endYear ? ` - ${endYear}` : ""})
           </span>
         </div>
-        <div className="modal-undertitle">{fetchedData.tagline}</div>
+        <div className="modal-tagline">{fetchedData.tagline}</div>
       </DialogTitle>
-      <IconButton aria-label="close" onClick={onClose} className="close-button">
-        <CloseIcon className="custom-close-icon" />
+      <IconButton
+        aria-label="close"
+        onClick={onClose}
+        className="modal-close-button"
+      >
+        <CloseIcon className="modal-close-icon" />
       </IconButton>
       <img
         className="modal-picture"
         loading="lazy"
         src={
-          fetchedData.backdrop_path || fetchedData.poster_path
-            ? `https://image.tmdb.org/t/p/w500${
-                fetchedData.backdrop_path || fetchedData.poster_path
-              }`
+          fetchedData.backdrop_path
+            ? `https://image.tmdb.org/t/p/w500${fetchedData.backdrop_path}`
             : noPicture
         }
         alt="image"
       />
-      <DialogContent className="dialog-content">
-        <div className="movie-modal-data">
-          <div className="left-element first-element">
+      <DialogContent className="modal-content">
+        <div className="modal-data">
+          <div className="modal-data-left-side">
             {fetchedData.runtime && (
               <div>
                 <span style={{ fontSize: "17px" }}>Runtime: </span>
@@ -117,28 +115,30 @@ export default function Modal({ open, onClose, media, id }) {
             )}
           </div>
 
-          <div className="right-element chips">
+          <div className="modal-data-right-side chips">
             {genres.map((genre) => (
               <Chip key={genre} label={genre} variant="outlined" />
             ))}
           </div>
 
-          <div className="left-element">
-            <span className="lower-row-data">Rating: </span>
-            <span className="big-numbers">
+          <div className="modal-data-left-side">
+            <span style={{ fontSize: "20px" }}>Rating: </span>
+            <span style={{ fontSize: "30px", fontWeight: "bold" }}>
               {fetchedData.vote_average.toFixed(1) || "No Data"}
             </span>
           </div>
 
-          <div className="right-element">
-            <span className="lower-row-data">Number of Votes: </span>
-            <span className="big-numbers">
+          <div className="modal-data-right-side">
+            <span style={{ fontSize: "20px" }}>Number of Votes: </span>
+            <span style={{ fontSize: "30px", fontWeight: "bold" }}>
               {fetchedData.vote_count || "No Data"}
             </span>
           </div>
         </div>
 
-        <div className="description">{fetchedData.overview || "No Data"}</div>
+        <div className="modal-description">
+          {fetchedData.overview || "No Data"}
+        </div>
       </DialogContent>
     </Dialog>
   );
