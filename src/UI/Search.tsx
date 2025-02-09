@@ -9,16 +9,21 @@ import { fetchSearch } from "../http";
 import noPicture from "../assets/placeholder.jpg";
 import Modal from "./Modal";
 import PeopleModal from "./PeopleModal";
+import { MovieSearchData } from "../models/movieSearch";
+import { ShowSearchData } from "../models/showSearch";
+import { PeopleSearchData } from "../models/peopleSearch";
+
+type SearchOption = MovieSearchData | ShowSearchData | PeopleSearchData;
 
 export default function Search() {
   const [openResults, setOpenResults] = useState(false);
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<SearchOption[]>([]);
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [modalId, setModalId] = useState(null);
+  const [modalId, setModalId] = useState<number | null>(null);
   const [media, setMedia] = useState("");
 
-  const fetchData = async (query) => {
+  const fetchData = async (query: string) => {
     setLoading(true);
     const response = await fetchSearch(query);
     setLoading(false);
@@ -34,11 +39,14 @@ export default function Search() {
     setOpenResults(false);
   }
 
-  function handleInputChange(e, newInputValue) {
+  function handleInputChange(
+    e: React.SyntheticEvent<Element, Event>,
+    newInputValue: string
+  ) {
     fetchData(newInputValue);
   }
 
-  function handleOpenModal(id, media) {
+  function handleOpenModal(id: number, media: string) {
     setOpenModal(true);
     setModalId(id);
     setMedia(media);
@@ -50,21 +58,22 @@ export default function Search() {
 
   return (
     <>
-      {media !== "person" ? (
-        <Modal
-          open={openModal}
-          onClose={handleCloseModal}
-          media={media}
-          id={modalId}
-        />
-      ) : (
-        <PeopleModal
-          open={openModal}
-          onClose={handleCloseModal}
-          media="person"
-          id={modalId}
-        />
-      )}
+      {modalId !== null &&
+        (media !== "person" ? (
+          <Modal
+            open={openModal}
+            onClose={handleCloseModal}
+            media={media}
+            id={modalId}
+          />
+        ) : (
+          <PeopleModal
+            open={openModal}
+            onClose={handleCloseModal}
+            media="person"
+            id={modalId}
+          />
+        ))}
 
       <Autocomplete
         className="search"
@@ -73,7 +82,20 @@ export default function Search() {
         onClose={handleCloseResults}
         onInputChange={handleInputChange}
         clearOnBlur={false}
-        getOptionLabel={(option) => option.title || option.name}
+        getOptionLabel={(option) => {
+          if (typeof option !== "string") {
+            const isMovie = "release_date" in option;
+            const isShow = "first_air_date" in option;
+            const isPerson = "known_for_department" in option;
+
+            if (isMovie) {
+              return option.title;
+            } else if (isShow || isPerson) {
+              return option.name;
+            }
+          }
+          return "";
+        }}
         options={options}
         loading={loading}
         disableClearable
@@ -81,9 +103,28 @@ export default function Search() {
         renderOption={(props, option, index) => {
           const { key, ...optionProps } = props;
           const myKey = `${option.id}-${index}`;
-          const releaseYear = option.release_date
+
+          const isMovie = "release_date" in option;
+          const isShow = "first_air_date" in option;
+          const isPerson = "known_for_department" in option;
+
+          const releaseYear = isMovie
             ? option.release_date.split("-")[0]
+            : isShow
+            ? option.first_air_date.split("-")[0]
             : null;
+
+          let imageSrc = noPicture;
+
+          if (isMovie || isShow) {
+            if (option.poster_path) {
+              imageSrc = `https://image.tmdb.org/t/p/w500${option.poster_path}`;
+            }
+          } else if (isPerson) {
+            if (option.profile_path) {
+              imageSrc = `https://image.tmdb.org/t/p/w500${option.profile_path}`;
+            }
+          }
 
           return (
             <Box
@@ -94,21 +135,25 @@ export default function Search() {
             >
               <img
                 loading="lazy"
-                src={
-                  option.poster_path
-                    ? `https://image.tmdb.org/t/p/w500${option.poster_path}`
-                    : option.profile_path
-                    ? `https://image.tmdb.org/t/p/w500${option.profile_path}`
-                    : noPicture
-                }
+                src={imageSrc}
                 alt="image"
                 className="search-picture"
               />
               <div className="search-info">
-                <div>{option.title || option.name}</div>
+                <div>
+                  {isMovie
+                    ? option.title
+                    : isShow || isPerson
+                    ? option.name
+                    : "No Title"}
+                </div>
                 <div>
                   {releaseYear ? "(" : ""}
-                  {releaseYear || option.known_for_department}
+                  {isMovie || isShow
+                    ? releaseYear
+                    : isPerson
+                    ? option.known_for_department
+                    : null}
                   {releaseYear ? ")" : ""}
                 </div>
               </div>

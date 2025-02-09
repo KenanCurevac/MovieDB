@@ -7,10 +7,11 @@ import Pagination from "@mui/material/Pagination";
 import PeopleModal from "../UI/PeopleModal";
 import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
+import { PeopleSimple } from "../models/peopleSimple";
 
 export default function PopularPeople() {
   const [openModal, setOpenModal] = useState(false);
-  const [personId, setPersonId] = useState(null);
+  const [personId, setPersonId] = useState<number | null>(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
@@ -21,11 +22,11 @@ export default function PopularPeople() {
   );
   const { fetchedData, isFetching, error } = useFetch(fetchMovies);
 
-  function handleChangePage(event, value) {
-    setSearchParams({ page: value });
+  function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
+    setSearchParams({ page: value.toString() });
   }
 
-  function handleOpenModal(id) {
+  function handleOpenModal(id: number) {
     setOpenModal(true);
     setPersonId(id);
   }
@@ -53,23 +54,25 @@ export default function PopularPeople() {
 
   return (
     <>
-      <PeopleModal
-        open={openModal}
-        onClose={handleCloseModal}
-        media="person"
-        id={personId}
-      />
+      {personId && (
+        <PeopleModal
+          open={openModal}
+          onClose={handleCloseModal}
+          media="person"
+          id={personId}
+        />
+      )}
 
       <h1 className="list-title">Popular People</h1>
       <div className="content-list">
-        {fetchedData.map((person, index) => {
+        {fetchedData.map((person: PeopleSimple, index: number) => {
           const rank = 20 * (currentPage - 1) + index + 1;
 
           return (
             <SimpleCard
               key={person.id}
               data={person}
-              onClick={() => handleOpenModal(person.id)}
+              onOpenModal={handleOpenModal}
               rank={rank}
             />
           );

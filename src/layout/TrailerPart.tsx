@@ -3,9 +3,19 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import TrailerModal from "../UI/TrailerModal";
 
-export default function TrailerPart({ title, releaseDate, movieToShow }) {
+type TrailerPartProps = {
+  title: string;
+  releaseDate: string;
+  movieToShow: number;
+};
+
+export default function TrailerPart({
+  title,
+  releaseDate,
+  movieToShow,
+}: TrailerPartProps) {
   const [openingTrailer, setOpeningTrailer] = useState(false);
-  const [trailerKey, setTrailerKey] = useState(null);
+  const [trailerKey, setTrailerKey] = useState<string | null>(null);
 
   function handleOpenTrailer() {
     setOpeningTrailer(true);
@@ -30,11 +40,13 @@ export default function TrailerPart({ title, releaseDate, movieToShow }) {
 
   return (
     <div className="trailer-side-container">
-      <TrailerModal
-        open={openingTrailer}
-        onClose={handleCloseTrailer}
-        trailer={trailerKey}
-      />
+      {trailerKey && (
+        <TrailerModal
+          open={openingTrailer}
+          onClose={handleCloseTrailer}
+          trailerKey={trailerKey}
+        />
+      )}
 
       <div className="watch-trailer">WATCH TRAILER</div>
       {trailerKey && (
@@ -59,7 +71,7 @@ export default function TrailerPart({ title, releaseDate, movieToShow }) {
   );
 }
 
-async function fetchTrailers(movieId) {
+async function fetchTrailers(movieId: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
     {

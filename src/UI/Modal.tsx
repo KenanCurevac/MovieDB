@@ -10,32 +10,48 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import DataStatus from "../subpages/DataStatus";
 import noPicture from "../assets/no-image-available.jpg";
+import { MovieDetails } from "../models/movieDetails";
+import { ShowDetails } from "../models/showDetails";
 
-export default function Modal({ open, onClose, media, id }) {
+type ModalProps = {
+  open: boolean;
+  onClose: () => void;
+  media: string;
+  id: number;
+};
+
+export default function Modal({ open, onClose, media, id }: ModalProps) {
   const details = useCallback(() => {
     if (id) {
       return fetchDetails(media, id);
     }
-    return null;
+    return Promise.resolve(null);
   }, [id]);
 
-  const { fetchedData, isFetching, error } = useFetch(details);
+  const { fetchedData, isFetching, error } = useFetch<
+    MovieDetails | ShowDetails | null
+  >(details);
 
-  const releaseYear = fetchedData?.release_date
-    ? fetchedData.release_date.split("-")[0]
-    : fetchedData?.first_air_date
-    ? fetchedData.first_air_date.split("-")[0]
+  const isMovie = fetchedData && "release_date" in fetchedData;
+  const isShow = fetchedData && "first_air_date" in fetchedData;
+
+  const releaseYear = isMovie
+    ? (fetchedData as MovieDetails).release_date.split("-")[0]
+    : isShow
+    ? (fetchedData as ShowDetails).first_air_date.split("-")[0]
     : null;
 
-  const endYear = fetchedData?.last_air_date
-    ? fetchedData.last_air_date.split("-")[0]
+  const endYear = isShow
+    ? (fetchedData as ShowDetails).last_air_date.split("-")[0]
     : null;
 
-  const hours = `${Math.trunc(fetchedData?.runtime / 60)}h`;
-  const minutes = `${fetchedData?.runtime % 60}min`;
-  const runtime = `${hours} ${minutes}`;
+  const runtime = isMovie
+    ? `${Math.trunc((fetchedData as MovieDetails).runtime / 60)}h ${
+        (fetchedData as MovieDetails).runtime % 60
+      }min`
+    : null;
 
-  const genres = fetchedData?.genres.map((genre) => genre.name);
+  const genres = fetchedData?.genres.map((genre) => genre.name) ?? [];
 
   if (!open) {
     return null;
@@ -50,7 +66,7 @@ export default function Modal({ open, onClose, media, id }) {
     />
   );
 
-  if (isFetching || error || !fetchedData || fetchedData.length === 0) {
+  if (isFetching || error || !fetchedData) {
     return statusMessage;
   }
 
@@ -63,7 +79,7 @@ export default function Modal({ open, onClose, media, id }) {
     >
       <DialogTitle>
         <div className="modal-title">
-          {fetchedData.title || "No Title"}{" "}
+          {isMovie ? fetchedData.title : isShow ? fetchedData.name : "No Title"}{" "}
           <span>
             ({releaseYear}
             {endYear && releaseYear !== endYear ? ` - ${endYear}` : ""})
@@ -91,13 +107,13 @@ export default function Modal({ open, onClose, media, id }) {
       <DialogContent className="modal-content">
         <div className="modal-data">
           <div className="modal-data-left-side">
-            {fetchedData.runtime && (
+            {isMovie && fetchedData.runtime && (
               <div>
                 <span style={{ fontSize: "17px" }}>Runtime: </span>
                 <span style={{ fontSize: "22px" }}>{runtime || "No Data"}</span>
               </div>
             )}
-            {fetchedData.number_of_seasons && (
+            {isShow && fetchedData.number_of_seasons && (
               <div>
                 <span style={{ fontSize: "17px" }}>Seasons: </span>
                 <span style={{ fontSize: "22px" }}>
@@ -105,7 +121,7 @@ export default function Modal({ open, onClose, media, id }) {
                 </span>
               </div>
             )}
-            {fetchedData.number_of_episodes && (
+            {isShow && fetchedData.number_of_episodes && (
               <div>
                 <span style={{ fontSize: "17px" }}>Episodes: </span>
                 <span style={{ fontSize: "22px" }}>

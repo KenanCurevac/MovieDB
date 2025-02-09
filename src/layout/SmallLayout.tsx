@@ -4,19 +4,34 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Modal from "../UI/Modal";
 import PeopleModal from "../UI/PeopleModal";
 import LayoutTitle from "./LayoutTitle";
+import { MovieSimple } from "../models/movieSimple";
+import { ShowSimple } from "../models/showSimple";
+import { PeopleSimple } from "../models/peopleSimple";
 
-export default function SmallLayout({ data, title, link, media }) {
+type SmallLayoutProps = {
+  data: MovieSimple[] | ShowSimple[] | PeopleSimple[];
+  title: string;
+  link: string;
+  media: string;
+};
+
+export default function SmallLayout({
+  data,
+  title,
+  link,
+  media,
+}: SmallLayoutProps) {
   const [offset, setOffset] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-  const [movieId, setMovieId] = useState(null);
+  const [movieId, setMovieId] = useState<number | null>(null);
 
-  function handleOffset(action) {
+  function handleOffset(action: string) {
     setOffset((prevOffset) =>
       action === "next" ? prevOffset + 1 : prevOffset - 1
     );
   }
 
-  function handleOpenModal(id) {
+  function handleOpenModal(id: number) {
     setOpenModal(true);
     setMovieId(id);
   }
@@ -27,21 +42,22 @@ export default function SmallLayout({ data, title, link, media }) {
 
   return (
     <div className="small-layout-container">
-      {media !== "person" ? (
-        <Modal
-          open={openModal}
-          onClose={handleCloseModal}
-          media={media}
-          id={movieId}
-        />
-      ) : (
-        <PeopleModal
-          open={openModal}
-          onClose={handleCloseModal}
-          media={media}
-          id={movieId}
-        />
-      )}
+      {movieId &&
+        (media !== "person" ? (
+          <Modal
+            open={openModal}
+            onClose={handleCloseModal}
+            media={media}
+            id={movieId}
+          />
+        ) : (
+          <PeopleModal
+            open={openModal}
+            onClose={handleCloseModal}
+            media={media}
+            id={movieId}
+          />
+        ))}
 
       <LayoutTitle title={title} link={link} />
       <div className="small-carousel-container">
@@ -68,6 +84,10 @@ export default function SmallLayout({ data, title, link, media }) {
               className = "fourth-picture";
             } else return null;
 
+            const isMovie = elem && "release_date" in elem;
+            const isShow = elem && "first_air_date" in elem;
+            const isPerson = elem && "known_for_department" in elem;
+
             return (
               <div
                 key={elem.id}
@@ -75,14 +95,24 @@ export default function SmallLayout({ data, title, link, media }) {
                 onClick={
                   className === "first-picture"
                     ? () => handleOpenModal(elem.id)
-                    : null
+                    : undefined
                 }
               >
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${
-                    elem.poster_path || elem.profile_path
-                  }`}
-                  alt={elem.title || elem.name}
+                  src={
+                    isMovie || isShow
+                      ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                      : isPerson
+                      ? `https://image.tmdb.org/t/p/w500${elem.profile_path}`
+                      : undefined
+                  }
+                  alt={
+                    isMovie
+                      ? elem.title
+                      : isShow || isPerson
+                      ? elem.name
+                      : "No Picture"
+                  }
                   className={`${className} small-carousel-picture`}
                 />
               </div>

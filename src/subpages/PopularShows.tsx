@@ -1,31 +1,32 @@
 import "./Subpage.css";
-import { useCallback, useEffect, useState } from "react";
 import SimpleCard from "../UI/SimpleCard";
-import { fetchShowsAiringToday } from "../http";
+import { useCallback, useEffect, useState } from "react";
+import { fetchPopularShows } from "../http";
 import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Modal from "../UI/Modal";
 import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
+import { ShowSimple } from "../models/showSimple";
 
-export default function ShowsAiringToday() {
+export default function PopularShows() {
   const [openModal, setOpenModal] = useState(false);
-  const [showId, setShowId] = useState(null);
+  const [showId, setShowId] = useState<number | null>(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const fetchShows = useCallback(
-    () => fetchShowsAiringToday(currentPage),
+    () => fetchPopularShows(currentPage),
     [currentPage]
   );
   const { fetchedData, isFetching, error } = useFetch(fetchShows);
 
-  function handleChangePage(event, value) {
-    setSearchParams({ page: value });
+  function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
+    setSearchParams({ page: value.toString() });
   }
 
-  function handleOpenModal(id) {
+  function handleOpenModal(id: number) {
     setOpenModal(true);
     setShowId(id);
   }
@@ -53,23 +54,25 @@ export default function ShowsAiringToday() {
 
   return (
     <>
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        media="tv"
-        id={showId}
-      />
+      {showId && (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          media="tv"
+          id={showId}
+        />
+      )}
 
-      <h1 className="list-title">TV Series Airing Today</h1>
+      <h1 className="list-title">Most Popular TV Series</h1>
       <div className="content-list">
-        {fetchedData.map((show, index) => {
+        {fetchedData.map((show: ShowSimple, index: number) => {
           const rank = 20 * (currentPage - 1) + index + 1;
 
           return (
             <SimpleCard
               key={show.id}
               data={show}
-              onClick={() => handleOpenModal(show.id)}
+              onOpenModal={handleOpenModal}
               rank={rank}
             />
           );

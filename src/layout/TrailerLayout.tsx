@@ -5,11 +5,22 @@ import transparent from "../assets/clearimage.png";
 import Modal from "../UI/Modal";
 import LayoutTitle from "./LayoutTitle";
 import TrailerPart from "./TrailerPart";
+import { MovieSimple } from "../models/movieSimple";
 
-export default function TrailerLayout({ data, title, link }) {
+type TrailerLayoutProps = {
+  data: MovieSimple[];
+  title: string;
+  link: string;
+};
+
+export default function TrailerLayout({
+  data,
+  title,
+  link,
+}: TrailerLayoutProps) {
   const [offset, setOffset] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-  const [movieId, setMovieId] = useState(null);
+  const [movieId, setMovieId] = useState<number | null>(null);
 
   const movieToShow = data[offset]?.id || null;
 
@@ -17,13 +28,13 @@ export default function TrailerLayout({ data, title, link }) {
   const [year, month, day] = initialDate ? initialDate.split("-") : [];
   const releaseDate = year ? `${day}.${month}.${year}` : null;
 
-  function handleSlide(action) {
+  function handleSlide(action: string) {
     setOffset((prevOffset) =>
       action === "next" ? prevOffset + 1 : prevOffset - 1
     );
   }
 
-  function handleOpenModal(id) {
+  function handleOpenModal(id: number) {
     setOpenModal(true);
     setMovieId(id);
   }
@@ -34,12 +45,14 @@ export default function TrailerLayout({ data, title, link }) {
 
   return (
     <div className="trailer-layout-container">
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        media="movie"
-        id={movieId}
-      />
+      {movieId && (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          media="movie"
+          id={movieId}
+        />
+      )}
 
       <div className="upcoming-movies-side-container">
         <LayoutTitle title={title} link={link} />
@@ -53,9 +66,9 @@ export default function TrailerLayout({ data, title, link }) {
           </button>
           <div className="trailer-carousel">
             {[
-              { id: "1", border: "none" },
+              { id: 1, border: "none" },
               ...data,
-              { id: "2", border: "none" },
+              { id: 2, border: "none" },
             ].map((elem, index) => {
               let className = "";
 
@@ -71,6 +84,8 @@ export default function TrailerLayout({ data, title, link }) {
                 className = "next-picture";
               } else return null;
 
+              const isMovie = elem && "release_date" in elem;
+
               return (
                 <div
                   key={elem.id}
@@ -82,20 +97,19 @@ export default function TrailerLayout({ data, title, link }) {
                   onClick={
                     className === "middle-picture"
                       ? () => handleOpenModal(elem.id)
-                      : null
+                      : undefined
                   }
                 >
                   <img
                     src={
-                      elem.poster_path
+                      isMovie
                         ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
                         : transparent
                     }
-                    alt={elem.title}
+                    alt={isMovie ? elem.title : "No Picture"}
                     className={`${className} trailer-carousel-picture`}
                     style={{
-                      boxShadow:
-                        elem.border === "none" ? "none" : "5px 12px 5px",
+                      boxShadow: "border" in elem ? "none" : "5px 12px 5px",
                     }}
                   />
                 </div>
@@ -111,11 +125,13 @@ export default function TrailerLayout({ data, title, link }) {
           </button>
         </div>
       </div>
-      <TrailerPart
-        title={data[offset]?.title || "No title"}
-        releaseDate={releaseDate}
-        movieToShow={movieToShow}
-      />
+      {releaseDate && movieToShow && (
+        <TrailerPart
+          title={data[offset]?.title || "No title"}
+          releaseDate={releaseDate}
+          movieToShow={movieToShow}
+        />
+      )}
     </div>
   );
 }

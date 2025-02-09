@@ -3,19 +3,33 @@ import { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Modal from "../UI/Modal";
 import LayoutTitle from "./LayoutTitle";
+import { MovieSimple } from "../models/movieSimple";
+import { ShowSimple } from "../models/showSimple";
 
-export default function BigLayout({ data, title, link, media }) {
+type BigLayoutProps = {
+  data: MovieSimple[] | ShowSimple[];
+  title: string;
+  link: string;
+  media: string;
+};
+
+export default function BigLayout({
+  data,
+  title,
+  link,
+  media,
+}: BigLayoutProps) {
   const [offset, setOffset] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-  const [movieId, setMovieId] = useState(null);
+  const [movieId, setMovieId] = useState<number | null>(null);
 
-  function handleSlide(action) {
+  function handleSlide(action: string) {
     setOffset((prevOffset) =>
       action === "next" ? prevOffset + 1 : prevOffset - 1
     );
   }
 
-  function handleOpenModal(id) {
+  function handleOpenModal(id: number) {
     setOpenModal(true);
     setMovieId(id);
   }
@@ -26,12 +40,14 @@ export default function BigLayout({ data, title, link, media }) {
 
   return (
     <div className="big-layout-container">
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        media={media}
-        id={movieId}
-      />
+      {movieId && (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          media={media}
+          id={movieId}
+        />
+      )}
 
       <LayoutTitle title={title} link={link} />
       <div className="big-carousel-container">
@@ -66,6 +82,9 @@ export default function BigLayout({ data, title, link, media }) {
               className = "back-picture";
             } else return null;
 
+            const isMovie = elem && "release_date" in elem;
+            const isShow = elem && "first_air_date" in elem;
+
             return (
               <div
                 key={elem.id}
@@ -74,7 +93,7 @@ export default function BigLayout({ data, title, link, media }) {
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${elem.poster_path}`}
-                  alt={elem.title}
+                  alt={isMovie ? elem.title : isShow ? elem.name : "No Picture"}
                   className={`${className} big-carousel-picture`}
                 />
               </div>

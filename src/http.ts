@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function fetchPopularPeople(page) {
+export async function fetchPopularPeople(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}`,
     {
@@ -13,7 +13,7 @@ export async function fetchPopularPeople(page) {
   return response.data.results;
 }
 
-export async function fetchUpcomingMovies(page) {
+export async function fetchUpcomingMovies(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`,
     {
@@ -26,7 +26,7 @@ export async function fetchUpcomingMovies(page) {
   return response.data.results;
 }
 
-export async function fetchUpcomingShows(page) {
+export async function fetchUpcomingShows(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=${page}`,
     {
@@ -39,7 +39,7 @@ export async function fetchUpcomingShows(page) {
   return response.data.results;
 }
 
-export async function fetchMoviesPlayingNow(page) {
+export async function fetchMoviesPlayingNow(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`,
     {
@@ -52,7 +52,7 @@ export async function fetchMoviesPlayingNow(page) {
   return response.data.results;
 }
 
-export async function fetchPopularMovies(page) {
+export async function fetchPopularMovies(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
     {
@@ -65,7 +65,7 @@ export async function fetchPopularMovies(page) {
   return response.data.results;
 }
 
-export async function fetchTopRatedMovies(page) {
+export async function fetchTopRatedMovies(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`,
     {
@@ -78,7 +78,7 @@ export async function fetchTopRatedMovies(page) {
   return response.data.results;
 }
 
-export async function fetchPopularShows(page) {
+export async function fetchPopularShows(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/tv/popular?language=en-US&page=${page}`,
     {
@@ -91,7 +91,7 @@ export async function fetchPopularShows(page) {
   return response.data.results;
 }
 
-export async function fetchShowsAiringToday(page) {
+export async function fetchShowsAiringToday(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/tv/airing_today?language=en-US&page=${page}`,
     {
@@ -104,7 +104,7 @@ export async function fetchShowsAiringToday(page) {
   return response.data.results;
 }
 
-export async function fetchTopRatedShows(page) {
+export async function fetchTopRatedShows(page: number) {
   const response = await axios.get(
     `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=${page}`,
     {
@@ -117,7 +117,7 @@ export async function fetchTopRatedShows(page) {
   return response.data.results;
 }
 
-export async function fetchSearch(query) {
+export async function fetchSearch(query: string) {
   const encodedQuery = encodeURIComponent(query);
 
   try {
@@ -131,14 +131,14 @@ export async function fetchSearch(query) {
       }
     );
     return response.data.results;
-  } catch (error) {
+  } catch (error: any) {
     throw new Response("Failed to search", {
       status: error.response?.status || 500,
     });
   }
 }
 
-export async function fetchDetails(media, id) {
+export async function fetchDetails(media: string, id: number) {
   try {
     const response = await axios.get(
       `https://api.themoviedb.org/3/${media}/${id}?language=en-US`,
@@ -150,7 +150,7 @@ export async function fetchDetails(media, id) {
       }
     );
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error fetching movies:", error);
     throw new Error(
       error.response?.data?.status_message || "Failed to fetch movies"

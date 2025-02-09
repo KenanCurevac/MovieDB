@@ -9,16 +9,31 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import DataStatus from "../subpages/DataStatus";
 import noPicture from "../assets/placeholder.jpg";
+import { PeopleDetails } from "../models/peopleDetails";
 
-export default function PeopleModal({ open, onClose, media, id }) {
+type PeopleModalProps = {
+  open: boolean;
+  onClose: () => void;
+  media: string;
+  id: number;
+};
+
+export default function PeopleModal({
+  open,
+  onClose,
+  media,
+  id,
+}: PeopleModalProps) {
   const details = useCallback(() => {
     if (id) {
       return fetchDetails(media, id);
     }
-    return null;
+    return Promise.resolve(null);
   }, [id]);
 
-  const { fetchedData, isFetching, error } = useFetch(details);
+  const { fetchedData, isFetching, error } = useFetch<PeopleDetails | null>(
+    details
+  );
 
   const defaultDateOfBirth = fetchedData?.birthday || null;
   const [year, month, day] = defaultDateOfBirth
@@ -47,7 +62,7 @@ export default function PeopleModal({ open, onClose, media, id }) {
     />
   );
 
-  if (isFetching || error || !fetchedData || fetchedData.length === 0) {
+  if (isFetching || error || !fetchedData) {
     return statusMessage;
   }
 

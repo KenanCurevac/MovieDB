@@ -1,33 +1,34 @@
 import "./Subpage.css";
-import { useCallback, useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch";
-import { fetchPopularMovies } from "../http";
 import SimpleCard from "../UI/SimpleCard";
+import { useCallback, useEffect, useState } from "react";
+import { fetchUpcomingShows } from "../http";
+import useFetch from "../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Modal from "../UI/Modal";
 import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
+import { ShowSimple } from "../models/showSimple";
 
-export default function PopularMovies() {
+export default function UpcomingShows() {
   const [openModal, setOpenModal] = useState(false);
-  const [movieId, setMovieId] = useState(null);
+  const [showId, setShowId] = useState<number | null>(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
-  const fetchMovies = useCallback(
-    () => fetchPopularMovies(currentPage),
+  const fetchShows = useCallback(
+    () => fetchUpcomingShows(currentPage),
     [currentPage]
   );
-  const { fetchedData, isFetching, error } = useFetch(fetchMovies);
+  const { fetchedData, isFetching, error } = useFetch(fetchShows);
 
-  function handleChangePage(event, value) {
-    setSearchParams({ page: value });
+  function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
+    setSearchParams({ page: value.toString() });
   }
 
-  function handleOpenModal(id) {
+  function handleOpenModal(id: number) {
     setOpenModal(true);
-    setMovieId(id);
+    setShowId(id);
   }
 
   function handleCloseModal() {
@@ -43,7 +44,7 @@ export default function PopularMovies() {
       fetchedData={fetchedData}
       isFetching={isFetching}
       error={error}
-      subject="Movies"
+      subject="TV Shows"
     />
   );
 
@@ -53,23 +54,25 @@ export default function PopularMovies() {
 
   return (
     <>
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        media="movie"
-        id={movieId}
-      />
+      {showId && (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          media="tv"
+          id={showId}
+        />
+      )}
 
-      <h1 className="list-title">Most Popular Movies</h1>
+      <h1 className="list-title">Upcoming TV Series</h1>
       <div className="content-list">
-        {fetchedData.map((movie, index) => {
+        {fetchedData.map((show: ShowSimple, index: number) => {
           const rank = 20 * (currentPage - 1) + index + 1;
 
           return (
             <SimpleCard
-              key={movie.id}
-              data={movie}
-              onClick={() => handleOpenModal(movie.id)}
+              key={show.id}
+              data={show}
+              onOpenModal={handleOpenModal}
               rank={rank}
             />
           );

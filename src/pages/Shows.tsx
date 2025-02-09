@@ -1,8 +1,8 @@
 import "./Pages.css";
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
-import SmallLayout from "../layout/SmallLayout.jsx";
-import BigLayout from "../layout/BigLayout.jsx";
+import SmallLayout from "../layout/SmallLayout";
+import BigLayout from "../layout/BigLayout";
 
 export default function Series() {
   const { showsAiringToday, popularShows, topRatedShows } = useLoaderData();
