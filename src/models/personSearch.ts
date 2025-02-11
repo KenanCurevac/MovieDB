@@ -1,4 +1,4 @@
-export type PeopleSearchData = {
+export type PersonSearchData = {
   adult: boolean;
   gender: number;
   id: number;

@@ -19,7 +19,7 @@ type KnownFor = {
   original_name?: string;
 };
 
-export type PeopleSimple = {
+export type PersonSimple = {
   adult: boolean;
   gender: number;
   id: number;

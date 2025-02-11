@@ -1,4 +1,4 @@
-export type PeopleDetails = {
+export type PersonDetails = {
   adult: boolean;
   also_known_as: string[];
   biography: string;

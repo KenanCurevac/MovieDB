@@ -19,8 +19,12 @@ export default function useFetch<T>(fetchFun: FetchFunction<T>): FetchState<T> {
       try {
         const data = await fetchFun();
         setFetchedData(data);
-      } catch (error: any) {
-        setError({ message: error.message || "Failed to fetch data." });
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setError({ message: error.message });
+        } else {
+          setError({ message: "An unexpected error occurred." });
+        }
       }
       setIsFetching(false);
     }

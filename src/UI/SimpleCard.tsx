@@ -6,10 +6,10 @@ import Typography from "@mui/material/Typography";
 import noPicture from "../assets/placeholder.jpg";
 import { MovieSimple } from "../models/movieSimple";
 import { ShowSimple } from "../models/showSimple";
-import { PeopleSimple } from "../models/peopleSimple";
+import { PersonSimple } from "../models/personSimple";
 
 type SimpleCardProps = {
-  data: MovieSimple | ShowSimple | PeopleSimple;
+  data: MovieSimple | ShowSimple | PersonSimple;
   onOpenModal: (id: number) => void;
   rank: number;
 };
@@ -52,7 +52,15 @@ export default function SimpleCard({
       <CardMedia
         component="img"
         image={imageSrc}
-        alt={isMovie ? data.title : isShow || isPerson ? data.name : "picture"}
+        alt={
+          isMovie
+            ? "Movie Poster"
+            : isShow
+            ? "TV Series Poster"
+            : isPerson
+            ? "Person Poster"
+            : "Media Picture"
+        }
         className="simple-card-picture"
       />
       <CardContent className="simple-card-content">

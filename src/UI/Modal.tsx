@@ -36,19 +36,15 @@ export default function Modal({ open, onClose, media, id }: ModalProps) {
   const isShow = fetchedData && "first_air_date" in fetchedData;
 
   const releaseYear = isMovie
-    ? (fetchedData as MovieDetails).release_date.split("-")[0]
+    ? fetchedData.release_date.split("-")[0]
     : isShow
-    ? (fetchedData as ShowDetails).first_air_date.split("-")[0]
+    ? fetchedData.first_air_date.split("-")[0]
     : null;
 
-  const endYear = isShow
-    ? (fetchedData as ShowDetails).last_air_date.split("-")[0]
-    : null;
+  const endYear = isShow ? fetchedData.last_air_date.split("-")[0] : null;
 
   const runtime = isMovie
-    ? `${Math.trunc((fetchedData as MovieDetails).runtime / 60)}h ${
-        (fetchedData as MovieDetails).runtime % 60
-      }min`
+    ? `${Math.trunc(fetchedData.runtime / 60)}h ${fetchedData.runtime % 60}min`
     : null;
 
   const genres = fetchedData?.genres.map((genre) => genre.name) ?? [];
@@ -102,7 +98,13 @@ export default function Modal({ open, onClose, media, id }: ModalProps) {
             ? `https://image.tmdb.org/t/p/w500${fetchedData.backdrop_path}`
             : noPicture
         }
-        alt="image"
+        alt={
+          isMovie
+            ? "Movie Poster"
+            : isShow
+            ? "TV Series Poster"
+            : "Media Picture"
+        }
       />
       <DialogContent className="modal-content">
         <div className="modal-data">

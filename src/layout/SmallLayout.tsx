@@ -6,10 +6,10 @@ import PeopleModal from "../UI/PeopleModal";
 import LayoutTitle from "./LayoutTitle";
 import { MovieSimple } from "../models/movieSimple";
 import { ShowSimple } from "../models/showSimple";
-import { PeopleSimple } from "../models/peopleSimple";
+import { PersonSimple } from "../models/personSimple";
 
 type SmallLayoutProps = {
-  data: MovieSimple[] | ShowSimple[] | PeopleSimple[];
+  data: MovieSimple[] | ShowSimple[] | PersonSimple[];
   title: string;
   link: string;
   media: string;
@@ -108,10 +108,12 @@ export default function SmallLayout({
                   }
                   alt={
                     isMovie
-                      ? elem.title
-                      : isShow || isPerson
-                      ? elem.name
-                      : "No Picture"
+                      ? "Movie Poster"
+                      : isShow
+                      ? "TV Series Poster"
+                      : isPerson
+                      ? "Person Poster"
+                      : "Media Picture"
                   }
                   className={`${className} small-carousel-picture`}
                 />

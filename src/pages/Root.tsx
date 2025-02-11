@@ -15,7 +15,7 @@ export default function RootLayout() {
       <AppBar position="static" className="navbar">
         <Toolbar>
           <Link to="/">
-            <img className="film-atlas" src={logo} alt="Film Atlas" />
+            <img className="film-atlas" src={logo} alt="Film Atlas Logo" />
           </Link>
           <Search />
           <Typography variant="h6" component="div" className="navbar-menu-text">

@@ -106,7 +106,7 @@ export default function TrailerLayout({
                         ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
                         : transparent
                     }
-                    alt={isMovie ? elem.title : "No Picture"}
+                    alt={isMovie ? "Movie Poster" : "Media Poster"}
                     className={`${className} trailer-carousel-picture`}
                     style={{
                       boxShadow: "border" in elem ? "none" : "5px 12px 5px",

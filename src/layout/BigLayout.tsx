@@ -93,7 +93,13 @@ export default function BigLayout({
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${elem.poster_path}`}
-                  alt={isMovie ? elem.title : isShow ? elem.name : "No Picture"}
+                  alt={
+                    isMovie
+                      ? "Movie Poster"
+                      : isShow
+                      ? "TV Series Poster"
+                      : "Media Picture"
+                  }
                   className={`${className} big-carousel-picture`}
                 />
               </div>

@@ -11,9 +11,9 @@ import Modal from "./Modal";
 import PeopleModal from "./PeopleModal";
 import { MovieSearchData } from "../models/movieSearch";
 import { ShowSearchData } from "../models/showSearch";
-import { PeopleSearchData } from "../models/peopleSearch";
+import { PersonSearchData } from "../models/personSearch";
 
-type SearchOption = MovieSearchData | ShowSearchData | PeopleSearchData;
+type SearchOption = MovieSearchData | ShowSearchData | PersonSearchData;
 
 export default function Search() {
   const [openResults, setOpenResults] = useState(false);
@@ -136,7 +136,15 @@ export default function Search() {
               <img
                 loading="lazy"
                 src={imageSrc}
-                alt="image"
+                alt={
+                  isMovie
+                    ? "Movie Poster"
+                    : isShow
+                    ? "TV Series Poster"
+                    : isPerson
+                    ? "Person Poster"
+                    : "Media Picture"
+                }
                 className="search-picture"
               />
               <div className="search-info">

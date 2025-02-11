@@ -7,7 +7,7 @@ import Pagination from "@mui/material/Pagination";
 import PeopleModal from "../UI/PeopleModal";
 import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
-import { PeopleSimple } from "../models/peopleSimple";
+import { PersonSimple } from "../models/personSimple";
 
 export default function PopularPeople() {
   const [openModal, setOpenModal] = useState(false);
@@ -65,7 +65,7 @@ export default function PopularPeople() {
 
       <h1 className="list-title">Popular People</h1>
       <div className="content-list">
-        {fetchedData.map((person: PeopleSimple, index: number) => {
+        {fetchedData.map((person: PersonSimple, index: number) => {
           const rank = 20 * (currentPage - 1) + index + 1;
 
           return (

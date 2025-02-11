@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import DataStatus from "../subpages/DataStatus";
 import noPicture from "../assets/placeholder.jpg";
-import { PeopleDetails } from "../models/peopleDetails";
+import { PersonDetails } from "../models/personDetails";
 
 type PeopleModalProps = {
   open: boolean;
@@ -31,7 +31,7 @@ export default function PeopleModal({
     return Promise.resolve(null);
   }, [id]);
 
-  const { fetchedData, isFetching, error } = useFetch<PeopleDetails | null>(
+  const { fetchedData, isFetching, error } = useFetch<PersonDetails | null>(
     details
   );
 
@@ -93,7 +93,7 @@ export default function PeopleModal({
                 ? `https://image.tmdb.org/t/p/w500${fetchedData.profile_path}`
                 : noPicture
             }
-            alt="image"
+            alt={"Person Poster"}
           />
           <div className="people-data-display">
             <div className="people-data">
