@@ -173,15 +173,13 @@ export default function Search() {
             {...params}
             placeholder="Search Film Atlas"
             InputLabelProps={{ shrink: false }}
-            slotProps={{
-              input: {
-                ...params.InputProps,
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon sx={{ color: "#e6b5bb" }} />
-                  </InputAdornment>
-                ),
-              },
+            InputProps={{
+              ...params.InputProps,
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon sx={{ color: "#e6b5bb" }} />
+                </InputAdornment>
+              ),
             }}
           />
         )}
