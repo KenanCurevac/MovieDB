@@ -9,6 +9,8 @@ const apiKey = process.env.REACT_APP_API_KEY;
 export default function Home() {
   const { upcomingMovies, popularPeople, upcomingShows } = useLoaderData();
 
+  console.log(window.innerWidth, "sirina");
+
   return (
     <div className="top-layer">
       <TrailerLayout

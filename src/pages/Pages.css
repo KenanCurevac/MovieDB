@@ -89,19 +89,14 @@
   border-color: #074634;
 }
 
-@media (max-width: 1270px) {
+@media (max-width: 920px) {
+  .top-layer {
+    flex-direction: column;
+  }
+
   .navbar {
-    margin: 0px auto 20px auto;
-  }
-
-  .film-atlas {
-    width: 100px;
-  }
-}
-
-@media (max-width: 880px) {
-  .link {
-    font-size: 25px !important;
+    max-width: 794px;
+    margin: 0px auto 2%;
   }
 }
 
@@ -112,11 +107,5 @@
 
   .navbar-menu-icons {
     display: flex;
-  }
-}
-
-@media (max-width: 600px) {
-  .navbar {
-    max-width: 480px;
   }
 }

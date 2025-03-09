@@ -37,12 +37,6 @@ export default function RootLayout() {
             <Link to="/" className="navbar-icon">
               <HomeIcon />
             </Link>
-            <Link to="/movies" className="navbar-icon">
-              <LocalMoviesIcon />
-            </Link>
-            <Link to="/tvshows" className="navbar-icon">
-              <LiveTvIcon />
-            </Link>
           </Typography>
         </Toolbar>
       </AppBar>

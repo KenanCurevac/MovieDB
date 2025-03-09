@@ -8,6 +8,7 @@
   background: #f6cbcb;
   border-radius: 15px;
   box-shadow: 8px 8px 10px 4px #470d1dcf;
+  margin: auto;
 }
 
 .small-carousel-container {
@@ -70,32 +71,27 @@
 
 .null-picture {
   width: 0px;
-  height: 330px;
   margin: 8px 0px;
   filter: brightness(60%);
 }
 
 .first-picture {
   width: 220px;
-  height: 330px;
   cursor: pointer;
 }
 
 .second-picture {
   width: 120px;
-  height: 330px;
   filter: brightness(60%);
 }
 
 .third-picture {
   width: 80px;
-  height: 330px;
   filter: brightness(60%);
 }
 
 .fourth-picture {
   width: 0px;
-  height: 330px;
   margin: 8px 0px;
   filter: brightness(60%);
 }
@@ -113,15 +109,130 @@
   transition: width 0.7s ease;
   margin: 8px 10px;
   box-shadow: 5px 12px 5px;
+  height: 330px;
 }
 
-@media (max-width: 1600px) {
-  .small-layout-container {
-    margin: auto;
+@media (max-width: 1500px) {
+  .first-picture {
+    width: 170px;
+  }
+
+  .second-picture {
+    width: 85px;
+  }
+
+  .third-picture {
+    width: 55px;
+  }
+
+  .fourth-picture {
+    margin: 0px;
+  }
+
+  .null-picture {
+    margin: 0px;
+  }
+
+  .small-carousel-picture {
+    height: 280px;
+  }
+
+  .arrows .MuiSvgIcon-root {
+    font-size: 60px !important;
   }
 }
 
-@media (max-width: 775px) {
+@media (max-width: 1450px) {
+  .small-carousel {
+    width: 410px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .third-picture {
+    width: 0px;
+    margin: 0px;
+  }
+
+  .small-carousel {
+    width: 335px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .second-picture {
+    width: 0px;
+    margin: 0px;
+  }
+
+  .small-carousel {
+    width: 260px;
+  }
+
+  .first-picture {
+    width: 220px;
+    margin: 0px;
+  }
+
+  .small-carousel-picture {
+    height: 330px;
+  }
+}
+
+@media (max-width: 920px) {
+  .small-carousel {
+    width: 600px;
+  }
+
+  .first-picture {
+    width: 250px;
+  }
+
+  .second-picture {
+    width: 145px;
+  }
+
+  .third-picture {
+    width: 105px;
+  }
+
+  .small-carousel-picture {
+    height: 355px;
+    margin: 8px 10px;
+  }
+
+  .arrows .MuiSvgIcon-root {
+    font-size: 70px !important;
+  }
+}
+
+@media (max-width: 865px) {
+  .first-picture {
+    width: 220px;
+  }
+
+  .second-picture {
+    width: 120px;
+  }
+
+  .third-picture {
+    width: 80px;
+  }
+
+  .fourth-picture {
+    margin: 0px;
+  }
+
+  .small-carousel-picture {
+    height: 330px;
+  }
+
+  .small-carousel {
+    width: 520px;
+  }
+}
+
+@media (max-width: 750px) {
   .third-picture {
     width: 0px;
     margin: 0px;
@@ -131,34 +242,48 @@
     margin: 0px;
   }
 
-  .fourth-picture {
-    margin: 0px;
-  }
-
-  .small-layout-container {
-    margin: auto;
-  }
-
-  .small-carousel-picture {
-    transition: width 0.2s ease;
-  }
-}
-
-@media (max-width: 750px) {
   .small-carousel {
     width: 420px;
   }
+
+  .arrows .MuiSvgIcon-root {
+    font-size: 60px !important;
+  }
 }
 
-@media (max-width: 665px) {
+@media (max-width: 670px) {
+  .first-picture {
+    width: 260px;
+    height: 390px;
+  }
+
   .second-picture {
     width: 0px;
+  }
+
+  .small-carousel {
+    width: 330px;
+  }
+
+  .small-carousel-picture {
+    transition: none;
     margin: 0px;
   }
 }
 
-@media (max-width: 645px) {
+@media (max-width: 540px) {
   .small-carousel {
-    width: 280px;
+    width: 60vw;
+    height: calc(60vw * 1.4);
+    padding: 4vw 5.5vw 4.5vw;
+  }
+
+  .first-picture {
+    width: 100%;
+    height: auto;
+  }
+
+  .arrows .MuiSvgIcon-root {
+    font-size: 45px !important;
   }
 }

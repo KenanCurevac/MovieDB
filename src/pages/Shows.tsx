@@ -13,7 +13,7 @@ export default function Series() {
     <div className="top-layer">
       <SmallLayout
         data={showsAiringToday}
-        title="TV Series Airing Todays"
+        title="TV Series Airing Today"
         link="shows_airing_today"
         media="tv"
       />
