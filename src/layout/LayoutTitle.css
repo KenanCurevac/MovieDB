@@ -108,6 +108,10 @@
     font-size: 22px;
   }
 
+  .layout-title-container {
+    margin: 0px auto 20px;
+  }
+
   .layout-title-container:hover .layout-title {
     font-size: 24px;
   }
@@ -125,6 +129,7 @@
 @media (max-width: 920px) {
   .layout-title-container {
     padding: 8px 15px 8px 22px;
+    margin: 0px 10px 20px;
   }
 
   .layout-title {
@@ -199,6 +204,12 @@
 
   .layout-title-container:hover .layout-title-arrow {
     margin-left: 40px;
+  }
+}
+
+@media (max-width: 670px) {
+  .layout-title-container {
+    margin: 0px auto 20px;
   }
 }
 

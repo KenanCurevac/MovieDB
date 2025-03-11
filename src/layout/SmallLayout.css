@@ -142,7 +142,7 @@
   }
 }
 
-@media (max-width: 1450px) {
+@media (max-width: 1480px) {
   .small-carousel {
     width: 410px;
   }
@@ -271,7 +271,7 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 560px) {
   .small-carousel {
     width: 60vw;
     height: calc(60vw * 1.4);

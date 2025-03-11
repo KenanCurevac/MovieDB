@@ -53,7 +53,9 @@ export default function BigLayout({
       <div className="big-carousel-container">
         <button
           onClick={() => handleSlide("previous")}
-          className={`arrows ${offset === 0 ? "disabled-button" : ""}`}
+          className={`arrows-big-layout ${
+            offset === 0 ? "disabled-button" : ""
+          }`}
           disabled={offset === 0}
         >
           <ArrowForwardIosIcon className="arrow-left" />
@@ -108,7 +110,9 @@ export default function BigLayout({
         </div>
         <button
           onClick={() => handleSlide("next")}
-          className={`arrows ${offset === 15 ? "disabled-button" : ""}`}
+          className={`arrows-big-layout ${
+            offset === 15 ? "disabled-button" : ""
+          }`}
           disabled={offset === 15}
         >
           <ArrowForwardIosIcon className="arrow-right" />

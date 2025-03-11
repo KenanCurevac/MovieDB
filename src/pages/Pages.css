@@ -10,7 +10,7 @@
   background-color: #f6cbcb !important;
   width: 100%;
   border-radius: 15px !important;
-  margin-bottom: 2%;
+  margin-bottom: 30px;
   box-shadow: 6px 6px 10px 4px #470d1dcf !important;
   border-radius: 15px !important;
   position: relative !important;
@@ -95,8 +95,26 @@
   }
 
   .navbar {
-    max-width: 794px;
-    margin: 0px auto 2%;
+    max-width: 764px;
+    margin: 0px auto 30px;
+  }
+}
+
+@media (max-width: 865px) {
+  .navbar {
+    max-width: 664px;
+  }
+}
+
+@media (max-width: 750px) {
+  .navbar {
+    max-width: 574px;
+  }
+}
+
+@media (max-width: 670px) {
+  .navbar {
+    max-width: 454px;
   }
 }
 

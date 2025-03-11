@@ -285,7 +285,7 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 560px) {
   .trailer-carousel {
     width: 60vw;
     height: calc(60vw * 1.4);
