@@ -8,6 +8,7 @@ import Modal from "../UI/Modal";
 import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
 import { ShowSimple } from "../models/showSimple";
+import { useMediaQuery } from "@mui/material";
 
 export default function ShowsAiringToday() {
   const [openModal, setOpenModal] = useState(false);
@@ -21,6 +22,8 @@ export default function ShowsAiringToday() {
     [currentPage]
   );
   const { fetchedData, isFetching, error } = useFetch(fetchShows);
+
+  const isSmallScreen = useMediaQuery("(max-width:670px)");
 
   function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
     setSearchParams({ page: value.toString() });
@@ -83,6 +86,7 @@ export default function ShowsAiringToday() {
         page={currentPage}
         onChange={handleChangePage}
         className="pagination"
+        siblingCount={isSmallScreen ? 0 : 1}
       />
     </>
   );

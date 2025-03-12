@@ -1,14 +1,9 @@
 .search {
-  min-width: 200px;
-  max-width: 500px;
-  width: 100%;
+  width: 500px;
   background-color: #f6e9e9;
   border-radius: 20px;
   margin-left: 15%;
-}
-
-.MuiAutocomplete-paper {
-  background-color: #470d1d !important;
+  /* margin-left: calc(100vw - 1325px); */
 }
 
 .MuiOutlinedInput-root {
@@ -16,6 +11,10 @@
   font-size: 18px !important;
   letter-spacing: 0.6px !important;
   color: #470d1d !important;
+}
+
+.MuiAutocomplete-paper {
+  background-color: #470d1d !important;
 }
 
 .MuiOutlinedInput-root fieldset {

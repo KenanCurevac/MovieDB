@@ -1,6 +1,6 @@
 .list-title {
   width: fit-content;
-  margin: 3.5% auto 1.5% auto;
+  margin: 30px auto 20px;
   background-color: #eed6d6;
   padding: 1% 2.5%;
   font-weight: bold;
@@ -28,21 +28,16 @@
   margin-top: 2vw;
 }
 
-.MuiPagination-ul {
-  border-radius: 10px;
-  padding: 0.6vw !important;
-}
-
 .MuiPaginationItem-root {
-  font-size: 2.5vw !important;
+  font-size: 40px !important;
   color: #eed6d6 !important;
   margin: 0px 8px !important;
-  height: 4vw !important;
-  width: 4vw !important;
+  height: 62px !important;
+  width: 62px !important;
 }
 
 .MuiPaginationItem-icon {
-  font-size: 4.5vw !important;
+  font-size: 72px !important;
   color: #eed6d6;
 }
 
@@ -51,12 +46,58 @@
   color: #eed6d6;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 905px) {
   .list-title {
-    font-size: 38px;
+    font-size: 40px;
   }
 
-  .pagination {
-    justify-content: start;
+  .MuiPaginationItem-root {
+    font-size: 34px !important;
+    height: 55px !important;
+    width: 55px !important;
+    margin: 0px 4px !important;
+  }
+
+  .MuiPaginationItem-icon {
+    font-size: 64px !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .list-title {
+    font-size: 34px;
+    padding: 6px 15px;
+  }
+
+  .MuiPagination-root {
+    margin-top: 16px;
+  }
+
+  .MuiPaginationItem-root {
+    font-size: 31px !important;
+    height: 50px !important;
+    width: 50px !important;
+    margin: 0px 1px !important;
+  }
+
+  .MuiPaginationItem-icon {
+    font-size: 60px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .list-title {
+    font-size: 30px;
+  }
+
+  .MuiPaginationItem-root {
+    font-size: 29px !important;
+    height: 46px !important;
+    width: 46px !important;
+    margin: 0px !important;
+  }
+
+  .MuiPaginationItem-icon {
+    font-size: 56px !important;
   }
 }

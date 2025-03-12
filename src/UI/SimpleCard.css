@@ -1,6 +1,6 @@
 .simple-card {
   max-width: 250px !important;
-  margin: 2% 1% !important;
+  margin: 10px 10px 20px !important;
   background: #eed6d6 !important;
   border-radius: 12px !important;
   cursor: pointer;
@@ -11,7 +11,7 @@
 
 .simple-card-picture {
   width: 94% !important;
-  margin: 3% auto 0% auto !important;
+  margin: 7.5px auto 0% !important;
   border-radius: 15px;
   box-shadow: none;
 }
@@ -56,8 +56,59 @@
   background-color: #470d1d;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .simple-card {
-    margin: auto;
+    width: 220px;
+  }
+
+  .simple-card-picture {
+    margin-top: 6px !important;
+  }
+
+  .card-text {
+    font-size: 22px !important;
+  }
+
+  .rank {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 580px) {
+  .simple-card {
+    width: 190px;
+  }
+
+  .simple-card-picture {
+    margin-top: 5px !important;
+  }
+
+  .card-text {
+    font-size: 21px !important;
+  }
+
+  .rank {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 515px) {
+  .simple-card {
+    max-width: none !important;
+    width: 330px;
+    margin-bottom: 15px !important;
+  }
+
+  .simple-card-picture {
+    width: 92% !important;
+    margin-top: 13px !important;
+  }
+
+  .card-text {
+    font-size: 28px !important;
+  }
+
+  .rank {
+    font-size: 32px;
   }
 }

@@ -29,8 +29,6 @@ export default function SimpleCard({
     ? data.first_air_date.split("-")[0]
     : null;
 
-  const job = isPerson ? data.known_for_department : null;
-
   let imageSrc = noPicture;
 
   if (isMovie || isShow) {
@@ -78,7 +76,7 @@ export default function SimpleCard({
             }}
           >
             {isPerson && data.known_for_department ? "" : "("}
-            {releaseDate || job}
+            {releaseDate || (isPerson && data.known_for_department)}
             {isPerson && data.known_for_department ? "" : ")"}
           </div>
           <div className="simple-card-data">

@@ -5,11 +5,18 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Search from "../UI/Search";
 import logo from "../assets/logofilmatlasfinal.png";
-import HomeIcon from "@mui/icons-material/Home";
-import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import LiveTvIcon from "@mui/icons-material/LiveTv";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
 
 export default function RootLayout() {
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  function toggleDrawer(newOpen: boolean) {
+    setOpenDrawer(newOpen);
+  }
   return (
     <>
       <AppBar position="static" className="navbar">
@@ -29,15 +36,9 @@ export default function RootLayout() {
               TV Series
             </Link>
           </Typography>
-          <Typography
-            variant="h6"
-            component="div"
-            className="navbar-menu-icons"
-          >
-            <Link to="/" className="navbar-icon">
-              <HomeIcon />
-            </Link>
-          </Typography>
+          <Button onClick={() => toggleDrawer(true)} className="mobile-menu">
+            <MenuIcon />
+          </Button>
         </Toolbar>
       </AppBar>
       <main>

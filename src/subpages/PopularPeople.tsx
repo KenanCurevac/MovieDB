@@ -8,6 +8,7 @@ import PeopleModal from "../UI/PeopleModal";
 import DataStatus from "./DataStatus";
 import { useSearchParams } from "react-router-dom";
 import { PersonSimple } from "../models/personSimple";
+import { useMediaQuery } from "@mui/material";
 
 export default function PopularPeople() {
   const [openModal, setOpenModal] = useState(false);
@@ -21,6 +22,8 @@ export default function PopularPeople() {
     [currentPage]
   );
   const { fetchedData, isFetching, error } = useFetch(fetchMovies);
+
+  const isSmallScreen = useMediaQuery("(max-width:670px)");
 
   function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
     setSearchParams({ page: value.toString() });
@@ -83,6 +86,7 @@ export default function PopularPeople() {
         page={currentPage}
         onChange={handleChangePage}
         className="pagination"
+        siblingCount={isSmallScreen ? 0 : 1}
       />
     </>
   );
