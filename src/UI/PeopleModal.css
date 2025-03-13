@@ -11,8 +11,8 @@
   align-items: flex-start !important;
 }
 
-.MuiDialog-paper {
-  max-width: 50% !important;
+.MuiDialog-root .MuiDialog-paper {
+  max-width: 780px !important;
   max-height: fit-content !important;
   height: auto;
   background: linear-gradient(135deg, #eccdcd, #f3e0e0) !important;
@@ -21,7 +21,7 @@
 }
 
 .MuiDialogTitle-root.people-modal-title-wrapper {
-  padding: 18px 24px 0px 24px !important;
+  padding: 18px 24px 0px !important;
 }
 
 .people-modal-title {
@@ -63,7 +63,7 @@
   width: 18%;
   min-width: 98px;
   height: auto;
-  margin: 0px 2%;
+  margin: 0px 14px 2px;
   box-shadow: none;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
   border-radius: 10px;
@@ -89,8 +89,31 @@
   margin-top: 3%;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 870px) {
+  .MuiDialog-root .MuiDialog-paper {
+    max-width: 90vw;
+  }
+}
+
+@media (max-width: 480px) {
   .people-modal-top {
     flex-direction: column;
+  }
+
+  .people-modal-content {
+    padding-top: 8px !important;
+  }
+
+  .people-picture {
+    margin: auto;
+  }
+
+  .job {
+    margin: 4px auto;
+    font-size: 24px;
+  }
+
+  .people-data-display {
+    gap: 4px;
   }
 }

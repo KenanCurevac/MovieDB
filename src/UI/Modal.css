@@ -11,8 +11,8 @@
   align-items: flex-start !important;
 }
 
-.MuiDialog-paper {
-  max-width: 50% !important;
+.MuiDialog-root .MuiDialog-paper {
+  max-width: 780px !important;
   max-height: fit-content !important;
   height: auto;
   background: linear-gradient(135deg, #eccdcd, #f3e0e0) !important;
@@ -107,7 +107,13 @@
   margin-top: 2%;
 }
 
-@media (max-width: 660px) {
+@media (max-width: 870px) {
+  .MuiDialog-root .MuiDialog-paper {
+    max-width: 90vw;
+  }
+}
+
+@media (max-width: 360px) {
   .modal-data {
     display: flex;
     flex-direction: column;

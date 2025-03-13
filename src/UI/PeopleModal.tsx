@@ -96,7 +96,7 @@ export default function PeopleModal({
             alt={"Person Poster"}
           />
           <div className="people-data-display">
-            <div className="people-data">
+            <div className="people-data job">
               {fetchedData.known_for_department}
             </div>
             <div>
