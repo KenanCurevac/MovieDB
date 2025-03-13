@@ -97,3 +97,9 @@
     min-width: 150px;
   }
 }
+
+@media (max-width: 560px) {
+  .MuiAutocomplete-popper {
+    width: 300px !important;
+  }
+}
