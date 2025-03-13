@@ -1,4 +1,5 @@
 import "./Pages.css";
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,7 +10,6 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
 
 export default function RootLayout() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -17,6 +17,7 @@ export default function RootLayout() {
   function toggleDrawer(newOpen: boolean) {
     setOpenDrawer(newOpen);
   }
+
   return (
     <>
       <AppBar position="static" className="navbar">
@@ -24,21 +25,60 @@ export default function RootLayout() {
           <Link to="/">
             <img className="film-atlas" src={logo} alt="Film Atlas Logo" />
           </Link>
-          <Search />
-          <Typography variant="h6" component="div" className="navbar-menu-text">
-            <Link to="/" className="link">
-              Home
-            </Link>
-            <Link to="/movies" className="link">
-              Movies
-            </Link>
-            <Link to="/tvshows" className="link tv-series-link">
-              TV Series
-            </Link>
-          </Typography>
+          <div className="navbar-content">
+            <Search />
+            <Typography
+              variant="h6"
+              component="div"
+              className="navbar-menu-links"
+            >
+              <Link to="/" className="link">
+                Home
+              </Link>
+              <Link to="/movies" className="link">
+                Movies
+              </Link>
+              <Link to="/tvshows" className="link tv-series-link">
+                TV Series
+              </Link>
+            </Typography>
+          </div>
           <Button onClick={() => toggleDrawer(true)} className="mobile-menu">
             <MenuIcon />
           </Button>
+          <Drawer
+            open={openDrawer}
+            onClose={() => toggleDrawer(false)}
+            anchor="right"
+          >
+            <Button
+              className="drawer-close-button"
+              onClick={() => toggleDrawer(false)}
+            >
+              <CloseIcon />
+            </Button>
+            <Link
+              to="/"
+              className="drawer-link"
+              onClick={() => toggleDrawer(false)}
+            >
+              Home
+            </Link>
+            <Link
+              to="/movies"
+              className="drawer-link"
+              onClick={() => toggleDrawer(false)}
+            >
+              Movies
+            </Link>
+            <Link
+              to="/tvshows"
+              className="drawer-link tv-series-link"
+              onClick={() => toggleDrawer(false)}
+            >
+              TV Series
+            </Link>
+          </Drawer>
         </Toolbar>
       </AppBar>
       <main>

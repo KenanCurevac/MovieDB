@@ -1,9 +1,13 @@
 .search {
   width: 500px;
+  max-height: 45px;
   background-color: #f6e9e9;
   border-radius: 20px;
-  margin-left: 15%;
-  /* margin-left: calc(100vw - 1325px); */
+  margin: auto;
+}
+
+.MuiToolbar-root {
+  padding: 0px !important;
 }
 
 .MuiOutlinedInput-root {
@@ -74,10 +78,22 @@
   font-size: 20px !important;
 }
 
-@media (max-width: 835px) {
+@media (max-width: 1040px) {
   .search {
-    width: 50%;
-    min-width: 100px;
-    margin: auto;
+    width: calc(100vw - 540px);
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 870px) {
+  .search {
+    width: 500px;
+  }
+}
+
+@media (max-width: 755px) {
+  .search {
+    width: calc(100vw - 260px);
+    min-width: 150px;
   }
 }

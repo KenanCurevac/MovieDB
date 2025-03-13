@@ -16,12 +16,17 @@
   position: relative !important;
 }
 
+.navbar-content {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
 .film-atlas {
   width: 120px;
   height: auto;
   box-shadow: none;
   margin: 0px;
-  margin-left: -15px;
 }
 
 .link {
@@ -44,21 +49,14 @@
   white-space: nowrap !important;
 }
 
-.navbar-menu-text {
+.navbar-menu-links {
   display: flex;
   flex-wrap: nowrap;
   gap: 5%;
   align-items: center;
   width: fit-content;
-  padding: 0px 3%;
+  padding: 0px 3% 0px;
 }
-
-/*
-.navbar-icon:active .MuiSvgIcon-root {
-  color: #074634;
-  border-color: #074634;
-}
-  */
 
 .mobile-menu {
   display: none !important;
@@ -66,24 +64,63 @@
 
 .mobile-menu .MuiSvgIcon-root {
   font-size: 55px !important;
-  color: white !important;
+  color: #470d1d !important;
 }
 
 .mobile-menu .MuiSvgIcon-root:hover {
-  color: #00df9a !important;
+  color: #177f62 !important;
 }
 
-@media (max-width: 940px) {
-  .navbar-menu-text {
-    display: none;
+.MuiDrawer-paper {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #470d1d !important;
+}
+
+.drawer-close-button.MuiButton-root {
+  position: absolute;
+  top: 4vh;
+}
+
+.drawer-close-button .MuiSvgIcon-root {
+  font-size: 60px !important;
+  color: #eed6d6 !important;
+}
+
+.drawer-close-button .MuiSvgIcon-root:hover {
+  color: #177f62 !important;
+}
+
+.drawer-link {
+  text-decoration: none;
+  font-size: 38px;
+  font-weight: bold;
+  color: #eed6d6;
+  margin-bottom: 36px;
+}
+
+.drawer-link:hover {
+  color: #177f62;
+}
+
+.drawer-link:active {
+  color: #074634;
+}
+
+@media (max-width: 1080px) {
+  .navbar-content {
+    margin-left: 0px;
   }
 
-  .mobile-menu {
-    display: flex !important;
+  .navbar-menu-links {
+    padding-left: 2%;
   }
 }
 
-@media (max-width: 920px) {
+@media (max-width: 870px) {
   .top-layer {
     flex-direction: column;
   }
@@ -92,22 +129,38 @@
     max-width: 764px;
     margin: 0px auto 30px;
   }
-}
 
-@media (max-width: 865px) {
-  .navbar {
-    max-width: 664px;
+  .navbar-content {
+    margin: auto;
+  }
+
+  .navbar-menu-links {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: flex !important;
+    margin-right: 1.5% !important;
+  }
+
+  .film-atlas {
+    width: 105px;
+    margin: auto -8px;
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 560px) {
   .navbar {
-    max-width: 574px;
+    width: 60vw;
+  }
+
+  .drawer-link {
+    font-size: 34px;
   }
 }
 
-@media (max-width: 670px) {
-  .navbar {
-    max-width: 454px;
+@media (max-width: 450px) {
+  .drawer-link {
+    font-size: 30px;
   }
 }
