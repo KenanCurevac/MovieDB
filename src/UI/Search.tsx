@@ -100,6 +100,14 @@ export default function Search() {
         loading={loading}
         disableClearable
         freeSolo
+        slotProps={{
+          popper: {
+            id: "search-results-popper",
+            sx: {
+              borderWidth: options.length > 0 ? "3px !important" : "0px",
+            },
+          },
+        }}
         renderOption={(props, option, index) => {
           const { key, ...optionProps } = props;
           const myKey = `${option.id}-${index}`;

@@ -85,7 +85,7 @@ export default function SimpleCard({
               <div
                 className="rating"
                 style={{
-                  padding: (isMovie || isShow) && data.vote_average ? "7%" : "",
+                  padding: isMovie || isShow ? "7%" : "",
                 }}
               >
                 {isMovie || isShow ? data.vote_average.toFixed(1) : null}

@@ -110,13 +110,13 @@ export default function Modal({ open, onClose, media, id }: ModalProps) {
         <div className="modal-data">
           <div className="modal-data-left-side">
             {isMovie && fetchedData.runtime && (
-              <div>
+              <div style={{ marginBottom: "4px" }}>
                 <span style={{ fontSize: "17px" }}>Runtime: </span>
                 <span style={{ fontSize: "22px" }}>{runtime || "No Data"}</span>
               </div>
             )}
             {isShow && fetchedData.number_of_seasons && (
-              <div>
+              <div style={{ marginBottom: "2px" }}>
                 <span style={{ fontSize: "17px" }}>Seasons: </span>
                 <span style={{ fontSize: "22px" }}>
                   {fetchedData.number_of_seasons || "No Data"}
@@ -124,7 +124,7 @@ export default function Modal({ open, onClose, media, id }: ModalProps) {
               </div>
             )}
             {isShow && fetchedData.number_of_episodes && (
-              <div>
+              <div style={{ marginBottom: "4px" }}>
                 <span style={{ fontSize: "17px" }}>Episodes: </span>
                 <span style={{ fontSize: "22px" }}>
                   {fetchedData.number_of_episodes || "No Data"}

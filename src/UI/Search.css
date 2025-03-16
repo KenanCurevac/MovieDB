@@ -37,7 +37,7 @@
 .MuiAutocomplete-popper {
   margin-top: 0.2% !important ;
   border-radius: 8px;
-  border: solid 3px #eed6d6;
+  border: solid 0px #eed6d6;
   max-width: 100%;
   width: inherit;
 }
