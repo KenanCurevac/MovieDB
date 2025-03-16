@@ -31,7 +31,7 @@
 .MuiPaginationItem-root {
   font-size: 40px !important;
   color: #eed6d6 !important;
-  margin: 0px 8px !important;
+  margin: 0px 8px;
   height: 62px !important;
   width: 62px !important;
 }

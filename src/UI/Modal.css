@@ -6,9 +6,9 @@
 .standard-modal .MuiDialog-container {
   overflow: auto;
   scrollbar-width: none;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: flex-start !important;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .MuiDialog-root .MuiDialog-paper {
@@ -17,7 +17,7 @@
   height: auto;
   background: linear-gradient(135deg, #eccdcd, #f3e0e0) !important;
   color: #470d1d !important;
-  overflow: visible !important;
+  overflow: visible;
 }
 
 .modal-title {
@@ -103,7 +103,7 @@
   text-indent: 6%;
   background-color: #f6e9e9;
   border-radius: 20px;
-  padding: 1% 2.5% 1.5% 2.5%;
+  padding: 1% 2.5% 1.5%;
   margin-top: 2%;
 }
 

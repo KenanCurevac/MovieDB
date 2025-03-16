@@ -2,6 +2,7 @@ import "./TrailerPart.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import TrailerModal from "../UI/TrailerModal";
+import noVideo from "../assets/no-video.jpg";
 
 type TrailerPartProps = {
   title: string;
@@ -32,7 +33,11 @@ export default function TrailerPart({
 
     async function fetchTrailer() {
       const fetchedTrailer = await fetchTrailers(movieToShow);
-      setTrailerKey(fetchedTrailer[0].key);
+      setTrailerKey(
+        fetchedTrailer && fetchedTrailer.length > 0
+          ? fetchedTrailer[0].key
+          : null
+      );
     }
 
     fetchTrailer();
@@ -49,19 +54,27 @@ export default function TrailerPart({
       )}
 
       <div className="watch-trailer">WATCH TRAILER</div>
-      {trailerKey && (
-        <div
-          onClick={handleOpenTrailer}
-          className="trailer-thumbnail-container"
-        >
+      <div
+        onClick={handleOpenTrailer}
+        className="trailer-thumbnail-container"
+        style={{ pointerEvents: trailerKey ? "auto" : "none" }}
+      >
+        {trailerKey ? (
           <iframe
             src={`https://www.youtube.com/embed/${trailerKey}`}
             title="YouTube video player"
             frameBorder="0"
             className="trailer-thumbnail"
           ></iframe>
-        </div>
-      )}
+        ) : (
+          <img
+            src={noVideo}
+            alt="Trailer not available"
+            className="trailer-thumbnail"
+            style={{ border: "none" }}
+          />
+        )}
+      </div>
       <div className="trailer-info">
         <div className="trailer-title">{title}</div>
         <div className="trailer-release-date">Release Date:</div>

@@ -1,11 +1,11 @@
 .trailer-modal .MuiDialog-root {
   position: fixed;
   z-index: 9999;
-  overflow: visible !important;
+  overflow: visible;
 }
 
 .MuiBackdrop-root {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 .trailer-modal .MuiDialog-paper {
@@ -16,16 +16,16 @@
 }
 
 .trailer-modal .MuiDialogContent-root {
-  padding: 0px !important;
+  padding: 0px;
   scrollbar-width: none;
 }
 
 .MuiDialog-content {
   overflow: auto;
   scrollbar-width: none;
-  display: flex !important;
+  display: flex !;
   justify-content: center;
-  align-items: center !important;
+  align-items: center !;
 }
 
 .playing-trailer {
