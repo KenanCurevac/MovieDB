@@ -7,6 +7,7 @@ import LayoutTitle from "./LayoutTitle";
 import { MovieSimple } from "../models/movieSimple";
 import { ShowSimple } from "../models/showSimple";
 import { PersonSimple } from "../models/personSimple";
+import noPicture from "../assets/placeholder.jpg";
 
 type SmallLayoutProps = {
   data: MovieSimple[] | ShowSimple[] | PersonSimple[];
@@ -101,9 +102,13 @@ export default function SmallLayout({
                 <img
                   src={
                     isMovie || isShow
-                      ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                      ? elem.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                        : noPicture
                       : isPerson
-                      ? `https://image.tmdb.org/t/p/w500${elem.profile_path}`
+                      ? elem.profile_path
+                        ? `https://image.tmdb.org/t/p/w500${elem.profile_path}`
+                        : noPicture
                       : undefined
                   }
                   alt={

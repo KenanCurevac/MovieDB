@@ -6,6 +6,7 @@ import Modal from "../UI/Modal";
 import LayoutTitle from "./LayoutTitle";
 import TrailerPart from "./TrailerPart";
 import { MovieSimple } from "../models/movieSimple";
+import noPicture from "../assets/placeholder.jpg";
 
 type TrailerLayoutProps = {
   data: MovieSimple[];
@@ -103,7 +104,9 @@ export default function TrailerLayout({
                   <img
                     src={
                       isMovie
-                        ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                        ? elem.poster_path
+                          ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                          : noPicture
                         : transparent
                     }
                     alt={isMovie ? "Movie Poster" : "Media Poster"}

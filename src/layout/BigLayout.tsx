@@ -5,6 +5,7 @@ import Modal from "../UI/Modal";
 import LayoutTitle from "./LayoutTitle";
 import { MovieSimple } from "../models/movieSimple";
 import { ShowSimple } from "../models/showSimple";
+import noPicture from "../assets/placeholder.jpg";
 
 type BigLayoutProps = {
   data: MovieSimple[] | ShowSimple[];
@@ -94,7 +95,11 @@ export default function BigLayout({
                 onClick={() => handleOpenModal(elem.id)}
               >
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${elem.poster_path}`}
+                  src={
+                    elem.poster_path
+                      ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                      : noPicture
+                  }
                   alt={
                     isMovie
                       ? "Movie Poster"
