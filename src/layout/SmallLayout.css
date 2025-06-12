@@ -18,45 +18,6 @@
   gap: 2px;
 }
 
-.arrows {
-  background-color: transparent;
-  all: unset;
-  display: inline-flex;
-  cursor: pointer;
-}
-
-.arrow-left {
-  transform: rotate(180deg);
-  font-size: 70px !important;
-  color: #470d1d;
-}
-
-.arrow-right {
-  font-size: 70px !important;
-  color: #470d1d;
-}
-
-.disabled-button {
-  cursor: auto !important;
-  opacity: 0.5 !important;
-}
-
-.disabled-button:hover .arrow-left {
-  color: #470d1d !important;
-}
-
-.disabled-button:hover .arrow-right {
-  color: #470d1d !important;
-}
-
-.arrow-left:not(.disabled-button):hover {
-  color: #177f62;
-}
-
-.arrow-right:not(.disabled-button):hover {
-  color: #177f62;
-}
-
 .small-carousel {
   display: flex;
   flex-direction: row;
@@ -136,10 +97,6 @@
   .small-carousel-picture {
     height: 280px;
   }
-
-  .arrows .MuiSvgIcon-root {
-    font-size: 60px !important;
-  }
 }
 
 @media (max-width: 1480px) {
@@ -200,10 +157,6 @@
     height: 355px;
     margin: 8px 10px;
   }
-
-  .arrows .MuiSvgIcon-root {
-    font-size: 70px !important;
-  }
 }
 
 @media (max-width: 865px) {
@@ -245,10 +198,6 @@
   .small-carousel {
     width: 420px;
   }
-
-  .arrows .MuiSvgIcon-root {
-    font-size: 60px !important;
-  }
 }
 
 @media (max-width: 670px) {
@@ -281,9 +230,5 @@
   .first-picture {
     width: 100%;
     height: auto;
-  }
-
-  .arrows .MuiSvgIcon-root {
-    font-size: 45px !important;
   }
 }

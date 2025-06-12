@@ -6,10 +6,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Search from "../UI/Search";
 import logo from "../assets/logofilmatlasfinal.png";
-import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+import Sidenav from "./Sidenav";
 
 export default function RootLayout() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -46,39 +45,7 @@ export default function RootLayout() {
           <Button onClick={() => toggleDrawer(true)} className="mobile-menu">
             <MenuIcon />
           </Button>
-          <Drawer
-            open={openDrawer}
-            onClose={() => toggleDrawer(false)}
-            anchor="right"
-          >
-            <Button
-              className="drawer-close-button"
-              onClick={() => toggleDrawer(false)}
-            >
-              <CloseIcon />
-            </Button>
-            <Link
-              to="/"
-              className="drawer-link"
-              onClick={() => toggleDrawer(false)}
-            >
-              Home
-            </Link>
-            <Link
-              to="/movies"
-              className="drawer-link"
-              onClick={() => toggleDrawer(false)}
-            >
-              Movies
-            </Link>
-            <Link
-              to="/tvshows"
-              className="drawer-link tv-series-link"
-              onClick={() => toggleDrawer(false)}
-            >
-              TV Series
-            </Link>
-          </Drawer>
+          <Sidenav openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
         </Toolbar>
       </AppBar>
       <main>

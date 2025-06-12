@@ -21,45 +21,6 @@
   gap: 2px;
 }
 
-.arrows {
-  background-color: transparent;
-  all: unset;
-  display: inline-flex;
-  cursor: pointer;
-}
-
-.arrow-left {
-  transform: rotate(180deg);
-  font-size: 70px !important;
-  color: #470d1d;
-}
-
-.arrow-right {
-  font-size: 70px !important;
-  color: #470d1d;
-}
-
-.disabled-button {
-  cursor: auto !important;
-  opacity: 0.5 !important;
-}
-
-.disabled-button:hover .arrow-left {
-  color: #470d1d !important;
-}
-
-.disabled-button:hover .arrow-right {
-  color: #470d1d !important;
-}
-
-.arrow-left:not(.disabled-button):hover {
-  color: #177f62;
-}
-
-.arrow-right:not(.disabled-button):hover {
-  color: #177f62;
-}
-
 .trailer-carousel {
   width: 650px;
   display: flex;
@@ -147,10 +108,6 @@
   .trailer-carousel {
     width: 600px;
   }
-
-  .arrows .MuiSvgIcon-root {
-    font-size: 60px !important;
-  }
 }
 
 @media (max-width: 1140px) {
@@ -219,10 +176,6 @@
   .trailer-carousel-picture {
     transition: width 1s ease;
   }
-
-  .arrows .MuiSvgIcon-root {
-    font-size: 70px !important;
-  }
 }
 
 @media (max-width: 865px) {
@@ -262,10 +215,6 @@
   .trailer-carousel {
     width: 450px;
   }
-
-  .arrows .MuiSvgIcon-root {
-    font-size: 60px !important;
-  }
 }
 
 @media (max-width: 670px) {
@@ -294,9 +243,5 @@
 
   .middle-picture {
     width: 100%;
-  }
-
-  .arrows .MuiSvgIcon-root {
-    font-size: 45px !important;
   }
 }

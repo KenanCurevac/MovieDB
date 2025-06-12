@@ -1,12 +1,12 @@
 import "./TrailerLayout.css";
 import { useState } from "react";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import transparent from "../assets/clearimage.png";
 import Modal from "../UI/Modal";
 import LayoutTitle from "./LayoutTitle";
 import TrailerPart from "./TrailerPart";
 import { MovieSimple } from "../models/movieSimple";
 import noPicture from "../assets/placeholder.jpg";
+import Arrows from "./Arrows";
 
 type TrailerLayoutProps = {
   data: MovieSimple[];
@@ -58,74 +58,63 @@ export default function TrailerLayout({
       <div className="upcoming-movies-side-container">
         <LayoutTitle title={title} link={link} />
         <div className="trailer-carousel-container">
-          <button
-            onClick={() => handleSlide("previous")}
-            className={`arrows ${offset === 0 ? "disabled-button" : ""}`}
-            disabled={offset === 0}
-          >
-            <ArrowForwardIosIcon className="arrow-left" />
-          </button>
-          <div className="trailer-carousel">
-            {[
-              { id: 1, border: "none" },
-              ...data,
-              { id: 2, border: "none" },
-            ].map((elem, index) => {
-              let className = "";
+          <Arrows onHandleSlide={handleSlide} offset={offset} maxOffset={19}>
+            <div className="trailer-carousel">
+              {[
+                { id: 1, border: "none" },
+                ...data,
+                { id: 2, border: "none" },
+              ].map((elem, index) => {
+                let className = "";
 
-              if (-1 + offset === index) {
-                className = "previous-picture";
-              } else if (offset === index) {
-                className = "on-the-left";
-              } else if (1 + offset === index) {
-                className = "middle-picture";
-              } else if (2 + offset === index) {
-                className = "on-the-right";
-              } else if (3 + offset === index) {
-                className = "next-picture";
-              } else return null;
+                if (-1 + offset === index) {
+                  className = "previous-picture";
+                } else if (offset === index) {
+                  className = "on-the-left";
+                } else if (1 + offset === index) {
+                  className = "middle-picture";
+                } else if (2 + offset === index) {
+                  className = "on-the-right";
+                } else if (3 + offset === index) {
+                  className = "next-picture";
+                } else return null;
 
-              const isMovie = elem && "release_date" in elem;
+                const isMovie = elem && "release_date" in elem;
 
-              return (
-                <div
-                  key={elem.id}
-                  className={`trailer-carousel-picture-container ${
-                    className === "on-the-left" || className === "on-the-right"
-                      ? "perspective"
-                      : ""
-                  } `}
-                  onClick={
-                    className === "middle-picture"
-                      ? () => handleOpenModal(elem.id)
-                      : undefined
-                  }
-                >
-                  <img
-                    src={
-                      isMovie
-                        ? elem.poster_path
-                          ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
-                          : noPicture
-                        : transparent
+                return (
+                  <div
+                    key={elem.id}
+                    className={`trailer-carousel-picture-container ${
+                      className === "on-the-left" ||
+                      className === "on-the-right"
+                        ? "perspective"
+                        : ""
+                    } `}
+                    onClick={
+                      className === "middle-picture"
+                        ? () => handleOpenModal(elem.id)
+                        : undefined
                     }
-                    alt={isMovie ? "Movie Poster" : "Media Poster"}
-                    className={`${className} trailer-carousel-picture`}
-                    style={{
-                      boxShadow: "border" in elem ? "none" : "5px 12px 5px",
-                    }}
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <button
-            onClick={() => handleSlide("next")}
-            className={`arrows ${offset === 19 ? "disabled-button" : ""}`}
-            disabled={offset === 19}
-          >
-            <ArrowForwardIosIcon className="arrow-right" />
-          </button>
+                  >
+                    <img
+                      src={
+                        isMovie
+                          ? elem.poster_path
+                            ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                            : noPicture
+                          : transparent
+                      }
+                      alt={isMovie ? "Movie Poster" : "Media Poster"}
+                      className={`${className} trailer-carousel-picture`}
+                      style={{
+                        boxShadow: "border" in elem ? "none" : "5px 12px 5px",
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </Arrows>
         </div>
       </div>
       {releaseDate && movieToShow && (
