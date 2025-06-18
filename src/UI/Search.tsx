@@ -16,8 +16,8 @@ import { PersonSearchData } from "../models/personSearch";
 type SearchOption = MovieSearchData | ShowSearchData | PersonSearchData;
 
 export default function Search() {
-  const [openResults, setOpenResults] = useState(false);
-  const [options, setOptions] = useState<SearchOption[]>([]);
+  const [searchResultsOpen, setSearchResultsOpen] = useState(false);
+  const [results, setResults] = useState<SearchOption[]>([]);
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modalId, setModalId] = useState<number | null>(null);
@@ -28,15 +28,15 @@ export default function Search() {
     const response = await fetchSearch(query);
     setLoading(false);
 
-    setOptions([...response]);
+    setResults([...response]);
   };
 
-  function handleOpenResults() {
-    setOpenResults(true);
+  function handleOpenSearchResults() {
+    setSearchResultsOpen(true);
   }
 
-  function handleCloseResults() {
-    setOpenResults(false);
+  function handleCloseSearchResults() {
+    setSearchResultsOpen(false);
   }
 
   function handleInputChange(
@@ -53,7 +53,7 @@ export default function Search() {
   }
 
   function handleCloseModal() {
-    setOpenModal(false);
+    //    setOpenModal(false);
   }
 
   return (
@@ -77,26 +77,26 @@ export default function Search() {
 
       <Autocomplete
         className="search"
-        open={openResults}
-        onOpen={handleOpenResults}
-        onClose={handleCloseResults}
+        open={searchResultsOpen}
+        onOpen={handleOpenSearchResults}
+        onClose={handleCloseSearchResults}
         onInputChange={handleInputChange}
         clearOnBlur={false}
-        getOptionLabel={(option) => {
-          if (typeof option !== "string") {
-            const isMovie = "release_date" in option;
-            const isShow = "first_air_date" in option;
-            const isPerson = "known_for_department" in option;
+        getOptionLabel={(result) => {
+          if (typeof result !== "string") {
+            const isMovie = "release_date" in result;
+            const isShow = "first_air_date" in result;
+            const isPerson = "known_for_department" in result;
 
             if (isMovie) {
-              return option.title;
+              return result.title;
             } else if (isShow || isPerson) {
-              return option.name;
+              return result.name;
             }
           }
           return "";
         }}
-        options={options}
+        options={results}
         loading={loading}
         disableClearable
         freeSolo
@@ -104,33 +104,33 @@ export default function Search() {
           popper: {
             id: "search-results-popper",
             sx: {
-              borderWidth: options.length > 0 ? "3px !important" : "0px",
+              borderWidth: results.length > 0 ? "3px !important" : "0px",
             },
           },
         }}
-        renderOption={(props, option, index) => {
-          const { key, ...optionProps } = props;
-          const myKey = `${option.id}-${index}`;
+        renderOption={(props, result, index) => {
+          const { key, ...resultProps } = props;
+          const myKey = `${result.id}-${index}`;
 
-          const isMovie = "release_date" in option;
-          const isShow = "first_air_date" in option;
-          const isPerson = "known_for_department" in option;
+          const isMovie = "release_date" in result;
+          const isShow = "first_air_date" in result;
+          const isPerson = "known_for_department" in result;
 
           const releaseYear = isMovie
-            ? option.release_date.split("-")[0]
+            ? result.release_date.split("-")[0]
             : isShow
-            ? option.first_air_date.split("-")[0]
+            ? result.first_air_date.split("-")[0]
             : null;
 
           let imageSrc = noPicture;
 
           if (isMovie || isShow) {
-            if (option.poster_path) {
-              imageSrc = `https://image.tmdb.org/t/p/w500${option.poster_path}`;
+            if (result.poster_path) {
+              imageSrc = `https://image.tmdb.org/t/p/w500${result.poster_path}`;
             }
           } else if (isPerson) {
-            if (option.profile_path) {
-              imageSrc = `https://image.tmdb.org/t/p/w500${option.profile_path}`;
+            if (result.profile_path) {
+              imageSrc = `https://image.tmdb.org/t/p/w500${result.profile_path}`;
             }
           }
 
@@ -138,8 +138,8 @@ export default function Search() {
             <Box
               key={myKey}
               component="li"
-              {...optionProps}
-              onClick={() => handleOpenModal(option.id, option.media_type)}
+              {...resultProps}
+              onClick={() => handleOpenModal(result.id, result.media_type)}
             >
               <img
                 loading="lazy"
@@ -158,9 +158,9 @@ export default function Search() {
               <div className="search-info">
                 <div>
                   {isMovie
-                    ? option.title
+                    ? result.title
                     : isShow || isPerson
-                    ? option.name
+                    ? result.name
                     : "No Title"}
                 </div>
                 <div>
@@ -168,7 +168,7 @@ export default function Search() {
                   {isMovie || isShow
                     ? releaseYear
                     : isPerson
-                    ? option.known_for_department
+                    ? result.known_for_department
                     : null}
                   {releaseYear ? ")" : ""}
                 </div>

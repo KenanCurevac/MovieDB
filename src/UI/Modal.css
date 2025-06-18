@@ -117,6 +117,12 @@
   .modal-data {
     display: flex;
     flex-direction: column;
-    gap: 7px !important;
+    gap: 9px !important;
+    margin-left: 15px;
+    margin-bottom: 18px;
+  }
+
+  .chips {
+    gap: 5px;
   }
 }

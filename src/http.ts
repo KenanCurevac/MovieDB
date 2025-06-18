@@ -144,3 +144,16 @@ export async function fetchDetails(media: string, id: number) {
   );
   return response.data;
 }
+
+export async function fetchTrailers(movieId: number) {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+    {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODA2ZGE1MmE5OGRmMWZiYjE3ZDI2MzQ3YWFmY2M3MSIsIm5iZiI6MTczNDgwNjM1Mi41NCwic3ViIjoiNjc2NzBiNTBmOTI2YmUwM2NjNzRkYWM1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.YApZl3xZbfxp2iuTGtkGV0d2kV6X85FxC8JWlmyi0rQ",
+      },
+    }
+  );
+  return response.data.results;
+}

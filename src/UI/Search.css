@@ -81,7 +81,6 @@
 @media (max-width: 1040px) {
   .search {
     width: calc(100vw - 540px);
-    min-width: 300px;
   }
 }
 
@@ -93,13 +92,23 @@
 
 @media (max-width: 755px) {
   .search {
-    width: calc(100vw - 260px);
-    min-width: 150px;
+    width: max(96px, calc(100vw - 260px));
   }
 }
 
 @media (max-width: 560px) {
   .MuiAutocomplete-popper {
-    width: 300px !important;
+    width: 75vw !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .MuiAutocomplete-popper {
+    transform: translate(12vw, 66px) !important;
+  }
+
+  .MuiInputBase-input {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 }

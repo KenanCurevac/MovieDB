@@ -98,6 +98,7 @@
 @media (max-width: 480px) {
   .people-modal-top {
     flex-direction: column;
+    margin-bottom: 6px;
   }
 
   .people-modal-content {

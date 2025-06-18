@@ -47,7 +47,7 @@ export default function Modal({ open, onClose, media, id }: ModalProps) {
     ? `${Math.trunc(fetchedData.runtime / 60)}h ${fetchedData.runtime % 60}min`
     : null;
 
-  const genres = fetchedData?.genres.map((genre) => genre.name) ?? [];
+  const genres = fetchedData?.genres.map((genre) => genre.name) || [];
 
   if (!open) {
     return null;
