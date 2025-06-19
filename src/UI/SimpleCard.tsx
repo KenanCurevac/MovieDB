@@ -68,29 +68,27 @@ export default function SimpleCard({
           component="div"
           className="card-text"
         >
-          {isMovie ? data.title : isShow || isPerson ? data.name : "No name"}
+          <div className="card-title">
+            {isMovie ? data.title : isShow || isPerson ? data.name : "No name"}
+            <div
+              style={{
+                fontSize:
+                  isPerson && data.known_for_department ? "75%" : "inherit",
+              }}
+            >
+              {isPerson && data.known_for_department ? "" : "("}
+              {releaseDate || (isPerson && data.known_for_department)}
+              {isPerson && data.known_for_department ? "" : ")"}
+            </div>
+          </div>
+          <div className="rank">#{rank} </div>
           <div
+            className="rating"
             style={{
-              fontSize:
-                isPerson && data.known_for_department ? "18px" : "inherit",
+              padding: isMovie || isShow ? "7%" : "",
             }}
           >
-            {isPerson && data.known_for_department ? "" : "("}
-            {releaseDate || (isPerson && data.known_for_department)}
-            {isPerson && data.known_for_department ? "" : ")"}
-          </div>
-          <div className="simple-card-data">
-            <div className="rank">#{rank} </div>
-            <div className="rating-container">
-              <div
-                className="rating"
-                style={{
-                  padding: isMovie || isShow ? "7%" : "",
-                }}
-              >
-                {isMovie || isShow ? data.vote_average.toFixed(1) : null}
-              </div>
-            </div>
+            {isMovie || isShow ? data.vote_average.toFixed(1) : null}
           </div>
         </Typography>
       </CardContent>

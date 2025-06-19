@@ -1,6 +1,4 @@
 .simple-card {
-  max-width: 250px !important;
-  margin: 10px 10px 20px !important;
   background: #eed6d6 !important;
   border-radius: 12px !important;
   cursor: pointer;
@@ -23,74 +21,74 @@
 
 .card-text {
   color: #470d1d;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
   height: 100%;
+  display: grid;
+  grid-template-areas: "title title" "rank rating";
+  grid-template-rows: 70% 30%;
+  grid-template-columns: 50% 50%;
 }
 
-.simple-card-data {
-  display: flex;
-  flex-direction: row;
-  margin-top: auto;
+.card-title {
+  grid-area: title;
+  text-align: center;
 }
 
 .rank {
+  grid-area: rank;
   font-size: 27px;
-  text-align: left;
-  margin-top: auto;
-  width: 50%;
-}
-
-.rating-container {
-  display: flex;
-  justify-content: end;
-  width: 50%;
+  align-self: flex-end;
+  margin-left: 5%;
 }
 
 .rating {
+  grid-area: rating;
   font-weight: bold;
-  text-align: right;
+  justify-self: flex-end;
+  align-self: flex-end;
   color: #eed6d6;
-  border-radius: 40px;
+  border-radius: 80px;
   background-color: #470d1d;
+  margin-right: 5%;
 }
 
-@media (max-width: 660px) {
-  .simple-card {
-    width: 33vw;
+@media (max-width: 1173px) {
+  .card-text {
+    font-size: 2.9vw !important;
   }
 
   .simple-card-picture {
-    margin-top: 1vw !important;
-  }
-
-  .card-text {
-    font-size: 3.5vw !important;
+    margin-top: 0.8vw !important;
   }
 
   .rank {
-    font-size: 4vw;
+    font-size: 3.2vw !important;
   }
 }
 
-@media (max-width: 515px) {
-  .simple-card {
-    max-width: none !important;
-    width: 330px;
-    margin-bottom: 15px !important;
+@media (max-width: 896px) {
+  .card-text {
+    font-size: 3.8vw !important;
   }
 
   .simple-card-picture {
-    width: 92% !important;
-    margin-top: 13px !important;
-  }
-
-  .card-text {
-    font-size: 28px !important;
+    margin-top: 1.3vw !important;
   }
 
   .rank {
-    font-size: 32px;
+    font-size: 4.4vw !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .card-text {
+    font-size: 7.5vw !important;
+  }
+
+  .simple-card-picture {
+    margin-top: 2.4vw !important;
+  }
+
+  .rank {
+    font-size: 8vw !important;
   }
 }

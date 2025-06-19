@@ -1,6 +1,6 @@
 .list-title {
   width: fit-content;
-  margin: 30px auto 20px;
+  margin: 36px auto 30px;
   background-color: #eed6d6;
   padding: max(6px, 1%) max(15px, 2.5%);
   font-weight: bold;
@@ -14,9 +14,9 @@
 }
 
 .content-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 38px 26px;
 }
 
 .pagination {
@@ -25,7 +25,7 @@
 }
 
 .MuiPagination-root {
-  margin-top: max(16px, 2vw);
+  margin-top: 30px;
 }
 
 .MuiPagination-ul li {
@@ -38,12 +38,12 @@
   color: #eed6d6 !important;
   margin: 0px !important;
   padding: 0px !important;
-  height: clamp(46px, 8vw, 62px) !important;
-  width: clamp(46px, 8vw, 62px) !important;
+  height: clamp(42px, 8vw, 62px) !important;
+  width: clamp(42px, 8vw, 62px) !important;
 }
 
 .MuiPaginationItem-icon {
-  font-size: clamp(56px, 9.5vw, 72px) !important;
+  font-size: clamp(52px, 9.5vw, 72px) !important;
   color: #eed6d6;
 }
 
