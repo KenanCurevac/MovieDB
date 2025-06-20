@@ -10,24 +10,30 @@ export default function Home() {
   const { upcomingMovies, popularPeople, upcomingShows } = useLoaderData();
 
   return (
-    <div className="top-layer">
-      <TrailerLayout
-        data={upcomingMovies}
-        title="Upcoming Movies"
-        link="upcoming_movies"
-      />
-      <SmallLayout
-        data={upcomingShows}
-        title="Upcoming TV Series"
-        link="upcoming_shows"
-        media="tv"
-      />
-      <SmallLayout
-        data={popularPeople}
-        title="Popular People"
-        link="popular_people"
-        media="person"
-      />
+    <div className="top-layer-trailer">
+      <div className="trailer-layout-area">
+        <TrailerLayout
+          data={upcomingMovies}
+          title="Upcoming Movies"
+          link="upcoming_movies"
+        />
+      </div>
+      <div className="bottom-left-small-layout-area">
+        <SmallLayout
+          data={upcomingShows}
+          title="Upcoming TV Series"
+          link="upcoming_shows"
+          media="tv"
+        />
+      </div>
+      <div className="bottom-right-small-layout-area">
+        <SmallLayout
+          data={popularPeople}
+          title="Popular People"
+          link="popular_people"
+          media="person"
+        />
+      </div>
     </div>
   );
 }

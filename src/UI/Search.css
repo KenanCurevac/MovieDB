@@ -78,27 +78,31 @@
   font-size: 20px !important;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1130px) {
   .search {
-    width: calc(100vw - 540px);
+    width: max(320px, calc(100vw - 620px));
   }
 }
 
-@media (max-width: 870px) {
+@media (max-width: 900px) {
   .search {
     width: 500px;
   }
 }
 
-@media (max-width: 755px) {
+@media (max-width: 780px) {
   .search {
-    width: max(96px, calc(100vw - 260px));
+    width: calc(100vw - 280px);
+  }
+
+  .MuiAutocomplete-popper {
+    width: 65vw !important;
   }
 }
 
-@media (max-width: 560px) {
-  .MuiAutocomplete-popper {
-    width: 75vw !important;
+@media (max-width: 540px) {
+  .search {
+    width: max(96px, calc(85vw - 200px));
   }
 }
 

@@ -11,24 +11,30 @@ export default function Movies() {
 
   return (
     <div className="top-layer">
-      <SmallLayout
-        data={moviesPlayingNow}
-        title="Movies Playing Now"
-        link="movies_playing_now"
-        media="movie"
-      />
-      <SmallLayout
-        data={popularMovies}
-        title="Most Popular Movies"
-        link="popular_movies"
-        media="movie"
-      />
-      <BigLayout
-        data={topRatedMovies}
-        title="Top Rated Movies"
-        link="top_rated_movies"
-        media="movie"
-      />
+      <div className="top-left-small-layout-area">
+        <SmallLayout
+          data={moviesPlayingNow}
+          title="Movies Playing Now"
+          link="movies_playing_now"
+          media="movie"
+        />
+      </div>
+      <div className="top-right-small-layout-area">
+        <SmallLayout
+          data={popularMovies}
+          title="Most Popular Movies"
+          link="popular_movies"
+          media="movie"
+        />
+      </div>
+      <div className="big-layout-area">
+        <BigLayout
+          data={topRatedMovies}
+          title="Top Rated Movies"
+          link="top_rated_movies"
+          media="movie"
+        />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,55 @@
+.MuiDrawer-paper {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #470d1d !important;
+}
+
+.drawer-close-button.MuiButton-root {
+  position: absolute;
+  top: 4vh;
+}
+
+.drawer-close-button .MuiSvgIcon-root {
+  font-size: 60px !important;
+  color: #eed6d6 !important;
+}
+
+.drawer-close-button .MuiSvgIcon-root:hover {
+  color: #177f62 !important;
+}
+
+.drawer-link {
+  text-decoration: none;
+  font-size: 38px;
+  font-weight: bold;
+  color: #eed6d6;
+  margin-bottom: 36px;
+}
+
+.drawer-link:hover {
+  color: #177f62;
+}
+
+.drawer-link:active {
+  color: #074634;
+}
+
+.tv-series-link {
+  display: flex !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 560px) {
+  .drawer-link {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 450px) {
+  .drawer-link {
+    font-size: 30px;
+  }
+}

@@ -53,7 +53,7 @@ export default function Search() {
   }
 
   function handleCloseModal() {
-    //    setOpenModal(false);
+    setOpenModal(false);
   }
 
   return (

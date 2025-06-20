@@ -1,0 +1,79 @@
+.navbar {
+  background-color: #f6cbcb !important;
+  width: 100%;
+  margin-bottom: 40px;
+  box-shadow: 6px 6px 10px 4px #470d1dcf !important;
+  border-radius: 15px;
+  position: relative;
+}
+
+.film-atlas {
+  width: 120px;
+  height: auto;
+  box-shadow: none;
+  margin: 0px;
+}
+
+.navbar-content {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.navbar-menu-links {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5%;
+  align-items: center;
+  width: fit-content;
+  padding: 0px 3% 0px;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: 600;
+  color: #470d1d;
+}
+
+.link:hover {
+  color: #177f62;
+}
+
+.link:active {
+  color: #074634;
+}
+
+.tv-series-link {
+  display: flex !important;
+  white-space: nowrap !important;
+}
+
+.mobile-menu {
+  display: none !important;
+}
+
+.mobile-menu .MuiSvgIcon-root {
+  font-size: 55px !important;
+  color: #470d1d !important;
+}
+
+.mobile-menu .MuiSvgIcon-root:hover {
+  color: #177f62 !important;
+}
+
+@media (max-width: 900px) {
+  .navbar-menu-links {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: flex !important;
+    margin-right: 1.5% !important;
+  }
+
+  .film-atlas {
+    width: 105px;
+    margin: auto -8px;
+  }
+}

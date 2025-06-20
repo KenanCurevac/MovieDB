@@ -11,24 +11,30 @@ export default function Series() {
 
   return (
     <div className="top-layer">
-      <SmallLayout
-        data={showsAiringToday}
-        title="TV Series Airing Today"
-        link="shows_airing_today"
-        media="tv"
-      />
-      <SmallLayout
-        data={popularShows}
-        title="Most Popular TV Series"
-        link="popular_shows"
-        media="tv"
-      />
-      <BigLayout
-        data={topRatedShows}
-        title="Top Rated TV Series"
-        link="top_rated_shows"
-        media="tv"
-      />
+      <div className="top-left-small-layout-area">
+        <SmallLayout
+          data={showsAiringToday}
+          title="TV Series Airing Today"
+          link="shows_airing_today"
+          media="tv"
+        />{" "}
+      </div>
+      <div className="top-right-small-layout-area">
+        <SmallLayout
+          data={popularShows}
+          title="Most Popular TV Series"
+          link="popular_shows"
+          media="tv"
+        />{" "}
+      </div>
+      <div className="big-layout-area">
+        <BigLayout
+          data={topRatedShows}
+          title="Top Rated TV Series"
+          link="top_rated_shows"
+          media="tv"
+        />
+      </div>
     </div>
   );
 }
