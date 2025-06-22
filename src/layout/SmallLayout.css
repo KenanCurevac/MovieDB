@@ -222,8 +222,8 @@
 
 @media (max-width: 560px) {
   .small-carousel {
-    width: 60vw;
-    height: calc(60vw * 1.4);
+    width: max(200px, calc(75vw - 90px));
+    height: max(280px, calc((75vw - 90px) * 1.4));
     padding: 4vw 5.5vw 4.5vw;
   }
 

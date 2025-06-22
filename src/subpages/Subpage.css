@@ -4,13 +4,13 @@
   background-color: #eed6d6;
   padding: max(6px, 1%) max(15px, 2.5%);
   font-weight: bold;
-  font-size: min(45px, 6.2vw);
+  font-size: min(42px, 6.4vw);
   color: #470d1d;
   border-radius: 40px;
   letter-spacing: 1px;
   border: solid 7px #177f62;
   box-shadow: 10px 10px 8px #470d1d !important;
-  white-space: nowrap;
+  text-align: center;
 }
 
 .content-list {

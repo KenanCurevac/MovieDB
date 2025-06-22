@@ -8,14 +8,14 @@
   width: fit-content;
   background-color: #f6e9e9;
   border-radius: 40px;
-  padding: 8px 15px 8px 22px;
+  padding: min(8px, 0.6vw) min(15px, 1.2vw) min(8px, 0.6vw) 22px;
   box-shadow: 4px 4px 10px #470d1dcf;
   text-decoration: none;
 }
 
 .layout-title-line {
-  height: 55px;
-  width: 9px;
+  height: clamp(36px, 4vw, 55px);
+  width: min(9px, calc(100vw / 150));
   background-color: #177f62;
   border-radius: 10px;
   margin-right: 4px;
@@ -34,8 +34,8 @@
 }
 
 .layout-title-arrow {
-  height: 36px;
-  width: 36px;
+  height: clamp(27px, 2.4vw, 36px);
+  width: clamp(27px, 2.4vw, 36px);
   border: solid #177f62;
   border-width: 0 12px 12px 0;
   display: inline-block;
@@ -47,7 +47,7 @@
 }
 
 .layout-title-container:hover .layout-title-arrow {
-  margin-left: 90px;
+  margin-left: clamp(15px, 3.2vw, 88px);
   transform: rotate(135deg);
 }
 
@@ -59,27 +59,9 @@
   .layout-title-container:hover .layout-title {
     font-size: 35px;
   }
-
-  .layout-title-line {
-    height: 48px;
-    width: 8px;
-  }
-
-  .layout-title-arrow {
-    height: 30px;
-    width: 30px;
-  }
-
-  .layout-title-container:hover .layout-title-arrow {
-    margin-left: 55px;
-  }
 }
 
 @media (max-width: 1200px) {
-  .layout-title-container {
-    padding: 6px 12px 6px 18px;
-  }
-
   .layout-title {
     font-size: 25px;
   }
@@ -87,48 +69,25 @@
   .layout-title-container:hover .layout-title {
     font-size: 28px;
   }
-
-  .layout-title-line {
-    height: 40px;
-    width: 7px;
-  }
-
-  .layout-title-arrow {
-    height: 27px;
-    width: 27px;
-  }
-
-  .layout-title-container:hover .layout-title-arrow {
-    margin-left: 40px;
-  }
 }
 
 @media (max-width: 1050px) {
-  .layout-title {
-    font-size: 22px;
-  }
-
   .layout-title-container {
     margin: 0px auto 20px;
+  }
+
+  .layout-title {
+    font-size: 22px;
   }
 
   .layout-title-container:hover .layout-title {
     font-size: 24px;
   }
-
-  .layout-title-line {
-    height: 36px;
-    width: 6px;
-  }
-
-  .layout-title-container:hover .layout-title-arrow {
-    margin-left: 15px;
-  }
 }
 
 @media (max-width: 920px) {
   .layout-title-container {
-    padding: 8px 15px 8px 22px;
+    padding: min(8px, 0.8vw) min(15px, 2.7vw) min(8px, 0.8vw) min(22px, 3vw);
     margin: 0px 10px 20px;
   }
 
@@ -141,17 +100,18 @@
   }
 
   .layout-title-line {
-    height: 55px;
-    width: 9px;
+    height: clamp(28px, 6.2vw, 55px);
+    width: min(1.1vw, 9px);
+    min-width: 5px !important;
   }
 
   .layout-title-arrow {
-    height: 36px;
-    width: 36px;
+    height: clamp(27px, 3.8vw, 36px);
+    width: clamp(27px, 3.8vw, 36px);
   }
 
   .layout-title-container:hover .layout-title-arrow {
-    margin-left: 90px;
+    margin-left: clamp(10px, calc((100vw - 550px) / 4), 90px);
   }
 }
 
@@ -163,47 +123,15 @@
   .layout-title-container:hover .layout-title {
     font-size: 35px;
   }
-
-  .layout-title-line {
-    height: 48px;
-    width: 8px;
-  }
-
-  .layout-title-arrow {
-    height: 30px;
-    width: 30px;
-  }
-
-  .layout-title-container:hover .layout-title-arrow {
-    margin-left: 55px;
-  }
 }
 
 @media (max-width: 750px) {
-  .layout-title-container {
-    padding: 6px 12px 6px 18px;
-  }
-
   .layout-title {
     font-size: 25px;
   }
 
   .layout-title-container:hover .layout-title {
     font-size: 28px;
-  }
-
-  .layout-title-line {
-    height: 38px;
-    width: 7px;
-  }
-
-  .layout-title-arrow {
-    height: 27px;
-    width: 27px;
-  }
-
-  .layout-title-container:hover .layout-title-arrow {
-    margin-left: 40px;
   }
 }
 
@@ -213,19 +141,30 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   .layout-title-container:hover .layout-title-arrow {
+    transform: rotate(-45deg);
     margin-left: 0px;
   }
 
-  .layout-title-container:hover .layout-title-arrow {
-    transform: rotate(-45deg);
+  .layout-title-container:hover .layout-title {
+    font-size: 25px;
   }
 }
 
-@media (max-width: 505px) {
-  .layout-title-container:hover .layout-title {
-    font-size: 25px;
+@media (max-width: 500px) {
+  .layout-title-container {
+    width: fit-content;
+    max-width: max(56vw, calc(100vw - 165px));
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding-left: max(20px, 5vw);
+  }
+
+  .layout-title-line {
+    align-self: stretch;
+    height: auto;
+    margin: max(2px, 0.4vw) 0.8vw;
   }
 }
 
@@ -236,16 +175,6 @@
 
   .layout-title-container:hover .layout-title {
     font-size: 23px;
-  }
-
-  .layout-title-line {
-    height: 32px;
-    width: 6px;
-  }
-
-  .layout-title-arrow {
-    height: 27px;
-    width: 27px;
   }
 }
 
@@ -259,12 +188,6 @@
   }
 
   .layout-title-line {
-    height: 28px;
-    width: 5px;
-  }
-
-  .layout-title-arrow {
-    height: 27px;
-    width: 27px;
+    margin: max(4px, 0.4vw) 0.8vw;
   }
 }

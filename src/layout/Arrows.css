@@ -39,30 +39,6 @@
 
 @media (max-width: 1500px) {
   .arrows .MuiSvgIcon-root {
-    font-size: 60px !important;
-  }
-}
-
-@media (max-width: 920px) {
-  .arrows .MuiSvgIcon-root {
-    font-size: 70px !important;
-  }
-}
-
-@media (max-width: 840px) {
-  .arrows-big-layout .MuiSvgIcon-root {
-    font-size: 60px !important;
-  }
-}
-
-@media (max-width: 750px) {
-  .arrows .MuiSvgIcon-root {
-    font-size: 60px !important;
-  }
-}
-
-@media (max-width: 560px) {
-  .arrows .MuiSvgIcon-root {
-    font-size: 45px !important;
+    font-size: min(60px, 8vw) !important;
   }
 }

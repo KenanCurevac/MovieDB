@@ -51,6 +51,10 @@
   .trailer-side-container {
     border-top-right-radius: 0px;
     border-bottom-left-radius: 15px;
-    padding: 4%;
+    padding: max(14px, 4%);
+  }
+
+  .trailer-thumbnail-container {
+    min-width: 180px;
   }
 }
