@@ -39,6 +39,30 @@
 
 @media (max-width: 1500px) {
   .arrows .MuiSvgIcon-root {
-    font-size: min(60px, 8vw) !important;
+    font-size: 60px !important;
+  }
+}
+
+@media (max-width: 920px) {
+  .arrows .MuiSvgIcon-root {
+    font-size: 70px !important;
+  }
+}
+
+@media (max-width: 765px) {
+  .arrows .MuiSvgIcon-root {
+    font-size: 60px !important;
+  }
+}
+
+@media (max-width: 565px) {
+  .arrows .MuiSvgIcon-root {
+    font-size: 9.7vw !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .arrows .MuiSvgIcon-root {
+    font-size: max(24px, 100vw - 322px) !important;
   }
 }

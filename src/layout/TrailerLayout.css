@@ -1,6 +1,7 @@
 .trailer-layout-container {
   display: flex;
   width: 100%;
+  max-width: 1840px;
   border-radius: 15px;
   box-shadow: 4px 4px 4px 5px #470d1dcf;
 }
@@ -202,7 +203,7 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 765px) {
   .middle-picture {
     height: 330px;
   }
@@ -217,7 +218,7 @@
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 705px) {
   .middle-picture {
     width: 260px;
     height: auto;
@@ -234,7 +235,7 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 565px) {
   .trailer-carousel {
     width: 60vw;
     height: calc(60vw * 1.4);

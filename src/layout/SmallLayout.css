@@ -185,7 +185,7 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 765px) {
   .third-picture {
     width: 0px;
     margin: 0px;
@@ -200,7 +200,7 @@
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 675px) {
   .first-picture {
     width: 260px;
     height: 390px;
@@ -220,7 +220,7 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 565px) {
   .small-carousel {
     width: max(200px, calc(75vw - 90px));
     height: max(280px, calc((75vw - 90px) * 1.4));

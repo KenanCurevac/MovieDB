@@ -1,5 +1,6 @@
 .big-layout-container {
   width: 100%;
+  max-width: 1840px;
   display: flex;
   flex-direction: column;
   padding: 15px 1px 30px;
@@ -142,7 +143,7 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 765px) {
   .second-big-carousel-picture {
     width: 0px;
     margin: 0px;
