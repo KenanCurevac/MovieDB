@@ -1,7 +1,8 @@
 .big-layout-container {
   width: 100%;
-  max-width: 1840px;
+  max-width: 1380px;
   display: flex;
+  justify-self: center;
   flex-direction: column;
   padding: 15px 1px 30px;
   height: auto;

@@ -1,19 +1,30 @@
 .MuiDrawer-paper {
-  width: 50vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: min(50vw, 380px);
+  height: 100%;
   background: #470d1d !important;
 }
 
-.drawer-close-button.MuiButton-root {
-  position: absolute;
-  top: 4vh;
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+}
+
+.drawer-logo {
+  width: clamp(120px, 30vw, 220px);
+  margin: 2vw max(-0.3vw, -2px);
+}
+
+.sidenav-content .MuiButtonBase-root {
+  width: fit-content !important;
+  position: absolute !important;
+  top: min(1.4vw, 10px);
+  right: min(1.4vw, 10px);
 }
 
 .drawer-close-button .MuiSvgIcon-root {
-  font-size: 60px !important;
+  font-size: clamp(42px, 8.5vw, 60px) !important;
   color: #eed6d6 !important;
 }
 
@@ -21,12 +32,28 @@
   color: #177f62 !important;
 }
 
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2vh;
+  width: fit-content;
+  margin: 7vh auto;
+}
+
 .drawer-link {
   text-decoration: none;
-  font-size: 38px;
+  font-size: clamp(24px, 6.2vw, 38px);
   font-weight: bold;
   color: #eed6d6;
   margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.drawer-link .MuiSvgIcon-root {
+  font-size: clamp(24px, 6.2vw, 38px);
+  margin-right: min(1.5vw, 12px);
 }
 
 .drawer-link:hover {
@@ -42,14 +69,8 @@
   white-space: nowrap !important;
 }
 
-@media (max-width: 560px) {
-  .drawer-link {
-    font-size: 34px;
-  }
-}
-
-@media (max-width: 450px) {
-  .drawer-link {
-    font-size: 30px;
+@media (max-width: 740px) {
+  .drawer-logo {
+    margin: 2vw -12px;
   }
 }

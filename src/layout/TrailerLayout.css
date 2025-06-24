@@ -1,7 +1,8 @@
 .trailer-layout-container {
   display: flex;
+  justify-self: center;
   width: 100%;
-  max-width: 1840px;
+  max-width: 1380px;
   border-radius: 15px;
   box-shadow: 4px 4px 4px 5px #470d1dcf;
 }
