@@ -1,4 +1,4 @@
-import "./Subpage.css";
+import "./Subpage.scss";
 import SimpleCard from "../UI/SimpleCard";
 import useFetch from "../hooks/useFetch";
 import { fetchTopRatedMovies } from "../http";

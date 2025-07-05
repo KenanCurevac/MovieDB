@@ -1,3 +1,5 @@
+@use "../styles/colors";
+
 .arrows {
   background-color: transparent;
   all: unset;
@@ -8,12 +10,12 @@
 .arrow-left {
   transform: rotate(180deg);
   font-size: 70px !important;
-  color: #470d1d;
+  color: colors.$bordeaux;
 }
 
 .arrow-right {
   font-size: 70px !important;
-  color: #470d1d;
+  color: colors.$bordeaux;
 }
 
 .disabled-button {
@@ -22,19 +24,19 @@
 }
 
 .disabled-button:hover .arrow-left {
-  color: #470d1d !important;
+  color: colors.$bordeaux !important;
 }
 
 .disabled-button:hover .arrow-right {
-  color: #470d1d !important;
+  color: colors.$bordeaux !important;
 }
 
 .arrow-left:not(.disabled-button):hover {
-  color: #177f62;
+  color: colors.$green;
 }
 
 .arrow-right:not(.disabled-button):hover {
-  color: #177f62;
+  color: colors.$green;
 }
 
 @media (max-width: 1500px) {

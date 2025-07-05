@@ -1,4 +1,4 @@
-import "./TrailerLayout.css";
+import "./TrailerLayout.scss";
 import { useState } from "react";
 import transparent from "../assets/clearimage.png";
 import Modal from "../UI/Modal";

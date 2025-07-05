@@ -1,4 +1,4 @@
-import "./SmallLayout.css";
+import "./SmallLayout.scss";
 import { useState } from "react";
 import Modal from "../UI/Modal";
 import PeopleModal from "../UI/PeopleModal";

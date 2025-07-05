@@ -1,15 +1,17 @@
+@use "../styles/colors";
+
 .list-title {
   width: fit-content;
   margin: 36px auto 30px;
-  background-color: #eed6d6;
+  background-color: colors.$rosewater;
   padding: max(6px, 1%) max(15px, 2.5%);
   font-weight: bold;
   font-size: min(42px, 6.4vw);
-  color: #470d1d;
+  color: colors.$bordeaux;
   border-radius: 40px;
   letter-spacing: 1px;
-  border: solid 7px #177f62;
-  box-shadow: 10px 10px 8px #470d1d !important;
+  border: solid 7px colors.$green;
+  box-shadow: 10px 10px 8px colors.$bordeaux !important;
   text-align: center;
 }
 
@@ -35,7 +37,7 @@
 
 .MuiPaginationItem-root {
   font-size: clamp(28px, 4vw, 40px) !important;
-  color: #eed6d6 !important;
+  color: colors.$rosewater !important;
   margin: 0px !important;
   padding: 0px !important;
   height: clamp(42px, 8vw, 62px) !important;
@@ -44,10 +46,10 @@
 
 .MuiPaginationItem-icon {
   font-size: clamp(52px, 9.5vw, 72px) !important;
-  color: #eed6d6;
+  color: colors.$rosewater;
 }
 
 .MuiPaginationItem-root.Mui-selected {
-  background-color: #470d1d !important;
-  color: #eed6d6;
+  background-color: colors.$bordeaux !important;
+  color: colors.$rosewater;
 }

@@ -1,4 +1,4 @@
-import "./Pages.css";
+import "./Pages.scss";
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import SmallLayout from "../layout/SmallLayout";

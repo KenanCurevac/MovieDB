@@ -1,4 +1,4 @@
-import "./BigLayout.css";
+import "./BigLayout.scss";
 import { useState } from "react";
 import Modal from "../UI/Modal";
 import LayoutTitle from "./LayoutTitle";

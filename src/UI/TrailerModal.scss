@@ -1,3 +1,5 @@
+@use "../styles/colors";
+
 .trailer-modal .MuiDialog-root {
   position: fixed;
   z-index: 9999;
@@ -23,9 +25,9 @@
 .MuiDialog-content {
   overflow: auto;
   scrollbar-width: none;
-  display: flex !;
+  display: flex;
   justify-content: center;
-  align-items: center !;
+  align-items: center;
 }
 
 .playing-trailer {
@@ -37,20 +39,20 @@
   position: absolute !important;
   right: 0px !important;
   top: -55px !important;
-  color: #470d1d;
+  color: colors.$bordeaux;
 }
 
 .trailer-close-icon {
   font-size: 40px !important;
-  color: #f6cbcb;
-  border: solid 1px #f6cbcb;
+  color: colors.$blush;
+  border: solid 1px colors.$blush;
   border-radius: 6px;
   opacity: 0.7;
 }
 
 .trailer-close-icon:hover {
-  color: #177f62;
-  border-color: #177f62;
+  color: colors.$green;
+  border-color: colors.$green;
   opacity: 1;
 }
 

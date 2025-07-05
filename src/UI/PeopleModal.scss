@@ -1,3 +1,5 @@
+@use "../styles/colors";
+
 .MuiDialog-root {
   position: fixed;
   z-index: 9999;
@@ -16,7 +18,7 @@
   max-height: fit-content !important;
   height: auto;
   background: linear-gradient(135deg, #eccdcd, #f3e0e0) !important;
-  color: #470d1d !important;
+  color: colors.$bordeaux !important;
   overflow: visible;
 }
 
@@ -37,7 +39,7 @@
   position: absolute !important;
   right: 8px !important;
   top: 8px !important;
-  color: #470d1d;
+  color: colors.$bordeaux;
 }
 
 .people-modal-close-icon {
@@ -45,7 +47,7 @@
 }
 
 .people-modal-close-icon:hover {
-  color: #177f62;
+  color: colors.$green;
 }
 
 .people-modal-content {
@@ -83,7 +85,7 @@
 .people-description {
   font-size: 17px;
   text-indent: 10%;
-  background-color: #f6e9e9;
+  background-color: colors.$cloud;
   border-radius: 20px;
   padding: 1% 2.5% 1.5%;
   margin-top: 3%;

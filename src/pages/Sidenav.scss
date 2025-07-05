@@ -1,7 +1,9 @@
+@use "../styles/colors";
+
 .MuiDrawer-paper {
   width: min(50vw, 380px);
   height: 100%;
-  background: #470d1d !important;
+  background: colors.$bordeaux !important;
 }
 
 .sidenav-content {
@@ -25,11 +27,11 @@
 
 .drawer-close-button .MuiSvgIcon-root {
   font-size: clamp(42px, 8.5vw, 60px) !important;
-  color: #eed6d6 !important;
+  color: colors.$rosewater !important;
 }
 
 .drawer-close-button .MuiSvgIcon-root:hover {
-  color: #177f62 !important;
+  color: colors.$green !important;
 }
 
 .drawer-links {
@@ -45,7 +47,7 @@
   text-decoration: none;
   font-size: clamp(24px, 6.2vw, 38px);
   font-weight: bold;
-  color: #eed6d6;
+  color: colors.$rosewater;
   margin-bottom: 36px;
   display: flex;
   align-items: center;
@@ -57,11 +59,11 @@
 }
 
 .drawer-link:hover {
-  color: #177f62;
+  color: colors.$green;
 }
 
 .drawer-link:active {
-  color: #074634;
+  color: colors.$forest;
 }
 
 .tv-series-link {

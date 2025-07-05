@@ -1,4 +1,4 @@
-import "./Subpage.css";
+import "./Subpage.scss";
 import { useCallback, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { fetchPopularMovies } from "../http";

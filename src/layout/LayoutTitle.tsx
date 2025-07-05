@@ -1,4 +1,4 @@
-import "./LayoutTitle.css";
+import "./LayoutTitle.scss";
 import { Link } from "react-router-dom";
 
 type LayoutTitleProp = {

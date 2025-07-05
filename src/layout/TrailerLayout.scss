@@ -1,17 +1,19 @@
+@use "../styles/colors";
+
 .trailer-layout-container {
   display: flex;
   justify-self: center;
   width: 100%;
   max-width: 1380px;
   border-radius: 15px;
-  box-shadow: 4px 4px 4px 5px #470d1dcf;
+  box-shadow: 4px 4px 4px 5px colors.$bordeaux-transparent;
 }
 
 .upcoming-movies-side-container {
   display: flex;
   flex-direction: column;
   padding: 15px 2px 30px 5px;
-  background: #f6cbcb;
+  background: colors.$blush;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
@@ -29,10 +31,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(155deg, #9f163d, #f6cbcb);
+  background: linear-gradient(155deg, colors.$cherry, colors.$blush);
   padding: 20px 24px 24px;
   border-radius: 10px;
-  box-shadow: 5px 6px 35px inset #470d1d;
+  box-shadow: 5px 6px 35px inset colors.$bordeaux;
 }
 
 .previous-picture {

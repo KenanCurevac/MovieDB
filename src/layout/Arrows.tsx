@@ -1,4 +1,4 @@
-import "./Arrows.css";
+import "./Arrows.scss";
 import { ReactNode } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 

@@ -1,8 +1,10 @@
+@use "../styles/colors";
+
 .navbar {
-  background-color: #f6cbcb !important;
+  background-color: colors.$blush !important;
   width: 100%;
   margin-bottom: 40px;
-  box-shadow: 6px 6px 10px 4px #470d1dcf !important;
+  box-shadow: 6px 6px 10px 4px colors.$bordeaux-transparent !important;
   border-radius: 15px;
   position: relative;
 }
@@ -33,7 +35,7 @@
   text-decoration: none;
   font-size: 28px;
   font-weight: 600;
-  color: #470d1d;
+  color: colors.$bordeaux;
 }
 
 .link:hover {
@@ -55,7 +57,7 @@
 
 .mobile-menu .MuiSvgIcon-root {
   font-size: 55px !important;
-  color: #470d1d !important;
+  color: colors.$bordeaux !important;
 }
 
 .mobile-menu .MuiSvgIcon-root:hover {

@@ -1,3 +1,5 @@
+@use "../styles/colors";
+
 .big-layout-container {
   width: 100%;
   max-width: 1380px;
@@ -6,9 +8,9 @@
   flex-direction: column;
   padding: 15px 1px 30px;
   height: auto;
-  background: #f6cbcb;
+  background: colors.$blush;
   border-radius: 15px;
-  box-shadow: 8px 8px 10px 4px #470d1dcf;
+  box-shadow: 8px 8px 10px 4px colors.$bordeaux-transparent;
 }
 
 .big-carousel-container {
@@ -23,10 +25,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(155deg, #9f163d, #f6cbcb);
+  background: linear-gradient(155deg, colors.$cherry, colors.$blush);
   padding: 20px 30px;
   border-radius: 10px;
-  box-shadow: 5px 6px 35px inset #470d1d;
+  box-shadow: 5px 6px 35px inset colors.$bordeaux;
   width: 1240px;
 }
 

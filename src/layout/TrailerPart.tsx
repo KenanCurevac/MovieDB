@@ -1,4 +1,4 @@
-import "./TrailerPart.css";
+import "./TrailerPart.scss";
 import { useState, useEffect } from "react";
 import { fetchTrailers } from "../http";
 import TrailerModal from "../UI/TrailerModal";

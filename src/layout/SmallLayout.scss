@@ -1,3 +1,5 @@
+@use "../styles/colors";
+
 .small-layout-container {
   display: flex;
   gap: 4%;
@@ -5,9 +7,9 @@
   flex-direction: column;
   padding: 15px 1px 30px 1px;
   height: auto;
-  background: #f6cbcb;
+  background: colors.$blush;
   border-radius: 15px;
-  box-shadow: 8px 8px 10px 4px #470d1dcf;
+  box-shadow: 8px 8px 10px 4px colors.$bordeaux-transparent;
   margin: auto;
 }
 
@@ -23,10 +25,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #983442, #e6b5bb);
+  background: linear-gradient(135deg, colors.$cherry, colors.$blush);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 5px 6px 35px inset #470d1d;
+  box-shadow: 5px 6px 35px inset colors.$bordeaux;
   width: 520px;
 }
 

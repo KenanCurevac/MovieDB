@@ -1,4 +1,4 @@
-import "./Search.css";
+import "./Search.scss";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";

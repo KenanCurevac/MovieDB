@@ -1,4 +1,4 @@
-import "./Root.css";
+import "./Root.scss";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";

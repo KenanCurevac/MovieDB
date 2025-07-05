@@ -1,4 +1,4 @@
-import "./Subpage.css";
+import "./Subpage.scss";
 import SimpleCard from "../UI/SimpleCard";
 import { useCallback, useEffect, useState } from "react";
 import { fetchUpcomingShows } from "../http";

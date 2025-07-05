@@ -1,4 +1,4 @@
-import "./ErrorPage.css";
+import "./ErrorPage.scss";
 import { useRouteError } from "react-router-dom";
 
 type RouteError = {

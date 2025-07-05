@@ -1,3 +1,5 @@
+@use "../styles/colors";
+
 .layout-title-container {
   margin: 0px 10px 20px;
   display: flex;
@@ -6,17 +8,17 @@
   justify-content: start;
   cursor: pointer;
   width: fit-content;
-  background-color: #f6e9e9;
+  background-color: colors.$cloud;
   border-radius: 40px;
   padding: min(8px, 0.6vw) min(15px, 1.2vw) min(8px, 0.6vw) 22px;
-  box-shadow: 4px 4px 10px #470d1dcf;
+  box-shadow: 4px 4px 10px colors.$bordeaux-transparent;
   text-decoration: none;
 }
 
 .layout-title-line {
   height: clamp(36px, 4vw, 55px);
   width: min(9px, calc(100vw / 150));
-  background-color: #177f62;
+  background-color: colors.$green;
   border-radius: 10px;
   margin-right: 4px;
 }
@@ -24,7 +26,7 @@
 .layout-title {
   font-weight: bold;
   font-size: 35px;
-  color: #470d1d;
+  color: colors.$bordeaux;
   transition: font-size 0.3s ease;
   margin: auto;
 }
@@ -36,7 +38,7 @@
 .layout-title-arrow {
   height: clamp(27px, 2.4vw, 36px);
   width: clamp(27px, 2.4vw, 36px);
-  border: solid #177f62;
+  border: solid colors.$green;
   border-width: 0 12px 12px 0;
   display: inline-block;
   padding: 3px;

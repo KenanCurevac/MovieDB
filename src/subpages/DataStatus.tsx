@@ -1,4 +1,4 @@
-import "./DataStatus.css";
+import "./DataStatus.scss";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useState, useEffect } from "react";
 import { MovieSimple } from "../models/movieSimple";

@@ -1,7 +1,9 @@
+@use "../styles/colors";
+
 .search {
   width: 500px;
   max-height: 45px;
-  background-color: #f6e9e9;
+  background-color: colors.$cloud;
   border-radius: 20px;
   margin: auto;
 }
@@ -14,11 +16,11 @@
   height: 45px;
   font-size: 18px !important;
   letter-spacing: 0.6px !important;
-  color: #470d1d !important;
+  color: colors.$bordeaux !important;
 }
 
 .MuiAutocomplete-paper {
-  background-color: #470d1d !important;
+  background-color: colors.$bordeaux !important;
 }
 
 .MuiOutlinedInput-root fieldset {
@@ -26,18 +28,18 @@
 }
 
 .MuiOutlinedInput-root.Mui-focused fieldset {
-  border: solid 3.5px #177f62 !important;
+  border: solid 3.5px colors.$green !important;
   border-radius: 20px;
 }
 
 .MuiOutlinedInput-root.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root {
-  color: #177f62;
+  color: colors.$green;
 }
 
 .MuiAutocomplete-popper {
   margin-top: 0.2% !important ;
   border-radius: 8px;
-  border: solid 0px #eed6d6;
+  border: solid 0px colors.$rosewater;
   max-width: 100%;
   width: inherit;
 }
@@ -50,7 +52,7 @@
 }
 
 .MuiAutocomplete-option {
-  border-bottom: solid 1px #eed6d6;
+  border-bottom: solid 1px colors.$rosewater;
   padding: 10px !important;
 }
 
@@ -69,12 +71,12 @@
   display: flex;
   flex-direction: column;
   margin-left: 4%;
-  color: #eed6d6;
+  color: colors.$rosewater;
   font-size: 17.5px;
 }
 
 .MuiAutocomplete-loading {
-  color: #eed6d6 !important;
+  color: colors.$rosewater !important;
   font-size: 20px !important;
 }
 

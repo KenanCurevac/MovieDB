@@ -1,4 +1,4 @@
-import "./Sidenav.css";
+import "./Sidenav.scss";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
