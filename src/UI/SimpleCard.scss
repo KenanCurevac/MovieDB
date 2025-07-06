@@ -1,12 +1,12 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .simple-card {
-  background: colors.$rosewater !important;
+  background: c.$rosewater !important;
   border-radius: 12px !important;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  box-shadow: 10px 10px 8px colors.$bordeaux !important;
+  box-shadow: 10px 10px 8px c.$bordeaux !important;
 }
 
 .simple-card-picture {
@@ -22,7 +22,7 @@
 }
 
 .card-text {
-  color: colors.$bordeaux;
+  color: c.$bordeaux;
   height: 100%;
   display: grid;
   grid-template-areas: "title title" "rank rating";
@@ -47,9 +47,9 @@
   font-weight: bold;
   justify-self: flex-end;
   align-self: flex-end;
-  color: colors.$rosewater;
+  color: c.$rosewater;
   border-radius: 80px;
-  background-color: colors.$bordeaux;
+  background-color: c.$bordeaux;
   margin-right: 5%;
 }
 

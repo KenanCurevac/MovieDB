@@ -1,33 +1,21 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
+@use "../styles/mixins" as m;
 
-.MuiDialog-root {
+.standard-modal.MuiDialog-root {
   position: fixed;
   z-index: 9999;
-}
 
-.standard-modal .MuiDialog-container {
-  overflow: auto;
-  scrollbar-width: none;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
+  .MuiDialog-container {
+    @include m.dialog-container;
+  }
 
-.MuiDialog-root .MuiDialog-paper {
-  max-width: 780px !important;
-  max-height: fit-content !important;
-  height: auto;
-  background: linear-gradient(135deg, #eccdcd, #f3e0e0) !important;
-  color: colors.$bordeaux !important;
-  overflow: visible;
+  .MuiDialog-paper {
+    @include m.dialog-paper;
+  }
 }
 
 .modal-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
-  letter-spacing: 0.7px;
-  line-height: 120%;
+  @include m.modal-title;
   margin: 0% 28px 1%;
 }
 
@@ -38,18 +26,15 @@
 }
 
 .modal-close-button {
-  position: absolute !important;
-  right: 8px !important;
-  top: 8px !important;
-  color: colors.$bordeaux;
+  @include m.modal-close-button;
+
+  .modal-close-icon {
+    @include m.modal-close-icon;
+  }
 }
 
-.modal-close-icon {
-  font-size: 35px !important;
-}
-
-.modal-close-icon:hover {
-  color: colors.$green;
+.modal-content {
+  @include m.modal-content;
 }
 
 .modal-picture {
@@ -61,57 +46,48 @@
   border-radius: 10px;
 }
 
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  scrollbar-width: none;
-}
-
 .modal-data {
   display: flex;
   flex-wrap: wrap;
   gap: 10%;
-}
 
-.modal-data-left-side {
-  width: 25%;
-  padding: 0.1% 0;
-}
+  .modal-data-left-side {
+    width: 25%;
+    padding: 0.1% 0;
+  }
 
-.modal-data-right-side {
-  width: 65%;
-  padding: 0.1% 0;
+  .modal-data-right-side {
+    width: 65%;
+    padding: 0.1% 0;
+  }
 }
 
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5%;
-}
 
-.MuiChip-root {
-  background-color: colors.$cloud !important;
-  border: solid 1.6px colors.$bordeaux !important;
-  font-weight: bold;
-  color: colors.$bordeaux !important;
-  letter-spacing: 0.6px !important;
-  padding: 2.5% 2% !important;
-  font-size: 18px !important;
-  margin-bottom: 1%;
+  .MuiChip-root {
+    background-color: c.$cloud !important;
+    border: solid 1.6px c.$bordeaux !important;
+    font-weight: bold;
+    color: c.$bordeaux !important;
+    letter-spacing: 0.6px !important;
+    padding: 2.5% 2% !important;
+    font-size: 18px !important;
+    margin-bottom: 1%;
+  }
 }
 
 .modal-description {
-  font-size: 17px;
-  text-indent: 6%;
-  background-color: colors.$cloud;
-  border-radius: 20px;
-  padding: 1% 2.5% 1.5%;
-  margin-top: 2%;
+  @include m.modal-description;
 }
 
 @media (max-width: 870px) {
-  .MuiDialog-root .MuiDialog-paper {
-    max-width: 90vw;
+  .MuiDialog-root {
+    .MuiDialog-paper {
+      max-width: 90vw;
+    }
   }
 }
 

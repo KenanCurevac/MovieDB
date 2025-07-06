@@ -1,4 +1,4 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .layout-title-container {
   margin: 0px 10px 20px;
@@ -8,17 +8,28 @@
   justify-content: start;
   cursor: pointer;
   width: fit-content;
-  background-color: colors.$cloud;
+  background-color: c.$cloud;
   border-radius: 40px;
   padding: min(8px, 0.6vw) min(15px, 1.2vw) min(8px, 0.6vw) 22px;
-  box-shadow: 4px 4px 10px colors.$bordeaux-transparent;
+  box-shadow: 4px 4px 10px c.$bordeaux-transparent;
   text-decoration: none;
+
+  &:hover {
+    .layout-title {
+      font-size: 40px;
+    }
+
+    .layout-title-arrow {
+      margin-left: clamp(15px, 3.2vw, 88px);
+      transform: rotate(135deg);
+    }
+  }
 }
 
 .layout-title-line {
   height: clamp(36px, 4vw, 55px);
   width: min(9px, calc(100vw / 150));
-  background-color: colors.$green;
+  background-color: c.$green;
   border-radius: 10px;
   margin-right: 4px;
 }
@@ -26,19 +37,15 @@
 .layout-title {
   font-weight: bold;
   font-size: 35px;
-  color: colors.$bordeaux;
+  color: c.$bordeaux;
   transition: font-size 0.3s ease;
   margin: auto;
-}
-
-.layout-title-container:hover .layout-title {
-  font-size: 40px;
 }
 
 .layout-title-arrow {
   height: clamp(27px, 2.4vw, 36px);
   width: clamp(27px, 2.4vw, 36px);
-  border: solid colors.$green;
+  border: solid c.$green;
   border-width: 0 12px 12px 0;
   display: inline-block;
   padding: 3px;
@@ -48,18 +55,15 @@
   transition: margin-left 0.5s ease, transform 0.1s ease;
 }
 
-.layout-title-container:hover .layout-title-arrow {
-  margin-left: clamp(15px, 3.2vw, 88px);
-  transform: rotate(135deg);
-}
-
 @media (max-width: 1500px) {
   .layout-title {
     font-size: 30px;
   }
 
-  .layout-title-container:hover .layout-title {
-    font-size: 35px;
+  .layout-title-container:hover {
+    .layout-title {
+      font-size: 35px;
+    }
   }
 }
 
@@ -68,22 +72,26 @@
     font-size: 25px;
   }
 
-  .layout-title-container:hover .layout-title {
-    font-size: 28px;
+  .layout-title-container:hover {
+    .layout-title {
+      font-size: 28px;
+    }
   }
 }
 
 @media (max-width: 1050px) {
   .layout-title-container {
     margin: 0px auto 20px;
+
+    &:hover {
+      .layout-title {
+        font-size: 24px;
+      }
+    }
   }
 
   .layout-title {
     font-size: 22px;
-  }
-
-  .layout-title-container:hover .layout-title {
-    font-size: 24px;
   }
 }
 
@@ -91,14 +99,20 @@
   .layout-title-container {
     padding: min(8px, 0.8vw) min(15px, 2.7vw) min(8px, 0.8vw) min(22px, 3vw);
     margin: 0px 10px 20px;
+
+    &:hover {
+      .layout-title {
+        font-size: 40px;
+      }
+
+      .layout-title-arrow {
+        margin-left: clamp(10px, calc((100vw - 550px) / 4), 90px);
+      }
+    }
   }
 
   .layout-title {
     font-size: 35px;
-  }
-
-  .layout-title-container:hover .layout-title {
-    font-size: 40px;
   }
 
   .layout-title-line {
@@ -111,10 +125,6 @@
     height: clamp(27px, 3.8vw, 36px);
     width: clamp(27px, 3.8vw, 36px);
   }
-
-  .layout-title-container:hover .layout-title-arrow {
-    margin-left: clamp(10px, calc((100vw - 550px) / 4), 90px);
-  }
 }
 
 @media (max-width: 865px) {
@@ -122,8 +132,10 @@
     font-size: 30px;
   }
 
-  .layout-title-container:hover .layout-title {
-    font-size: 35px;
+  .layout-title-container:hover {
+    .layout-title {
+      font-size: 35px;
+    }
   }
 }
 
@@ -132,8 +144,10 @@
     font-size: 25px;
   }
 
-  .layout-title-container:hover .layout-title {
-    font-size: 28px;
+  .layout-title-container:hover {
+    .layout-title {
+      font-size: 28px;
+    }
   }
 }
 
@@ -144,13 +158,15 @@
 }
 
 @media (max-width: 600px) {
-  .layout-title-container:hover .layout-title-arrow {
-    transform: rotate(-45deg);
-    margin-left: 0px;
-  }
+  .layout-title-container:hover {
+    .layout-title-arrow {
+      transform: rotate(-45deg);
+      margin-left: 0px;
+    }
 
-  .layout-title-container:hover .layout-title {
-    font-size: 25px;
+    .layout-title {
+      font-size: 25px;
+    }
   }
 }
 
@@ -175,8 +191,10 @@
     font-size: 23px;
   }
 
-  .layout-title-container:hover .layout-title {
-    font-size: 23px;
+  .layout-title-container:hover {
+    .layout-title {
+      font-size: 23px;
+    }
   }
 }
 
@@ -185,8 +203,10 @@
     font-size: 21px;
   }
 
-  .layout-title-container:hover .layout-title {
-    font-size: 21px;
+  .layout-title-container:hover {
+    .layout-title {
+      font-size: 21px;
+    }
   }
 
   .layout-title-line {

@@ -1,59 +1,39 @@
-@use "../styles/colors";
+@use "../styles/mixins" as m;
 
-.MuiDialog-root {
+.people-modal.MuiDialog-root {
   position: fixed;
   z-index: 9999;
+
+  .MuiDialog-container {
+    @include m.dialog-container;
+  }
+
+  .MuiDialog-paper {
+    @include m.dialog-paper;
+  }
 }
 
-.people-modal .MuiDialog-container {
-  overflow: auto;
-  scrollbar-width: none;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.MuiDialog-root .MuiDialog-paper {
-  max-width: 780px !important;
-  max-height: fit-content !important;
-  height: auto;
-  background: linear-gradient(135deg, #eccdcd, #f3e0e0) !important;
-  color: colors.$bordeaux !important;
-  overflow: visible;
-}
-
-.MuiDialogTitle-root.people-modal-title-wrapper {
-  padding: 18px 24px 0px !important;
+.MuiDialogTitle-root {
+  &.people-modal-title-wrapper {
+    padding: 18px 24px 0px !important;
+  }
 }
 
 .people-modal-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
-  letter-spacing: 0.7px;
-  line-height: 120%;
+  @include m.modal-title;
   margin: 0% 5% 1%;
 }
 
 .people-modal-close-button {
-  position: absolute !important;
-  right: 8px !important;
-  top: 8px !important;
-  color: colors.$bordeaux;
-}
+  @include m.modal-close-button;
 
-.people-modal-close-icon {
-  font-size: 35px !important;
-}
-
-.people-modal-close-icon:hover {
-  color: colors.$green;
+  .people-modal-close-icon {
+    @include m.modal-close-icon;
+  }
 }
 
 .people-modal-content {
-  display: flex;
-  flex-direction: column;
-  scrollbar-width: none;
+  @include m.modal-content;
 }
 
 .people-modal-top {
@@ -83,17 +63,14 @@
 }
 
 .people-description {
-  font-size: 17px;
-  text-indent: 10%;
-  background-color: colors.$cloud;
-  border-radius: 20px;
-  padding: 1% 2.5% 1.5%;
-  margin-top: 3%;
+  @include m.modal-description;
 }
 
 @media (max-width: 870px) {
-  .MuiDialog-root .MuiDialog-paper {
-    max-width: 90vw;
+  .MuiDialog-root {
+    .MuiDialog-paper {
+      max-width: 90vw;
+    }
   }
 }
 

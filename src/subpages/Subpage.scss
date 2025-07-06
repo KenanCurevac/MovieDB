@@ -1,17 +1,17 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .list-title {
   width: fit-content;
   margin: 36px auto 30px;
-  background-color: colors.$rosewater;
+  background-color: c.$rosewater;
   padding: max(6px, 1%) max(15px, 2.5%);
   font-weight: bold;
   font-size: min(42px, 6.4vw);
-  color: colors.$bordeaux;
+  color: c.$bordeaux;
   border-radius: 40px;
   letter-spacing: 1px;
-  border: solid 7px colors.$green;
-  box-shadow: 10px 10px 8px colors.$bordeaux !important;
+  border: solid 7px c.$green;
+  box-shadow: 10px 10px 8px c.$bordeaux !important;
   text-align: center;
 }
 
@@ -30,26 +30,28 @@
   margin-top: 30px;
 }
 
-.MuiPagination-ul li {
-  width: fit-content !important;
-  margin: min(8px, 0.5vw);
+.MuiPagination-ul {
+  li {
+    width: fit-content !important;
+    margin: min(8px, 0.5vw);
+  }
 }
 
 .MuiPaginationItem-root {
   font-size: clamp(28px, 4vw, 40px) !important;
-  color: colors.$rosewater !important;
+  color: c.$rosewater !important;
   margin: 0px !important;
   padding: 0px !important;
   height: clamp(42px, 8vw, 62px) !important;
   width: clamp(42px, 8vw, 62px) !important;
+
+  &.Mui-selected {
+    background-color: c.$bordeaux !important;
+    color: c.$rosewater;
+  }
 }
 
 .MuiPaginationItem-icon {
   font-size: clamp(52px, 9.5vw, 72px) !important;
-  color: colors.$rosewater;
-}
-
-.MuiPaginationItem-root.Mui-selected {
-  background-color: colors.$bordeaux !important;
-  color: colors.$rosewater;
+  color: c.$rosewater;
 }

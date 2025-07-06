@@ -1,45 +1,45 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .search {
   width: 500px;
   max-height: 45px;
-  background-color: colors.$cloud;
+  background-color: c.$cloud;
   border-radius: 20px;
   margin: auto;
-}
-
-.MuiToolbar-root {
-  padding: 0px !important;
 }
 
 .MuiOutlinedInput-root {
   height: 45px;
   font-size: 18px !important;
   letter-spacing: 0.6px !important;
-  color: colors.$bordeaux !important;
+  color: c.$bordeaux !important;
+
+  fieldset {
+    border: none !important;
+  }
+
+  &.Mui-focused {
+    fieldset {
+      border: solid 3.5px c.$green !important;
+      border-radius: 20px;
+    }
+
+    .MuiInputAdornment-root {
+      .MuiSvgIcon-root {
+        color: c.$green;
+      }
+    }
+  }
 }
 
 .MuiAutocomplete-paper {
-  background-color: colors.$bordeaux !important;
-}
-
-.MuiOutlinedInput-root fieldset {
-  border: none !important;
-}
-
-.MuiOutlinedInput-root.Mui-focused fieldset {
-  border: solid 3.5px colors.$green !important;
-  border-radius: 20px;
-}
-
-.MuiOutlinedInput-root.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root {
-  color: colors.$green;
+  background-color: c.$bordeaux !important;
 }
 
 .MuiAutocomplete-popper {
   margin-top: 0.2% !important ;
   border-radius: 8px;
-  border: solid 0px colors.$rosewater;
+  border: solid 0px c.$rosewater;
   max-width: 100%;
   width: inherit;
 }
@@ -52,12 +52,12 @@
 }
 
 .MuiAutocomplete-option {
-  border-bottom: solid 1px colors.$rosewater;
+  border-bottom: solid 1px c.$rosewater;
   padding: 10px !important;
-}
 
-.MuiAutocomplete-option:hover {
-  background-color: #882541 !important;
+  &:hover {
+    background-color: #882541 !important;
+  }
 }
 
 .search-picture {
@@ -71,12 +71,12 @@
   display: flex;
   flex-direction: column;
   margin-left: 4%;
-  color: colors.$rosewater;
+  color: c.$rosewater;
   font-size: 17.5px;
 }
 
 .MuiAutocomplete-loading {
-  color: colors.$rosewater !important;
+  color: c.$rosewater !important;
   font-size: 20px !important;
 }
 

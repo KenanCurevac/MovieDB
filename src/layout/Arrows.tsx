@@ -19,7 +19,7 @@ export default function Arrows({
     <>
       <button
         onClick={() => onHandleSlide("previous")}
-        className={`arrows ${offset === 0 ? "disabled-button" : ""}`}
+        className={`arrow ${offset === 0 ? "disabled-button" : ""}`}
         disabled={offset === 0}
       >
         <ArrowForwardIosIcon className="arrow-left" />
@@ -27,7 +27,7 @@ export default function Arrows({
       {children}
       <button
         onClick={() => onHandleSlide("next")}
-        className={`arrows ${offset === maxOffset ? "disabled-button" : ""}`}
+        className={`arrow ${offset === maxOffset ? "disabled-button" : ""}`}
         disabled={offset === maxOffset}
       >
         <ArrowForwardIosIcon className="arrow-right" />

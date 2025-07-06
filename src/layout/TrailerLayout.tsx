@@ -45,7 +45,7 @@ export default function TrailerLayout({
   }
 
   return (
-    <div className="trailer-layout-container">
+    <div className="trailer-layout">
       {movieId && (
         <Modal
           open={openModal}
@@ -84,19 +84,19 @@ export default function TrailerLayout({
                 return (
                   <div
                     key={elem.id}
-                    className={`trailer-carousel-picture-container ${
+                    className={`${
                       className === "on-the-left" ||
                       className === "on-the-right"
                         ? "perspective"
                         : ""
                     } `}
-                    onClick={
-                      className === "middle-picture"
-                        ? () => handleOpenModal(elem.id)
-                        : undefined
-                    }
                   >
                     <img
+                      onClick={
+                        className === "middle-picture"
+                          ? () => handleOpenModal(elem.id)
+                          : undefined
+                      }
                       src={
                         isMovie
                           ? elem.poster_path

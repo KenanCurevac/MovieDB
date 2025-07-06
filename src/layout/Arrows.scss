@@ -1,70 +1,74 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
-.arrows {
+.arrow {
   background-color: transparent;
   all: unset;
   display: inline-flex;
   cursor: pointer;
-}
 
-.arrow-left {
-  transform: rotate(180deg);
-  font-size: 70px !important;
-  color: colors.$bordeaux;
-}
+  &-left,
+  &-right {
+    font-size: 70px !important;
+    color: c.$bordeaux;
 
-.arrow-right {
-  font-size: 70px !important;
-  color: colors.$bordeaux;
+    &:not(.disabled-button):hover {
+      color: c.$green;
+    }
+  }
+
+  &-left {
+    transform: rotate(180deg);
+  }
 }
 
 .disabled-button {
   cursor: auto !important;
   opacity: 0.5 !important;
-}
 
-.disabled-button:hover .arrow-left {
-  color: colors.$bordeaux !important;
-}
-
-.disabled-button:hover .arrow-right {
-  color: colors.$bordeaux !important;
-}
-
-.arrow-left:not(.disabled-button):hover {
-  color: colors.$green;
-}
-
-.arrow-right:not(.disabled-button):hover {
-  color: colors.$green;
+  &:hover {
+    .arrow-left,
+    .arrow-right {
+      color: c.$bordeaux !important;
+    }
+  }
 }
 
 @media (max-width: 1500px) {
-  .arrows .MuiSvgIcon-root {
-    font-size: 60px !important;
+  .arrow {
+    .MuiSvgIcon-root {
+      font-size: 60px !important;
+    }
   }
 }
 
 @media (max-width: 920px) {
-  .arrows .MuiSvgIcon-root {
-    font-size: 70px !important;
+  .arrow {
+    .MuiSvgIcon-root {
+      font-size: 70px !important;
+    }
   }
 }
 
 @media (max-width: 765px) {
-  .arrows .MuiSvgIcon-root {
-    font-size: 60px !important;
+  .arrow {
+    .MuiSvgIcon-root {
+      font-size: 60px !important;
+    }
   }
 }
 
 @media (max-width: 565px) {
-  .arrows .MuiSvgIcon-root {
-    font-size: 9.7vw !important;
+  .arrow {
+    .MuiSvgIcon-root {
+      font-size: 9.7vw !important;
+    }
   }
 }
 
 @media (max-width: 360px) {
-  .arrows .MuiSvgIcon-root {
-    font-size: max(24px, 100vw - 322px) !important;
+  .arrow {
+    .MuiSvgIcon-root {
+      font-size: max(24px, 100vw - 322px) !important;
+    }
   }
 }

@@ -1,10 +1,10 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .trailer-side-container {
-  background: colors.$bordeaux;
+  background: c.$bordeaux;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  color: colors.$blush;
+  color: c.$blush;
   flex-grow: 1;
   padding: 2%;
 }
@@ -32,7 +32,7 @@
   margin: 0px auto;
   display: block;
   border-radius: 15px;
-  border: solid 6px colors.$blush;
+  border: solid 6px c.$blush;
   pointer-events: none;
 }
 

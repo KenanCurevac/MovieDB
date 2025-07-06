@@ -1,7 +1,7 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .error-message {
-  color: colors.$green;
+  color: c.$green;
   font-size: 50px;
   letter-spacing: 0.8px;
 }
@@ -16,5 +16,5 @@
 .MuiCircularProgress-root {
   width: 20vw !important;
   height: 20vw !important;
-  color: colors.$green !important;
+  color: c.$green !important;
 }

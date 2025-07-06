@@ -42,7 +42,7 @@ export default function SmallLayout({
   }
 
   return (
-    <div className="small-layout-container">
+    <div className="small-layout">
       {movieId &&
         (media !== "person" ? (
           <Modal
@@ -84,39 +84,35 @@ export default function SmallLayout({
               const isPerson = elem && "known_for_department" in elem;
 
               return (
-                <div
+                <img
                   key={elem.id}
-                  className="small-carousel-picture-container"
                   onClick={
                     className === "first-picture"
                       ? () => handleOpenModal(elem.id)
                       : undefined
                   }
-                >
-                  <img
-                    src={
-                      isMovie || isShow
-                        ? elem.poster_path
-                          ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
-                          : noPicture
-                        : isPerson
-                        ? elem.profile_path
-                          ? `https://image.tmdb.org/t/p/w500${elem.profile_path}`
-                          : noPicture
-                        : undefined
-                    }
-                    alt={
-                      isMovie
-                        ? "Movie Poster"
-                        : isShow
-                        ? "TV Series Poster"
-                        : isPerson
-                        ? "Person Poster"
-                        : "Media Picture"
-                    }
-                    className={`${className} small-carousel-picture`}
-                  />
-                </div>
+                  src={
+                    isMovie || isShow
+                      ? elem.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                        : noPicture
+                      : isPerson
+                      ? elem.profile_path
+                        ? `https://image.tmdb.org/t/p/w500${elem.profile_path}`
+                        : noPicture
+                      : undefined
+                  }
+                  alt={
+                    isMovie
+                      ? "Movie Poster"
+                      : isShow
+                      ? "TV Series Poster"
+                      : isPerson
+                      ? "Person Poster"
+                      : "Media Picture"
+                  }
+                  className={`${className} small-carousel-picture`}
+                />
               );
             })}
           </div>

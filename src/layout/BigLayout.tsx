@@ -40,7 +40,7 @@ export default function BigLayout({
   }
 
   return (
-    <div className="big-layout-container">
+    <div className="big-layout">
       {movieId && (
         <Modal
           open={openModal}
@@ -81,27 +81,23 @@ export default function BigLayout({
               const isShow = elem && "first_air_date" in elem;
 
               return (
-                <div
+                <img
                   key={elem.id}
-                  className="big-carousel-picture-container"
                   onClick={() => handleOpenModal(elem.id)}
-                >
-                  <img
-                    src={
-                      elem.poster_path
-                        ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
-                        : noPicture
-                    }
-                    alt={
-                      isMovie
-                        ? "Movie Poster"
-                        : isShow
-                        ? "TV Series Poster"
-                        : "Media Picture"
-                    }
-                    className={`${className} big-carousel-picture`}
-                  />
-                </div>
+                  src={
+                    elem.poster_path
+                      ? `https://image.tmdb.org/t/p/w500${elem.poster_path}`
+                      : noPicture
+                  }
+                  alt={
+                    isMovie
+                      ? "Movie Poster"
+                      : isShow
+                      ? "TV Series Poster"
+                      : "Media Picture"
+                  }
+                  className={`${className} big-carousel-picture`}
+                />
               );
             })}
           </div>

@@ -1,12 +1,16 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .navbar {
-  background-color: colors.$blush !important;
+  background-color: c.$blush !important;
   width: 100%;
   margin-bottom: 40px;
-  box-shadow: 6px 6px 10px 4px colors.$bordeaux-transparent !important;
+  box-shadow: 6px 6px 10px 4px c.$bordeaux-transparent !important;
   border-radius: 15px;
   position: relative;
+}
+
+.MuiToolbar-root {
+  padding: 0px !important;
 }
 
 .film-atlas {
@@ -34,16 +38,16 @@
 .link {
   text-decoration: none;
   font-size: 28px;
-  font-weight: 600;
-  color: colors.$bordeaux;
-}
+  font-weight: bold;
+  color: c.$bordeaux;
 
-.link:hover {
-  color: #177f62;
-}
+  &:hover {
+    color: c.$green;
+  }
 
-.link:active {
-  color: #074634;
+  &:active {
+    color: c.$forest;
+  }
 }
 
 .tv-series-link {
@@ -55,13 +59,15 @@
   display: none !important;
 }
 
-.mobile-menu .MuiSvgIcon-root {
-  font-size: 55px !important;
-  color: colors.$bordeaux !important;
-}
+.mobile-menu {
+  .MuiSvgIcon-root {
+    font-size: 55px !important;
+    color: c.$bordeaux !important;
 
-.mobile-menu .MuiSvgIcon-root:hover {
-  color: #177f62 !important;
+    &:hover {
+      color: #177f62 !important;
+    }
+  }
 }
 
 @media (max-width: 900px) {

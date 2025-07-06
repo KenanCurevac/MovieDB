@@ -1,68 +1,37 @@
-@use "../styles/colors";
+@use "../styles/mixins" as m;
 
-.big-layout-container {
-  width: 100%;
+.big-layout {
+  @include m.layout;
   max-width: 1380px;
-  display: flex;
-  justify-self: center;
-  flex-direction: column;
-  padding: 15px 1px 30px;
-  height: auto;
-  background: colors.$blush;
-  border-radius: 15px;
-  box-shadow: 8px 8px 10px 4px colors.$bordeaux-transparent;
 }
 
 .big-carousel-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
+  @include m.carousel-container;
 }
 
 .big-carousel {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(155deg, colors.$cherry, colors.$blush);
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 5px 6px 35px inset colors.$bordeaux;
+  @include m.carousel(155deg);
   width: 1240px;
+  padding: 20px 30px;
 }
 
 .main-picture {
   width: 220px;
-  height: 330px;
+  cursor: pointer;
 }
 
 .front-picture {
   width: 0px;
-  height: 330px;
   margin: 8px 0px;
 }
 
 .back-picture {
   width: 0px;
-  height: 330px;
   margin: 8px 0px;
 }
 
-.big-carousel-picture-container {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  cursor: pointer;
-}
-
 .big-carousel-picture {
-  border-radius: 8px;
-  object-fit: cover;
-  object-position: center;
-  transition: width 0.7s ease;
-  margin: 8px 10px;
-  box-shadow: 5px 12px 5px;
+  @include m.carousel-picture;
 }
 
 @media (max-width: 1525px) {
@@ -71,7 +40,7 @@
     margin: 0px;
   }
 
-  .big-layout-container {
+  .big-layout {
     margin: auto;
     width: fit-content;
   }

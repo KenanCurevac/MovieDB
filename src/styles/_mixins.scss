@@ -1,0 +1,94 @@
+@use "./colors" as c;
+
+@mixin layout {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  width: fit-content;
+  background: c.$blush;
+  padding: 15px 1px 30px;
+  border-radius: 15px;
+  box-shadow: 8px 8px 10px 4px c.$bordeaux-transparent;
+}
+
+@mixin carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+@mixin carousel($deg) {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient($deg, c.$cherry, c.$blush);
+  border-radius: 10px;
+  box-shadow: 5px 6px 35px inset c.$bordeaux;
+}
+
+@mixin carousel-picture {
+  object-fit: cover;
+  object-position: center;
+  height: 330px;
+  margin: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 5px 12px 5px;
+  transition: width 0.7s ease;
+}
+
+@mixin dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+@mixin dialog-paper {
+  max-width: 780px !important;
+  max-height: fit-content !important;
+  height: auto;
+  background: linear-gradient(135deg, #eccdcd, #f3e0e0) !important;
+  color: c.$bordeaux !important;
+  overflow: visible;
+}
+
+@mixin modal-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 0.7px;
+  line-height: 120%;
+}
+
+@mixin modal-close-button {
+  position: absolute !important;
+  right: 8px !important;
+  top: 8px !important;
+  color: c.$bordeaux;
+}
+
+@mixin modal-close-icon {
+  font-size: 35px !important;
+
+  &:hover {
+    color: c.$green;
+  }
+}
+
+@mixin modal-content {
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+}
+
+@mixin modal-description {
+  font-size: 17px;
+  text-indent: 6%;
+  background-color: c.$cloud;
+  border-radius: 20px;
+  padding: 1% 2.5% 1.5%;
+  margin-top: 3%;
+}

@@ -1,9 +1,9 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .MuiDrawer-paper {
   width: min(50vw, 380px);
   height: 100%;
-  background: colors.$bordeaux !important;
+  background: c.$bordeaux !important;
 }
 
 .sidenav-content {
@@ -11,6 +11,13 @@
   flex-direction: column;
   position: relative;
   height: 100%;
+
+  .MuiButtonBase-root {
+    width: fit-content !important;
+    position: absolute !important;
+    top: min(1.4vw, 10px);
+    right: min(1.4vw, 10px);
+  }
 }
 
 .drawer-logo {
@@ -18,20 +25,15 @@
   margin: 2vw max(-0.3vw, -2px);
 }
 
-.sidenav-content .MuiButtonBase-root {
-  width: fit-content !important;
-  position: absolute !important;
-  top: min(1.4vw, 10px);
-  right: min(1.4vw, 10px);
-}
+.drawer-close-button {
+  .MuiSvgIcon-root {
+    font-size: clamp(42px, 8.5vw, 60px) !important;
+    color: c.$rosewater !important;
 
-.drawer-close-button .MuiSvgIcon-root {
-  font-size: clamp(42px, 8.5vw, 60px) !important;
-  color: colors.$rosewater !important;
-}
-
-.drawer-close-button .MuiSvgIcon-root:hover {
-  color: colors.$green !important;
+    &:hover {
+      color: c.$green !important;
+    }
+  }
 }
 
 .drawer-links {
@@ -47,23 +49,23 @@
   text-decoration: none;
   font-size: clamp(24px, 6.2vw, 38px);
   font-weight: bold;
-  color: colors.$rosewater;
+  color: c.$rosewater;
   margin-bottom: 36px;
   display: flex;
   align-items: center;
-}
 
-.drawer-link .MuiSvgIcon-root {
-  font-size: clamp(24px, 6.2vw, 38px);
-  margin-right: min(1.5vw, 12px);
-}
+  .MuiSvgIcon-root {
+    font-size: clamp(24px, 6.2vw, 38px);
+    margin-right: min(1.5vw, 12px);
 
-.drawer-link:hover {
-  color: colors.$green;
-}
+    &:hover {
+      color: c.$green;
+    }
 
-.drawer-link:active {
-  color: colors.$forest;
+    &:active {
+      color: c.$forest;
+    }
+  }
 }
 
 .tv-series-link {
