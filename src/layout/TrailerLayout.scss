@@ -1,5 +1,5 @@
 @use "../styles/colors" as c;
-@use "../styles/mixins" as m;
+@use "../styles/layout" as l;
 
 .trailer-layout {
   display: flex;
@@ -7,7 +7,7 @@
   width: 100%;
   max-width: 1380px;
   border-radius: 15px;
-  box-shadow: 4px 4px 4px 5px c.$bordeaux-transparent;
+  box-shadow: 4px 4px 4px 5px c.$shadow-color;
 }
 
 .upcoming-movies-side-container {
@@ -20,11 +20,11 @@
 }
 
 .trailer-carousel-container {
-  @include m.carousel-container;
+  @include l.carousel-container;
 }
 
 .trailer-carousel {
-  @include m.carousel(155deg);
+  @include l.carousel(155deg);
   width: 650px;
   padding: 20px 24px 24px;
 }

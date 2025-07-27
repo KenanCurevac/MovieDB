@@ -15,15 +15,15 @@ export default function TrailerPart({
   releaseDate,
   movieToShow,
 }: TrailerPartProps) {
-  const [openingTrailer, setOpeningTrailer] = useState(false);
+  const [openTrailer, setOpenTrailer] = useState(false);
   const [trailerKey, setTrailerKey] = useState<string | null>(null);
 
   function handleOpenTrailer() {
-    setOpeningTrailer(true);
+    setOpenTrailer(true);
   }
 
   function handleCloseTrailer() {
-    setOpeningTrailer(false);
+    setOpenTrailer(false);
   }
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function TrailerPart({
     <div className="trailer-side-container">
       {trailerKey && (
         <TrailerModal
-          open={openingTrailer}
+          open={openTrailer}
           onClose={handleCloseTrailer}
           trailerKey={trailerKey}
         />

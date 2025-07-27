@@ -1,5 +1,5 @@
 @use "../styles/colors" as c;
-@use "../styles/mixins" as m;
+@use "../styles/modal" as m;
 
 .standard-modal.MuiDialog-root {
   position: fixed;

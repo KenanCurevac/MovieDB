@@ -1,4 +1,4 @@
-@use "../styles/colors";
+@use "../styles/colors" as c;
 
 .trailer-modal {
   .MuiDialog-root {
@@ -41,19 +41,19 @@
   position: absolute !important;
   right: 0px !important;
   top: -55px !important;
-  color: colors.$bordeaux;
+  color: c.$bordeaux;
 }
 
 .trailer-close-icon {
   font-size: 40px !important;
-  color: colors.$blush;
-  border: solid 1px colors.$blush;
+  color: c.$blush;
+  border: solid 1px c.$blush;
   border-radius: 6px;
   opacity: 0.7;
 
   &:hover {
-    color: colors.$green;
-    border-color: colors.$green;
+    color: c.$green;
+    border-color: c.$green;
     opacity: 1;
   }
 }

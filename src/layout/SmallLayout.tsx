@@ -55,7 +55,7 @@ export default function SmallLayout({
           <PeopleModal
             open={openModal}
             onClose={handleCloseModal}
-            media={media}
+            media="person"
             id={movieId}
           />
         ))}

@@ -1,15 +1,15 @@
-@use "../styles/mixins" as m;
+@use "../styles/layout" as l;
 
 .small-layout {
-  @include m.layout;
+  @include l.layout;
 }
 
 .small-carousel-container {
-  @include m.carousel-container;
+  @include l.carousel-container;
 }
 
 .small-carousel {
-  @include m.carousel(135deg);
+  @include l.carousel(135deg);
   width: 520px;
   padding: 20px;
 }
@@ -42,7 +42,7 @@
 }
 
 .small-carousel-picture {
-  @include m.carousel-picture;
+  @include l.carousel-picture;
 }
 
 @media (max-width: 1500px) {

@@ -1,16 +1,16 @@
-@use "../styles/mixins" as m;
+@use "../styles/layout" as l;
 
 .big-layout {
-  @include m.layout;
+  @include l.layout;
   max-width: 1380px;
 }
 
 .big-carousel-container {
-  @include m.carousel-container;
+  @include l.carousel-container;
 }
 
 .big-carousel {
-  @include m.carousel(155deg);
+  @include l.carousel(155deg);
   width: 1240px;
   padding: 20px 30px;
 }
@@ -31,7 +31,7 @@
 }
 
 .big-carousel-picture {
-  @include m.carousel-picture;
+  @include l.carousel-picture;
 }
 
 @media (max-width: 1525px) {

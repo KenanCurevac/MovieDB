@@ -1,0 +1,39 @@
+@use "./colors" as c;
+
+@mixin layout {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  width: fit-content;
+  background: c.$blush;
+  padding: 15px 1px 30px;
+  border-radius: 15px;
+  box-shadow: 8px 8px 10px 4px c.$shadow-color;
+}
+
+@mixin carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+@mixin carousel($deg) {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient($deg, c.$cherry, c.$blush);
+  border-radius: 10px;
+  box-shadow: 5px 6px 35px inset c.$bordeaux;
+}
+
+@mixin carousel-picture {
+  object-fit: cover;
+  object-position: center;
+  height: 330px;
+  margin: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 5px 12px 5px;
+  transition: width 0.7s ease;
+}
